@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2>Hello World!</h2>
-	<a href="book/list" >click</a>
+	<h2>Hello World!</h2>
+	<a href="book/list">click</a>
 </body>
 </html>
