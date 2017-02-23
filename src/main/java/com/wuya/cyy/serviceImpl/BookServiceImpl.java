@@ -5,12 +5,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.wuya.cyy.dao.BookDao;
 import com.wuya.cyy.pojo.Book;
 import com.wuya.cyy.service.BookService;
 
-
+@Service("bookService")
 public class BookServiceImpl implements BookService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());

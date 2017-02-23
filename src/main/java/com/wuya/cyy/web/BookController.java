@@ -2,7 +2,6 @@ package com.wuya.cyy.web;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wuya.cyy.pojo.Book;
-import com.wuya.cyy.service.BookService;
+import com.wuya.cyy.serviceImpl.BookServiceImpl;
 
 
 @Controller
@@ -24,7 +23,7 @@ public class BookController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private BookService bookService;
+	private BookServiceImpl bookService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	private String list(Model model) {
