@@ -1,4 +1,4 @@
-package com.wuya.cyy.serviceImpl;
+package com.wuya.cyy.service.Impl;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.wuya.cyy.dao.BookDao;
 import com.wuya.cyy.pojo.Book;
 import com.wuya.cyy.service.BookService;
 
-@Service("bookService")
+@Service
 public class BookServiceImpl implements BookService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
