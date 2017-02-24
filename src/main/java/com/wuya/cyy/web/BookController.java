@@ -31,11 +31,12 @@ public class BookController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	private ModelAndView list(ModelAndView model) {
-		List<Book> list = bookService.getList();
-		model.addObject("hell", "list 123");
+		List<Book> books = bookService.getList();
 //		model.addAttribute("list", list.get(0));
 //		model.addAttribute("hello", "hello world list");
 		// list.jsp + model = ModelAndView
+		logger.warn("------books:"+books.size());
+		model.getModel().put("books", books);
 		model.setViewName("list");
 		return model;// WEB-INF/jsp/"list".jsp
 	}
@@ -43,20 +44,22 @@ public class BookController {
 	// ajax json
 	@RequestMapping(value = "/{bookId}/detail", method = RequestMethod.GET)
 	@ResponseBody
-	private String detail(@PathVariable("bookId") Long bookId, Model model,HttpServletRequest request) {
-		
+	private ModelAndView detail(@PathVariable("bookId") Long bookId, ModelAndView model) {
 		if (bookId == null) {
-			return "redirect:/book/list";
+			model.setViewName("redirect:/book/list");
+			return model;
 		}
 		Book book = bookService.getById(bookId);
 		if (book == null) {
-			return "forward:/book/list";
+			model.setViewName("forward:/book/list");
+			return model;
 		}
-		System.out.println("bookId:"+bookId+" ,book:"+book.toString());
+		logger.warn("bookId:"+bookId+" ,book:"+book.toString());
 //		model.addAttribute("book", book);
 //		model.addAttribute("hello", "hello world");
-		request.getSession().setAttribute("book", book);
-		return "detail";
+		model.setViewName("detail");
+		model.getModel().put("book", book);
+		return model;
 	}
 
 
