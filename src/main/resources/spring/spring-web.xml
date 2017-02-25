@@ -13,8 +13,11 @@
 
 	<!-- 2.静态资源默认servlet配置 (1)加入对静态资源的处理：js,gif,png (2)允许使用"/"做整体映射 -->
 	<mvc:default-servlet-handler />
+	
+	<!-- 3.扫描web相关的bean -->
+	<context:component-scan base-package="com.wuya.cyy.web" />
 
-	<!-- 3.配置jsp 显示ViewResolver -->
+	<!-- 4.配置jsp 显示ViewResolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
@@ -22,7 +25,11 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<!-- 5.配置FileUpload Resovler -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	     <property name="maxUploadSize" value="104857600" />
+	     <property name="maxInMemorySize" value="4096" />
+	     <property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
 
-	<!-- 4.扫描web相关的bean -->
-	<context:component-scan base-package="com.wuya.cyy.web" />
 </beans>
