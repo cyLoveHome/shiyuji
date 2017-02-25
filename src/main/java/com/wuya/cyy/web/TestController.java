@@ -2,11 +2,14 @@ package com.wuya.cyy.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wuya.cyy.pojo.Book;
 import com.wuya.cyy.service.Impl.BookServiceImpl;
+import com.wuya.cyy.service.Impl.RegisterValidateService;
+import com.wuya.cyy.utils.ServiceException;
 
 
 @Controller
@@ -104,6 +109,41 @@ public class TestController {
         System.out.println("方法三的运行时间："+String.valueOf(endTime-startTime)+"ms");
         return "success"; 
     }
+	
+	@Resource  
+    private RegisterValidateService service;  
+      
+    @RequestMapping(value="/register",method={RequestMethod.GET,RequestMethod.POST})  
+    public ModelAndView  load(HttpServletRequest request,HttpServletResponse response) throws ParseException{  
+        String action = request.getParameter("action");  
+        logger.warn("-----reg----"+action);  
+        ModelAndView mav=new ModelAndView();  
+        String email = "";
+        if("register".equals(action)) {  
+            //注册  
+            email = request.getParameter("email");  
+            logger.warn("-----reg----"+email);  
+            service.processregister(email);//发邮箱激活  
+            mav.addObject("text","注册成功");  
+            mav.setViewName("register_success");  
+        }   
+        else if("activate".equals(action)) {  
+            //激活  
+            email = request.getParameter("email");//获取email  
+            String validateCode = request.getParameter("validateCode");//激活码  
+            logger.warn("-----reg----"+email);  
+            logger.warn("-----reg----"+validateCode);
+            try {  
+                service.processActivate(email , validateCode);//调用激活方法  
+                mav.setViewName("activate_success");  
+            } catch (ServiceException e) {  
+                request.setAttribute("message" , e.getMessage());  
+                mav.setViewName("activate_failure");  
+            }  
+              
+        }  
+        return mav;  
+    }  
 
 
 }
