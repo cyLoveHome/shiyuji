@@ -27,8 +27,8 @@ import com.wuya.cyy.service.Impl.BookServiceImpl;
 
 
 @Controller
-@RequestMapping("/book") // url:/模块/资源/{id}/细分 /seckill/list
-public class BookController {
+@RequestMapping("/test") // url:/模块/资源/{id}/细分 /seckill/list
+public class TestController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -91,7 +91,8 @@ public class BookController {
                 if(file!=null)
                 {	
                 	logger.warn("getOriginalFilename:"+file.getOriginalFilename());
-                    String path="E:/springUpload"+file.getOriginalFilename();
+                    String path="E:/springUpload/"+file.getOriginalFilename();
+                	logger.warn("path:"+path);
                     //上传
                     file.transferTo(new File(path));
                 }

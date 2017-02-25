@@ -5,7 +5,7 @@
 <title>list</title>
 </head>
 <body>
-	<form name="Form2" action="book/springUpload" method="post"  enctype="multipart/form-data">
+	<form name="Form2" action="test/springUpload" method="post"  enctype="multipart/form-data">
 		<h1>使用spring mvc提供的类的方法上传文件</h1>
 		<input type="file" name="file">
 		<input type="submit" value="upload"/>
