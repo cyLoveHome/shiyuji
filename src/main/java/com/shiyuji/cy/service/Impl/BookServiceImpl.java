@@ -1,4 +1,4 @@
-package com.wuya.cyy.service.Impl;
+package com.shiyuji.cy.service.Impl;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wuya.cyy.dao.BookDao;
-import com.wuya.cyy.pojo.Book;
-import com.wuya.cyy.service.BookService;
+import com.shiyuji.cy.dao.BookDao;
+import com.shiyuji.cy.pojo.Book;
+import com.shiyuji.cy.service.BookService;
 
 @Service
 public class BookServiceImpl implements BookService {

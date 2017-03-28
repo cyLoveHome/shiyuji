@@ -1,4 +1,4 @@
-package com.wuya.cyy.web;
+package com.shiyuji.cy.web;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.wuya.cyy.utils.VerifyCodeUtils;
+import com.shiyuji.cy.utils.VerifyCodeUtils;
 
 
 @Controller

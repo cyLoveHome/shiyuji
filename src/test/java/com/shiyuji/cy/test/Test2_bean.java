@@ -1,4 +1,4 @@
-package com.wuya.cyy.test;
+package com.shiyuji.cy.test;
 
 import java.util.List;
 
@@ -10,36 +10,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.wuya.cyy.dao.BookDao;
-import com.wuya.cyy.pojo.Book;
+import com.shiyuji.cy.dao.BookDao;
+import com.shiyuji.cy.pojo.Book;
+import com.shiyuji.cy.service.Impl.BookServiceImpl;
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit spring配置文件
-@ContextConfiguration({ "classpath:spring/spring-dao.xml", "classpath:spring/spring-service.xml" })
-public class Test1_dao {
+@ContextConfiguration({ "classpath:spring/spring-web.xml", "classpath:spring/spring-service.xml","classpath:spring/spring-dao.xml" })
+public class Test2_bean {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private BookDao bookDao;
+	private BookServiceImpl service;
 
 	@Test
 	public void testQueryById() throws Exception {
 		long bookId = 1000;
-		Book book = bookDao.queryById(bookId);
+		Book book = service.getById(bookId);
 		System.out.println(book);
 	}
 	
 	@Test
 	public void testQueryAll() throws Exception {
-		List<Book> books = bookDao.queryAll(0, 4);
+		List<Book> books = service.getList();
 		for (Book book : books) {
 			System.out.println(book);
 		}
-	}
-
-	@Test
-	public void testReduceNumber() throws Exception {
-		long bookId = 1000;
-		int update = bookDao.reduceNumber(bookId);
-		System.out.println("update=" + update);
 	}
 }

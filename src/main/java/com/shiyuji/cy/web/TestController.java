@@ -1,4 +1,4 @@
-package com.wuya.cyy.web;
+package com.shiyuji.cy.web;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +22,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.wuya.cyy.pojo.Book;
-import com.wuya.cyy.service.Impl.BookServiceImpl;
+import com.shiyuji.cy.pojo.Book;
+import com.shiyuji.cy.service.Impl.BookServiceImpl;
 
 
 @Controller

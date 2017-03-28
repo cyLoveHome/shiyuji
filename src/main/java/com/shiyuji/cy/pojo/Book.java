@@ -1,4 +1,4 @@
-package com.wuya.cyy.pojo;
+package com.shiyuji.cy.pojo;
 
 /**
  * 图书实体

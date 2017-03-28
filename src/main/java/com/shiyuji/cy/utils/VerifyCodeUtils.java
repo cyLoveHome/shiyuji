@@ -1,4 +1,4 @@
-package com.wuya.cyy.utils;
+package com.shiyuji.cy.utils;
 
 import java.awt.Color;
 import java.awt.Font;

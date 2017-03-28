@@ -1,10 +1,10 @@
-package com.wuya.cyy.dao;
+package com.shiyuji.cy.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.wuya.cyy.pojo.Book;
+import com.shiyuji.cy.pojo.Book;
 
 
 
