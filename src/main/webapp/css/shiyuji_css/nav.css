@@ -1,0 +1,94 @@
+			#nav{
+				border-bottom: 2px solid rgba(144, 142, 142, 0.11);
+			    z-index: 10;
+			    position: fixed;
+			    width: 100%;
+			    height: 64.6px;
+			    background-color: #F5F4F2;
+			}
+			#sec{
+				padding-top: 88px;
+			}
+			a:hover{
+				text-decoration: none;
+			}
+			#link {
+				color: #992222;
+			}
+			#link:hover {
+				background-color: #992222;
+				color: white;
+			}
+			#input{
+				border-radius: 0px;
+    			border-right: none;
+    			width: 260px;
+			}
+			#header{
+				margin-top: -8px;
+			    background-color: #E8E6E3;
+			    width: 110px;
+			    height: 48px;
+			    text-align: center;
+			    padding-top: 10px;	
+			}
+			.img-rounded {
+				margin-top: -7px;
+			}
+			.btn {
+				border-radius: 0px;
+				background-color: #b24422;
+				color: white;
+				width: 60px;
+				border: none;
+				margin-left: -4px;
+				height: 34px;s
+			}
+			.btn:hover {
+				background-color: #921;
+				color: white;
+			}
+			#user_info{
+				font-size: 12px;
+				color: #a5a7a6;
+			}
+			.drop_border{
+				width: 90px;
+			    height: 140px;
+			    text-align: center;
+			    background-color: #F5F4F2;
+			    position: fixed;
+			    z-index: 200;
+			    top: 50px;
+			    left: 74%;
+			    display: none;
+			}
+			.drop_line{
+				margin-top: 10px;
+			}
+			#title{
+				font-size: 20px;
+				font-weight: 600;
+    			color:  #d3c5a1;
+			}
+			#line{
+				border: 1px solid gainsboro;
+			}
+			.menu{
+				margin-bottom: 15px;
+			}
+			#focus{
+				margin-top: 10px;
+			}
+			.user{
+				margin-bottom: 2px;
+			}
+			.users{
+				margin-bottom: 20px;
+			}
+			#shicai_link{
+				color: black;
+			}
+			#shicai_link:hover{
+				color: #992222;
+			}
