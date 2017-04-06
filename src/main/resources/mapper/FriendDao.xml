@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyuji.cy.dao.FriendDao">
+	<select id="selectByUid" parameterType="String" resultType="Friend"> 
+		SELECT 
+			* 
+		FROM
+			friend
+		WHERE
+			uId = #{uId}
+	</select>
+	
+	<select id="selectByFid" parameterType="String" resultType="Friend"> 
+		SELECT 
+			* 
+		FROM
+			friend
+		WHERE
+			fId = #{fId}
+	</select>
+	
+	<insert id="addFriend" parameterType="Friend">
+		INSERT
+		INTO
+			friend
+		VALUES(
+		#{uId},
+		#{fId},
+		#{focus_time}
+		)
+	</insert>
+	
+	<delete id="deleteFriend" parameterType="String">
+		DELETE
+		FROM
+			friend
+		WHERE 
+			uId = #{uId}
+		AND
+			fId = #{fId}
+	</delete>
+</mapper>

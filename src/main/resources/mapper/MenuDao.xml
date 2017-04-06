@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyuji.cy.dao.MenuDao">
+	<insert id="addMenu" parameterType="Menu">
+		INSERT 
+		INTO 
+			menu
+	    VALUES(
+			#{mId},
+			#{uId},
+			#{mName},
+			#{mPic},
+			#{mInfo},
+			#{create_time},
+			#{steps},
+			#{state}
+		)
+	</insert>
+	
+	<delete id="deleteMenu" parameterType="String">
+		DELETE
+		FROM
+			menu
+		WHERE
+			mId = #{mId}
+	</delete>
+	
+	<select id="selectByMid" resultType="Menu" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			menu
+		WHERE
+			mId = #{mId}
+	</select>
+	
+	<select id="selectByMname" resultType="Menu" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			menu
+		WHERE
+			mName 
+		LIKE
+			'%${mName}%'
+	</select>
+	
+	<select id="selectByUid" resultType="Menu" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			menu
+		WHERE
+			uId = #{uId}
+	</select>
+</mapper>

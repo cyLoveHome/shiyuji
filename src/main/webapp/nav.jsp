@@ -8,10 +8,10 @@
 		        </div>
 		        <div class="collapse navbar-collapse" id="navbar-ex-collapse" style="margin-top: 8px;margin-right: 30px;">
 		        <p class="navbar-text navbar-right">
-					<a href="kitchen.jsp" class="head_pic">
+					<a href="javascript:void(0)" class="head_pic">
 						<img height="30" alt="logo" src="img/user.png" class="img-rounded img-circle">
 					</a>&nbsp;&nbsp;
-					<a href="" class="navbar-link" id="link">邮箱激活</a>
+					<a href="" class="navbar-link" id="link">未知</a>
 				</p>
 		        <form class="navbar-form navbar-left" role="search">
 		            <div class="form-group">

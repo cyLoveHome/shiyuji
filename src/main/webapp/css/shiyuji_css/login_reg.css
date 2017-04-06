@@ -1,0 +1,26 @@
+	html,body{
+        		background-color: #F5F4F2;
+        	}
+        	#link{
+        		color: #992222;
+        	}
+        	#link:hover{
+        		background-color: #992222;
+        		color: white;
+        		text-decoration: none;
+        	}
+        	.img-rounded{
+        		margin-top: -7px;
+        	}
+        	.btn{
+        		    border-radius: 0px;
+    				background-color: #b24422;
+    				color: white;
+    				width: 80px;
+    				border: none;
+    				margin-left: 100px
+        	}
+        	.btn:hover{
+        		background-color: #921;
+        		color: white;
+        	}

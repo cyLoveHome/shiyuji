@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyuji.cy.dao.Mc_menuDao">
+	<insert id="add" parameterType="Mc_menu">
+		INSERT 
+		INTO 
+			mc_menu
+	    VALUES(
+			#{mId},
+			#{mcId}
+		)
+	</insert>
+	
+	<delete id="deleteByMid"  parameterType="String">
+		DELETE 
+		FROM
+			mc_menu
+		WHERE
+			mId = #{mId}
+	</delete>
+	
+	<select id="selectByMcid" resultType="Menu" parameterType="String">
+	SELECT
+		*
+	FROM
+		menu
+	WHERE
+		mId
+	IN(
+		SELECT 
+			mId 
+		FROM
+			mc_menu
+		WHERE
+			mcId = #{mcId}
+	)
+	</select>
+	
+	<select id="selectByMid" resultType="Menu_classify" parameterType="String">
+	SELECT
+		*
+	FROM
+		menu_classify
+	WHERE
+		mcId
+	IN(
+		SELECT 
+			mcId 
+		FROM
+			mc_menu
+		WHERE
+			mId = #{mId}
+	)
+	</select>
+</mapper>

@@ -1,8 +1,9 @@
 $(function(){
-				$(".head_pic").mousemove(function(){
-					$(".drop_border").css("display","block");
-				});
-				$(".head_pic").mouseout(function(){
-					$(".drop_border").css("display","none");
-				});
+	$(".head_pic").click(function(){
+		if($(".drop_border").css("display")=="none"){
+			$(".drop_border").css("display","block");
+		}else{
+			$(".drop_border").css("display","none");
+		}
+	});
 			});

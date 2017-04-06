@@ -4,44 +4,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-		<style>
-			html,
-			body {
-				background-color: #F5F4F2;
-			}
-			
-			#link {
-				color: #992222;
-			}
-			
-			#link:hover {
-				background-color: #992222;
-				color: white;
-				text-decoration: none;
-			}
-			
-			.img-rounded {
-				margin-top: -7px;
-			}
-			
-			.btn {
-				border-radius: 0px;
-				background-color: #b24422;
-				color: white;
-				width: 80px;
-				border: none;
-				margin-left: 90px;
-			}
-			
-			.btn:hover {
-				background-color: #921;
-				color: white;
-			}
-		</style>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/login_reg.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -49,7 +16,7 @@
 			<div class="container" style="width: 1000px;">
 				<div class="navbar-header">
 					<a class="navbar-brand">
-						<img height="45" alt="logo" src="img/logo.png" class="img-rounded">
+						<img height="45" alt="logo" src="${pageContext.request.contextPath}/img/logo.png" class="img-rounded">
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="navbar-ex-collapse">
@@ -77,13 +44,13 @@
 				</div>
 				<div class="row">
 			          <div class="col-md-12">
-			            <form class="form-horizontal" role="form">
+			            <form class="form-horizontal" role="form" action="user/login" method="post">
 			              <div class="form-group">
 			                <div class="col-sm-2">
 			                  <label for="inputEmail3" class="control-label">邮箱</label>
 			                </div>
 			                <div class="col-sm-10">
-			                  <input type="email" class="form-control" id="inputEmail3" placeholder="邮箱">
+			                  <input type="text" class="form-control" id="inputEmail3" name="loginType" placeholder="邮箱">
 			                </div>
 			              </div>
 			              <div class="form-group">
@@ -91,7 +58,7 @@
 			                  <label for="inputPassword3" class="control-label">密码</label>
 			                </div>
 			                <div class="col-sm-10">
-			                  <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
+			                  <input type="password" class="form-control" id="inputPassword3" name="pwd" placeholder="密码">
 			                </div>
 			              </div>
 			              <div class="form-group">
@@ -109,7 +76,7 @@
 			              <div class="form-group">
 			                <div class="col-sm-offset-2 col-sm-10">
 			                  <div class="checkbox">
-			                    <a href="login-name.jsp" id="link">通过用户名登陆</a>
+			                    <a href="login_name.jsp" id="link">通过用户名登陆</a>
 			                    <a href="#" id="link" style="margin-left: 99px;">忘记密码</a>
 			                  </div>
 			                </div>
