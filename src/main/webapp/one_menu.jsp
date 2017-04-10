@@ -64,7 +64,9 @@
 					        	<div class="col-md-12">
 					        		<div class="row" style="margin-bottom: 20px;" id="appendComm">
 							        	<div class="col-md-12">
-							        		<a href="" class="link" id="more_comment" onclick="moreComm('${comments}','${commUsers}')">展开更多${Menu.commentNum}条评论</a>
+							        		<a href="" class="link" id="more_comment" onclick="moreComm('${comments}','${commUsers}')">
+							        			展开更多${Menu.commentNum}条评论
+							        		</a>
 							        	</div>
 					        		</div>
 					        		<div class="row" style="margin-bottom: 10px;">
@@ -98,10 +100,10 @@
 					        		
 					        		<div class="row"  style="margin-bottom: 20px;">
 					        			<div class="col-md-10 col-xs-10">
-					        				<input type="text" placeholder="评论" class="com_info comment_font"/>
+					        				<input type="text" placeholder="评论" class="com_info comment_font" id="c_info"/>
 					        			</div>
 					        			<div class="col-md-2 col-xs-2 text-right">
-					        				<div class="btn" style="height: 30px;">评论</div>
+					        				<div class="btn" style="height: 30px;" onclick="addComm('${comments}','${commUsers}')">评论</div>
 					        			</div>
 					        		</div>
 					        		<hr>
