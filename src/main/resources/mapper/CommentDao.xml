@@ -23,5 +23,23 @@
 		WHERE
 			mId = #{mId}
 	</select>
+	
+	<select id="selectAllUser" parameterType="String" resultType="User">
+	SELECT
+		*
+	FROM
+		user
+	WHERE
+		uId
+	IN(
+		SELECT 
+			uId 
+		FROM
+			comment
+		WHERE
+			mId = #{mId}
+	)
+		
+	</select>
 
 </mapper>

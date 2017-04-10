@@ -30,18 +30,18 @@
 		        		</div>
 		        		<div class="row" style="margin-bottom: 15px;">
 		          			<div class="col-md-3 col-xs-3">
-		          				<span style="color: #992222;font-size: 20px;">${Menu.menuCollectNum} </span> 
+		          				<span style="color: #992222;font-size: 20px;" id="collNum">${Menu.menuCollectNum} </span> 
 		          				<span class="user_info">人收藏过这道菜</span>
 		          			</div>
 		          			<div class="col-md-3 col-xs-3" style="padding-top: 1px;">
 		          			<c:if test="${Menu.isUnLike eq '0' }">
-		          				<a href="javascript:void(0);" onclick="clickZan('${Menu.mId}','${user.uId }','${Menu.likeNum}')">
+		          				<a href="javascript:void(0);" onclick="clickZan('${Menu.mId}','${user.uId }')">
 		          					<i class="fa fa-thumbs-up" id="zan" style="color: gray;font-size: 22px;"></i>
 		          				</a>
 		          				<span class="user_info" id="isLike">${Menu.likeNum}  赞</span>
 		          			</c:if>
 		          			<c:if test="${Menu.isUnLike eq '1'}">
-		          				<a href="javascript:void(0);" onclick="clickZan('${Menu.mId}','${user.uId }','${Menu.likeNum}')">
+		          				<a href="javascript:void(0);" onclick="clickZan('${Menu.mId}','${user.uId }')">
 		          					<i class="fa fa-thumbs-up"  id="zan" style="color:#992222;font-size: 22px;"></i>
 		          				</a>
 		          				<span class="user_info" id="isLike">${Menu.likeNum}  已赞</span>
@@ -49,7 +49,12 @@
 		          			</div>
 		          			<div class="col-md-6 col-xs-6 text-right">
 		          				<div class="btn" style="margin-right: 3px;"><i class="fa fa-align-left" style="font-size: 23"></i></div>
-		          				<div class="btn" style="width: 100px;font-size: 16px;">收藏</div>
+		          				<c:if test="${Menu.isCollect eq '1'}">
+		          					<div class="btn" style="width: 100px;font-size: 16px;" onclick="clickCollect('${Menu.mId}','${user.uId }')" id="coll_info">已收藏</div>
+		          				</c:if>	
+		          				<c:if test="${Menu.isCollect eq '0'}">
+		          					<div class="btn" style="width: 100px;font-size: 16px;" onclick="clickCollect('${Menu.mId}','${user.uId }')" id="coll_info">收藏</div>
+		          				</c:if>		          			
 		          			</div>
 		        		</div>
 		        		<hr>
@@ -57,13 +62,13 @@
 		        		<div class="row" style="margin-bottom: 30px;">
 		        			<div id="comment">
 					        	<div class="col-md-12">
-					        		<div class="row" style="margin-bottom: 20px;">
+					        		<div class="row" style="margin-bottom: 20px;" id="appendComm">
 							        	<div class="col-md-12">
-							        		<a href="" class="link">展开更多${Menu.commentNum}条评论</a>
+							        		<a href="" class="link" id="more_comment" onclick="moreComm('${comments}','${commUsers}')">展开更多${Menu.commentNum}条评论</a>
 							        	</div>
 					        		</div>
 					        		<div class="row" style="margin-bottom: 10px;">
-							        	<div class="col-md-1">
+							        	<div class="col-md-1" id=>
 							        		<a href="">
 						          				<img src="${pageContext.request.contextPath}/img/user.png" class="img-circle img-responsive" width="30">
 							        		</a>

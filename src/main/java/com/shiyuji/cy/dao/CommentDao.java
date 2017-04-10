@@ -3,6 +3,7 @@ package com.shiyuji.cy.dao;
 import java.util.List;
 
 import com.shiyuji.cy.pojo.Comment;
+import com.shiyuji.cy.pojo.User;
 
 public interface CommentDao {
 	/**
@@ -18,5 +19,12 @@ public interface CommentDao {
 	 * @return
 	 */
 	List<Comment> selectByMid(String mId);
+	
+	/**
+	 * 查所有评论人信息
+	 * @param mId
+	 * @return
+	 */
+	List<User> selectAllUser(String mId);
 
 }
