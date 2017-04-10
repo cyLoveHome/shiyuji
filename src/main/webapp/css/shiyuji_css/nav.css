@@ -1,3 +1,7 @@
+			html,
+			body {
+				background-color: #F5F4F2;
+			}
 			#nav{
 				border-bottom: 2px solid rgba(144, 142, 142, 0.11);
 			    z-index: 10;
@@ -12,10 +16,10 @@
 			a:hover{
 				text-decoration: none;
 			}
-			#link {
+			.link {
 				color: #992222;
 			}
-			#link:hover {
+			.link:hover {
 				background-color: #992222;
 				color: white;
 			}

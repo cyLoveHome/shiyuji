@@ -36,18 +36,23 @@ public class LikeServiceImpl implements LikeService {
 	}
 
 	@Override
+	public List<User> selectByMid(String mId) {
+		return likeDao.selectByMid(mId);
+	}
+
+	@Override
+	public Like selectLike(String uId, String mId) {
+		return likeDao.selectLike(uId, mId);
+	}
+
+	@Override
 	public List<Like> selectbyUid(String uId) {
 		return likeDao.selectbyUid(uId);
 	}
 
 	@Override
-	public List<Like> selectbyMid(String mId) {
+	public String selectbyMid(String mId) {
 		return likeDao.selectbyMid(mId);
-	}
-
-	@Override
-	public List<User> selectByMid(String mId) {
-		return likeDao.selectByMid(mId);
 	}
 
 }

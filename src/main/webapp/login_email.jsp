@@ -4,10 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-		<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<%@ include file="css_js.jsp" %>
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/login_reg.css" rel="stylesheet" type="text/css">
 	</head>
 
@@ -21,7 +18,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 					<p class="navbar-text navbar-right" style="margin-top: 20px;margin-right: 25px;">没有账号？
-						<a href="reg.jsp" class="navbar-link" id="link">注册</a>
+						<a href="reg.jsp" class="navbar-link link">注册</a>
 					</p>
 				</div>
 			</div>
@@ -44,7 +41,7 @@
 				</div>
 				<div class="row">
 			          <div class="col-md-12">
-			            <form class="form-horizontal" role="form" action="user/login" method="post">
+			            <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/user/login" method="post">
 			              <div class="form-group">
 			                <div class="col-sm-2">
 			                  <label for="inputEmail3" class="control-label">邮箱</label>
@@ -76,8 +73,8 @@
 			              <div class="form-group">
 			                <div class="col-sm-offset-2 col-sm-10">
 			                  <div class="checkbox">
-			                    <a href="login_name.jsp" id="link">通过用户名登陆</a>
-			                    <a href="#" id="link" style="margin-left: 99px;">忘记密码</a>
+			                    <a href="login_name.jsp" class="link">通过用户名登陆</a>
+			                    <a href="#" class="link" style="margin-left: 99px;">忘记密码</a>
 			                  </div>
 			                </div>
 			              </div>

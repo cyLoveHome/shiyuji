@@ -4,119 +4,11 @@
 	<head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/shiyuji_js/nav.js"></script>
-		<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-		<link href="css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+	    <%@ include file="css_js.jsp" %>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/nav.js"></script>
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/main.css" rel="stylesheet" type="text/css">
 		<title>首页</title>
-		<style>
-			html,
-			body {
-				background-color: #F5F4F2;
-			}
-			
-			#font{
-				font-family: "微软雅黑";
-				font-size: 24px;
-				font-weight: bold;
-			}
-			li{
-				margin-bottom: 15px;
-				list-style: none;
-			}
-			#img_info{
-				width: 306px;
-			    height: 230px;
-			    margin-left: 190px;
-			    text-align: left;
-			}
-			#log_reg{
-				background-color: #E8E6E3;
-			    height: 230px;
-			}
-			#click_btn{
-				background-color: #E8E6E3;
-			    width: 30px;
-			    height: 25px;
-			    text-align: center;
-			}
-			#click_btn:hover{
-				background-color: darkgray;
-			}
-			.click_btn{
-				color: rgba(128, 128, 128, 0.76);
-			}
-			.question_style{
-				margin-bottom: 10px;
-			}
-			#popular{
-				border: 1px solid gainsboro;
-				border-top: none;
-			}
-			#food_name{
-				font-size: 18px;
-				font-weight: 400;
-				font-family: '微软雅黑';
-				padding-top: 8px;
-			}
-			#food_info{
-				font-size: 12px;
-				color: #a5a7a6;
-				margin-top: 5px;
-				margin-bottom: 18px;
-			}
-			#shicai{
-				background-color:  rgba(128, 128, 128, 0.09);
-			}
-			.shicai{
-				margin-top: 15px;
-			}
-			.shicai_name{
-				margin-top: 10px;
-				font-size: 12px;
-				font-family: "微软雅黑";
-				font-weight: 400;
-			}
-			.font{
-				font-size: 16px;
-				font-family: "微软雅黑";
-				margin-top: 10px;
-			}
-			#number{
-				display: inline-block;
-				color: #909090;
-				font-size: 16px;
-			}
-			#answer{
-				color: #909090;
-				font-size: 12px;
-				font-weight: 0;
-			}
-			.search{
-				margin-bottom: 10px;
-			}
-			.user_name{
-				font-size: 14px;
-				font-family: "微软雅黑";
-			}
-			#foot{
-				background-color: rgba(128, 128, 128, 0.09);
-			}
-			.foot_left{
-				margin-left: 20px;
-			}
-			.img_foot{
-				display: inline-block;
-				width: 100px;
-				height: 80px;
-				text-align: center;
-			}
-			#foot:hover{
-				background-color: rgba(128, 128, 128, 0.18);
-			}
-		</style>
   	</head>
   <body>
   	<%@ include file="nav.jsp" %>  
@@ -130,22 +22,22 @@
             <ul class="dropdown">
               <li>
                 <i></i>
-                <a href=" " id="link">家常菜</a>
+                <a href=" " class="link">家常菜</a>
               </li>
               <li>
-                <a href=" "id="link">快手菜</a>
-              </li>
-              <li>
-                <i></i>
-                <a href=" "id="link">下饭菜</a>
+                <a href=" "class="link">快手菜</a>
               </li>
               <li>
                 <i></i>
-                <a href=" "id="link">早餐</a>
+                <a href=" "class="link">下饭菜</a>
               </li>
               <li>
                 <i></i>
-                <a href=" "id="link">肉</a>
+                <a href=" "class="link">早餐</a>
+              </li>
+              <li>
+                <i></i>
+                <a href=" "class="link">肉</a>
               </li>
             </ul>
           </div>
@@ -162,23 +54,23 @@
 						  </ol>  
 		                  <div class="carousel-inner">
 		                    <div class="item active">
-		                      <img style="height: 230px;" src="img/滚动1.jpg" >
+		                      <img style="height: 230px;" src="${pageContext.request.contextPath}/img/滚动1.jpg" >
 		                      <div class="carousel-caption" id="img_info">
-		                        <a href=" " id="link">Title</a>
+		                        <a href=" " class="link">Title</a>
 		                        <p>Description1</p>
 		                      </div>
 		                    </div>
 		                    <div class="item">
-								<img style="height: 230px;" src="img/滚动2.jpg" >
+								<img style="height: 230px;" src="${pageContext.request.contextPath}/img/滚动2.jpg" >
 		                      	<div class="carousel-caption" id="img_info">
-		                        <a href=" " id="link">Title</a>
+		                        <a href=" " class="link">Title</a>
 		                        <p>Description2</p>
 		                      </div>
 							</div>
 							<div class="item">
-								<img style="height: 230px;" src="img/滚动3.jpg" >
+								<img style="height: 230px;" src="${pageContext.request.contextPath}/img/滚动3.jpg" >
 		                      	<div class="carousel-caption" id="img_info">
-		                        <a href=" " id="link">Title</a>
+		                        <a href=" " class="link">Title</a>
 		                        <p>Description3</p>
 		                      </div>
 							</div>
@@ -197,7 +89,7 @@
 			          		<div class="row" style="margin-bottom: 20px;">
 				          		<div class="col-md-8">
 				          			<span id="title">新秀菜谱</span>&nbsp;&nbsp;&nbsp;&nbsp;
-				          			<a href=" "id="link">全部</a>
+				          			<a href=" "class="link">全部</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<a href="" class="btn" id="click_btn"><i class="fa fa-angle-left click_btn"></i></a>
@@ -211,7 +103,7 @@
 					          		<div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/3.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/img/3.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -225,7 +117,7 @@
 							        <div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/4.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/img/4.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -239,7 +131,7 @@
 									<div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/5.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/img/5.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -253,7 +145,7 @@
 									<div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/6.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/img/6.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -271,16 +163,16 @@
 			          		<div class="row">
 				          		<div class="col-md-8">
 				          			<span id="title">厨房问答</span>&nbsp;&nbsp;&nbsp;&nbsp;
-				          			<a href=" "id="link">全部</a>
+				          			<a href=" "class="link">全部</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
-				          			<a href=" "id="link">提问题</a>
+				          			<a href=" "class="link">提问题</a>
 				          		</div>
 				          	</div>
 			          		
 			          		<div class="row question_style" style="margin-top: 20px;">
 				          		<div class="col-md-8">
-				          			<a href=" "id="link">茄子怎样炒不会黑？</a>
+				          			<a href=" "class="link">茄子怎样炒不会黑？</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<span id="answer">4 回答</span>
@@ -289,7 +181,7 @@
 			          		
 			          		<div class="row question_style">
 				          		<div class="col-md-8">
-				          			<a href=" "id="link">做面包揉面买厨师机还是面包机？</a>
+				          			<a href=" "class="link">做面包揉面买厨师机还是面包机？</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<span id="answer">7 回答</span>
@@ -298,7 +190,7 @@
 			          		
 			          		<div class="row question_style">
 				          		<div class="col-md-8">
-				          			<a href=" "id="link">红烧茄子怎么做才能不油？</a>
+				          			<a href=" "class="link">红烧茄子怎么做才能不油？</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<span id="answer">11 回答</span>
@@ -307,7 +199,7 @@
 			          		
 			          		<div class="row question_style">
 				          		<div class="col-md-8">
-				          			<a href=" "id="link">烙饼怎么保存和加热？</a>
+				          			<a href=" "class="link">烙饼怎么保存和加热？</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<span id="answer">9 回答</span>
@@ -316,7 +208,7 @@
 			          		
 			          		<div class="row">
 				          		<div class="col-md-8">
-				          			<a href=" "id="link">铸铁锅第一次使用要注意些什么？</a>
+				          			<a href=" "class="link">铸铁锅第一次使用要注意些什么？</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<span id="answer">3 回答</span>
@@ -329,7 +221,7 @@
 			          		<div class="row" style="margin-bottom: 20px;">
 				          		<div class="col-md-8">
 				          			<span id="title">最近流行</span>&nbsp;&nbsp;&nbsp;&nbsp;
-				          			<a href=" "id="link">全部</a>
+				          			<a href=" "class="link">全部</a>
 				          		</div>
 				          		<div class="col-md-4"></div>
 			          		</div>
@@ -339,7 +231,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -356,7 +248,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -376,7 +268,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -393,7 +285,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -413,7 +305,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -430,7 +322,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -451,7 +343,7 @@
 			          		<div class="row" style="margin-bottom: 20px;">
 				          		<div class="col-md-8">
 				          			<span id="title">时令食材</span>&nbsp;&nbsp;&nbsp;&nbsp;
-				          			<a href=" "id="link">全部</a>
+				          			<a href=" "class="link">全部</a>
 				          		</div>
 				          		<div class="col-md-4"></div>
 			          		</div>
@@ -460,37 +352,37 @@
 			          				<div class="col-md-12">
 			          					<a href="" id="shicai_link">
 			          						<div class="col-md-2 shicai">
-								              <img src="img/食材1.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材1.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 			          					</a>
 				          				<a href="" id="shicai_link">
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材2.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材2.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">金桔</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材3.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材3.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">   
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材4.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材4.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">    
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材5.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材5.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">    
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材6.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材6.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
@@ -501,37 +393,37 @@
 			          				<div class="col-md-12">
 			          					<a href="" id="shicai_link">
 			          						<div class="col-md-2 shicai">
-								              <img src="img/食材1.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材1.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 			          					</a>
 				          				<a href="" id="shicai_link">
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材2.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材2.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">金桔</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材3.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材3.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">   
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材4.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材4.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">    
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材5.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材5.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
 								        <a href="" id="shicai_link">    
 								            <div class="col-md-2 shicai">
-								              <img src="img/食材6.jpg" class="img-responsive" width="103.33">
+								              <img src="${pageContext.request.contextPath}/img/食材6.jpg" class="img-responsive" width="103.33">
 								              <div class="text-center shicai_name">春笋</div>
 								            </div>
 								        </a>
@@ -547,13 +439,12 @@
 	            			<div id="log_reg">
 	            				<div class="row" style="padding-top: 25px;">
 		                			<div class="col-md-12">
-		                    			<img src="img/user.png" class="center-block img-circle img-responsive" style="width: 100px;">
+		                    			<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" style="width: 100px;">
 		                			</div>
 		            			</div>
 		            		<div class="row" style="margin-top: 50px;">
 		                		<div class="col-md-12 text-center" style="font-size: 12px;">
-		                    		<a href=" " id="link">手机/邮箱登录</a>&nbsp;
-		                    		<a href=" " id="link">注册</a>
+		                    		<a href="${pageContext.request.contextPath}/create_menu.jsp" class="link">创建菜谱</a>&nbsp;
 		                		</div>
 		            		</div>
 	            			</div>
@@ -633,7 +524,7 @@
 		          			<div class="row" style="margin-bottom: 20px;margin-top: 25px;">
 					          	<div class="col-md-12">
 					          		<span id="title">流行菜单</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					          		<a href="" id="link">全部</a>
+					          		<a href="" class="link">全部</a>
 					          	</div>
 			          		</div>
 			          		
@@ -674,23 +565,23 @@
 		          			<div class="row" style="margin-bottom: 20px;margin-top: 35px;">
 					          	<div class="col-md-12">
 					          		<span id="title">食遇记的厨神们</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					          		<a href="friends.jsp" id="link">更多</a>
+					          		<a href="friends.jsp" class="link">更多</a>
 					          	</div>
 			          		</div>
 			          		
 			          		<div class="row users">
 					          	<div class="col-md-3">
-					          		<img src="img/user.png" class="center-block img-circle img-responsive" >
+					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
 					          	</div>
 					          	<div class="col-md-6">
 					          		<div class="row user">
 					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 					          		</div>
 					          		<div class="row user">
-					          			<div class="col-md-12" id="user_info">1657关注</div>
+					          			<div class="col-md-12" class="user_info">1657关注</div>
 					          		</div>
 					          		<div class="row">
-					          			<div class="col-md-12" id="user_info">1个菜谱  273个作品</div>
+					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
 					          		</div>
 					          	</div>
 					          	<div class="col-md-3">
@@ -701,17 +592,17 @@
 			          		
 			          		<div class="row users">
 					          	<div class="col-md-3">
-					          		<img src="img/user.png" class="center-block img-circle img-responsive" >
+					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
 					          	</div>
 					          	<div class="col-md-6">
 					          		<div class="row user">
 					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 					          		</div>
 					          		<div class="row user">
-					          			<div class="col-md-12" id="user_info">1657关注</div>
+					          			<div class="col-md-12" class="user_info">1657关注</div>
 					          		</div>
 					          		<div class="row">
-					          			<div class="col-md-12" id="user_info">1个菜谱  273个作品</div>
+					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
 					          		</div>
 					          	</div>
 					          	<div class="col-md-3">
@@ -722,17 +613,17 @@
 			          		
 			          		<div class="row users">
 					          	<div class="col-md-3">
-					          		<img src="img/user.png" class="center-block img-circle img-responsive" >
+					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
 					          	</div>
 					          	<div class="col-md-6">
 					          		<div class="row user">
 					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 					          		</div>
 					          		<div class="row user">
-					          			<div class="col-md-12" id="user_info">1657关注</div>
+					          			<div class="col-md-12" class="user_info">1657关注</div>
 					          		</div>
 					          		<div class="row">
-					          			<div class="col-md-12" id="user_info">1个菜谱  273个作品</div>
+					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
 					          		</div>
 					          	</div>
 					          	<div class="col-md-3">
@@ -743,17 +634,17 @@
 			          		
 			          		<div class="row users">
 					          	<div class="col-md-3">
-					          		<img src="img/user.png" class="center-block img-circle img-responsive" >
+					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
 					          	</div>
 					          	<div class="col-md-6">
 					          		<div class="row user">
 					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 					          		</div>
 					          		<div class="row user">
-					          			<div class="col-md-12" id="user_info">1657关注</div>
+					          			<div class="col-md-12" class="user_info">1657关注</div>
 					          		</div>
 					          		<div class="row">
-					          			<div class="col-md-12" id="user_info">1个菜谱  273个作品</div>
+					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
 					          		</div>
 					          	</div>
 					          	<div class="col-md-3">
@@ -764,7 +655,7 @@
 			          		
 			          		<div class="row">
 			          			<div class="col-md-12 col-xs-12 text-center">
-			          				<a href="friends.jsp" id="link">查看更多厨友们</a>
+			          				<a href="friends.jsp" class="link">查看更多厨友们</a>
 			          			</div>
 			          		</div>
 			          	</div>
@@ -785,9 +676,9 @@
 	      					</div>
 	      					<div class="row foot_left" style="padding-bottom: 35px;">
 			      				<div class="col-md-12 col-xs-12">
-			      					<a href="" id="link">最新上传</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			      					<a href="" id="link">正在流行</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			      					<a href="" id="link">24小时最佳</a>
+			      					<a href="" class="link">最新上传</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			      					<a href="" class="link">正在流行</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			      					<a href="" class="link">24小时最佳</a>
 			      				</div>
 	      					</div>
       					</div>
@@ -805,7 +696,7 @@
 			      					</div>
 			      					<div class="row">
 			      						<div class="col-md-12">
-			      							<div id="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
+			      							<div class="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
 			      						</div>
 			      					</div>
 			      				</div>
@@ -813,13 +704,13 @@
 			      					<div class="row" style="padding-top: 20px;margin-bottom: 32px;">
 			      						<div class="col-md-12 text-center">
 			      						<div class="img_foot">
-			      							<img src="img/分享图片1.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片1.jpg" class="center-block img-responsive">
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享2.jpg" class="center-block img-responsive" >
+			      							<img src="${pageContext.request.contextPath}/img/分享2.jpg" class="center-block img-responsive" >
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享图片3.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片3.jpg" class="center-block img-responsive">
 			      						</div>
 			      						</div>
 			      					</div>
@@ -840,7 +731,7 @@
 			      					</div>
 			      					<div class="row">
 			      						<div class="col-md-12">
-			      							<div id="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
+			      							<div class="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
 			      						</div>
 			      					</div>
 			      				</div>
@@ -848,13 +739,13 @@
 			      					<div class="row" style="padding-top: 20px;margin-bottom: 32px;">
 			      						<div class="col-md-12 text-center">
 			      						<div class="img_foot">
-			      							<img src="img/分享图片1.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片1.jpg" class="center-block img-responsive">
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享2.jpg" class="center-block img-responsive" >
+			      							<img src="${pageContext.request.contextPath}/img/分享2.jpg" class="center-block img-responsive" >
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享图片3.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片3.jpg" class="center-block img-responsive">
 			      						</div>
 			      						</div>
 			      					</div>
@@ -875,7 +766,7 @@
 			      					</div>
 			      					<div class="row">
 			      						<div class="col-md-12">
-			      							<div id="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
+			      							<div class="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
 			      						</div>
 			      					</div>
 			      				</div>
@@ -883,13 +774,13 @@
 			      					<div class="row" style="padding-top: 20px;margin-bottom: 32px;">
 			      						<div class="col-md-12 text-center">
 			      						<div class="img_foot">
-			      							<img src="img/分享图片1.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片1.jpg" class="center-block img-responsive">
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享2.jpg" class="center-block img-responsive" >
+			      							<img src="${pageContext.request.contextPath}/img/分享2.jpg" class="center-block img-responsive" >
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享图片3.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片3.jpg" class="center-block img-responsive">
 			      						</div>
 			      						</div>
 			      					</div>
@@ -910,7 +801,7 @@
 			      					</div>
 			      					<div class="row">
 			      						<div class="col-md-12">
-			      							<div id="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
+			      							<div class="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
 			      						</div>
 			      					</div>
 			      				</div>
@@ -918,13 +809,13 @@
 			      					<div class="row" style="padding-top: 20px;margin-bottom: 32px;">
 			      						<div class="col-md-12 text-center">
 			      						<div class="img_foot">
-			      							<img src="img/分享图片1.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片1.jpg" class="center-block img-responsive">
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享2.jpg" class="center-block img-responsive" >
+			      							<img src="${pageContext.request.contextPath}/img/分享2.jpg" class="center-block img-responsive" >
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享图片3.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片3.jpg" class="center-block img-responsive">
 			      						</div>
 			      						</div>
 			      					</div>
@@ -945,7 +836,7 @@
 			      					</div>
 			      					<div class="row">
 			      						<div class="col-md-12">
-			      							<div id="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
+			      							<div class="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
 			      						</div>
 			      					</div>
 			      				</div>
@@ -953,13 +844,13 @@
 			      					<div class="row" style="padding-top: 20px;margin-bottom: 32px;">
 			      						<div class="col-md-12 text-center">
 			      						<div class="img_foot">
-			      							<img src="img/分享图片1.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片1.jpg" class="center-block img-responsive">
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享2.jpg" class="center-block img-responsive" >
+			      							<img src="${pageContext.request.contextPath}/img/分享2.jpg" class="center-block img-responsive" >
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享图片3.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片3.jpg" class="center-block img-responsive">
 			      						</div>
 			      						</div>
 			      					</div>
@@ -980,7 +871,7 @@
 			      					</div>
 			      					<div class="row">
 			      						<div class="col-md-12">
-			      							<div id="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
+			      							<div class="user_info">❀葱伴侣料理有奖征集活动❀ 乍暖还寒早春日，最是食酱好时节，多一点“酱”心...</div>
 			      						</div>
 			      					</div>
 			      				</div>
@@ -988,13 +879,13 @@
 			      					<div class="row" style="padding-top: 20px;margin-bottom: 32px;">
 			      						<div class="col-md-12 text-center">
 			      						<div class="img_foot">
-			      							<img src="img/分享图片1.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片1.jpg" class="center-block img-responsive">
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享2.jpg" class="center-block img-responsive" >
+			      							<img src="${pageContext.request.contextPath}/img/分享2.jpg" class="center-block img-responsive" >
 			      						</div>
 			      						<div class="img_foot">
-			      							<img src="img/分享图片3.jpg" class="center-block img-responsive">
+			      							<img src="${pageContext.request.contextPath}/img/分享图片3.jpg" class="center-block img-responsive">
 			      						</div>
 			      						</div>
 			      					</div>
@@ -1007,7 +898,7 @@
       		<div class="col-md-3 col-xs-3"></div>
       	</div>
       	<div class="row" style="margin-bottom: 75px;">
-          <div class="col-md-12 text-center" id="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
+          <div class="col-md-12 text-center" class="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
         </div>
       </div>
     </div>

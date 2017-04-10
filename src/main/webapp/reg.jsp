@@ -4,10 +4,7 @@
 	<head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-        <link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet" type="text/css">
-        <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <%@ include file="css_js.jsp" %>
         <link href="${pageContext.request.contextPath}/css/shiyuji_css/login_reg.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -20,7 +17,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                     <p class="navbar-text navbar-right" style="margin-top: 20px;margin-right: 25px;">已有账号？
-                        <a href="login_name.jsp" class="navbar-link" id="link">登录</a>
+                        <a href="login_name.jsp" class="navbar-link link">登录</a>
                     </p>
                 </div>
             </div>

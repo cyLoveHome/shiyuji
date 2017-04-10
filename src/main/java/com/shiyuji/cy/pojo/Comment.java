@@ -11,7 +11,7 @@ public class Comment {
 	
 	private String comment_info;
 	
-	private long comment_time;
+	private long comment_time = System.currentTimeMillis();
 
 	public Comment() {
 	}
@@ -21,6 +21,13 @@ public class Comment {
 		this.mId = mId;
 		this.comment_info = comment_info;
 		this.comment_time = comment_time;
+	}
+	
+
+	public Comment(String uId, String mId, String comment_info) {
+		this.uId = uId;
+		this.mId = mId;
+		this.comment_info = comment_info;
 	}
 
 	public String getuId() {

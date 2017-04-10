@@ -3,10 +3,20 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shiyuji.cy.dao.Menu_classifyDao">
-	<select id="selectAll" resultType="User">
+	<select id="selectAll" resultType="Menu_classify">
 		SELECT 
 			* 
 		FROM
 			menu_classify
 	</select>
+	
+	<insert id="addMenu_classify" parameterType="Menu_classify">
+		INSERT 
+		INTO
+			menu_classify
+		VALUES(
+			#{mcId},
+			#{mcName}
+		)
+	</insert>
 </mapper>

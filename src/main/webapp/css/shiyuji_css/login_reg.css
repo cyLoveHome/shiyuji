@@ -1,10 +1,10 @@
 	html,body{
         		background-color: #F5F4F2;
         	}
-        	#link{
+        	.link{
         		color: #992222;
         	}
-        	#link:hover{
+        	.link:hover{
         		background-color: #992222;
         		color: white;
         		text-decoration: none;

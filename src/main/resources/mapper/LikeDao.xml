@@ -6,7 +6,7 @@
 	<insert id="addLike" parameterType="Like">
 		INSERT 
 		INTO 
-			like
+			zan
 	    VALUES(
 			#{uId},
 			#{mId},
@@ -18,7 +18,7 @@
 	<delete id="deleteLike" parameterType="String">
 		DELETE
 		FROM 
-			like
+			zan
 		WHERE
 			uId = #{uId}
 		AND
@@ -29,27 +29,27 @@
 		SELECT 
 			* 
 		FROM
-			like
+			zan
 		WHERE
 			uId = #{uId}
 		AND
 			mId = #{mId}
 	</select>
 	
-	<select id="selectbyUid" resultType="Like" parameterType="String">
+	<select id="selectbyUid" resultType="like" parameterType="String">
 		SELECT 
 			* 
 		FROM
-			like
+			zan
 		WHERE
 			uId = #{uId}
 	</select>
 	
-	<select id="selectbyMid" resultType="Like" parameterType="String">
+	<select id="selectbyMid" resultType="java.lang.String" parameterType="String">
 		SELECT 
-			* 
+			count(*) 
 		FROM
-			like
+			zan
 		WHERE
 			mId = #{mId}
 	</select>
@@ -65,7 +65,7 @@
 			SELECT
 				uId
 			FROM
-				like
+				zan
 			WHERE
 				mId = #{mId}
 		)

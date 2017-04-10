@@ -34,7 +34,7 @@ public interface LikeService {
 	 * @param mId
 	 * @return
 	 */
-	List<Like> selectbyMid(String mId);
+	String selectbyMid(String mId);
 	
 	/**
 	 * 同一菜谱下点赞用户
@@ -42,4 +42,12 @@ public interface LikeService {
 	 * @return
 	 */
 	List<User> selectByMid(String mId);
+	
+	/**
+	 * 是否已点赞
+	 * @param uId
+	 * @param mId
+	 * @return
+	 */
+	Like selectLike(String uId,String mId);
 }

@@ -4,54 +4,11 @@
 	<head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="shiyuji_js/nav.js"></script>
-		<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-		<link href="css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+	    <%@ include file="css_js.jsp" %>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/shiyuji_js/nav.js"></script>
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/all.css" rel="stylesheet" type="text/css">
 		<title>通用页面</title>
-		<style>
-			html,
-			body {
-				background-color: #F5F4F2;
-			}
-			#all_font{
-				color: black;
-				font-size: 17px;
-				font-family: "微软雅黑";
-			}
-			#all_font:hover{
-				color: #992222;
-			}
-			li{
-				list-style: none;
-				margin-bottom: 15px;
-			}
-			#gray_font{
-				color: #a5a7a6;
-				font-size: 16px;
-			}
-			#title_font{
-				font-size: 30px;
-				font-family: "微软雅黑";
-				font-weight: 600;
-			}
-			#m_name{
-				font-size: 20px;
-				font-family: "微软雅黑";
-				font-weight: 600;
-				color: black;
-			}
-			#m_name:hover{
-				color: #992222;
-			}
-			.all_style{
-				margin-bottom: 10px;
-				color: #a5a7a6;
-				font-size: 14px;
-			}
-		</style>
 	</head>
 	<body>
 		<%@ include file="nav.jsp" %> 
@@ -207,7 +164,7 @@
 		            		<div class="row" style="margin-bottom: 20px;">
 					          	<div class="col-md-12">
 					          		<span id="title">流行菜单</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					          		<a href="" id="link">全部</a>
+					          		<a href="" class="link">全部</a>
 					          	</div>
 			          		</div>
 			          		
@@ -247,7 +204,7 @@
 		        </div>
 		        </div>
 		    	<div class="row" style="margin-bottom: 75px;">
-          			<div class="col-md-12 text-center" id="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
+          			<div class="col-md-12 text-center" class="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
         		</div>
       		</div>
 		</div>

@@ -4,41 +4,12 @@
 	<head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/shiyuji_js/nav.js"></script>
-		<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-		<link href="css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+	    <%@ include file="css_js.jsp" %>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/nav.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/create_menu.js"></script>
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/create_menu.css" rel="stylesheet" type="text/css">
 		<title>创建菜谱</title>
-		<style>
-			html,
-			body {
-				background-color: #F5F4F2;
-			}
-			#menu_name{
-				width: 600px;
-				height: 50px;
-				background-color: #fffce9;
-				border: none;
-				padding-left: 10px;
-			}
-			#menu_pic{
-				background-color: #E8E6E3;
-				width: 600px;
-				height: 200px;
-			}
-			#menu_info{
-				background-color: #E8E6E3;
-				width: 300px;
-    			margin-top: 72px;
-    			height: 150px;
-			}
-			#menu_font{
-				color: #a5a7a6;
-				font-size: 14px;
-			}
-		</style>
 	</head>
 	<body>
 		<%@ include file="nav.jsp" %> 
@@ -49,7 +20,7 @@
 		            <div class="col-md-7 col-xs-7 col-sm-7" style="padding-left: 6px;">
 		            	<div class="row" style="margin-bottom: 20px;">
 		            		<div class="col-md-12 col-xs-12">
-		            			<input type="text" placeholder="添加菜谱名称" id="menu_name">
+		            			<input type="text" placeholder="添加菜谱名称" class="menu_name" id="mName">
 		            		</div>
 		            	</div>
 		            	<div class="row" style="margin-bottom: 20px;">
@@ -58,17 +29,18 @@
 		            				<input type="file" id="menu_input" style="display: none;"/>
 		            				<label for="menu_input" id="menu_font">上传</label>
 		            			</div>
+		            			<input type="hidden" id="mPic" value="empty">
 		            		</div>
 		            	</div>
 		            	<div class="row" style="margin-bottom: 20px;">
 		            		<div class="col-md-12 col-xs-12">
 		            			<img src="img/user.png" class="img-circle" width="60">&nbsp;&nbsp;
-		            			<span>小小的身体～萌萌的(๑• . •๑)我的厨房</span>
+		            			<span>${user.uName}的厨房</span>
 		            		</div>
 		            	</div>
 		            	<div class="row" style="margin-bottom: 20px;">
 		            		<div class="col-md-12 col-xs-12">
-		            			<input type="text" placeholder="点击添加菜谱描述" id="menu_name">
+		            			<input type="text" placeholder="点击添加菜谱描述" class="menu_name" id="mInfo">
 		            		</div>
 		            	</div>
 		            	
@@ -78,13 +50,15 @@
 					        </div>
 			          	</div>
 			          	<div class="row" style="margin-bottom: 20px;">
-					        <div class="col-md-12">
-					        	<input type="text" placeholder="食材: 如鸡蛋          用量: 如1只" id="menu_name"> X
+					        <div class="col-md-12" id="shicai">
+					        	<div> 
+						        	<input type="text" placeholder="食材: 如鸡蛋          用量: 如1只" class="menu_name" id="shicai_step1">
+					        	</div>
 					        </div>
 			          	</div>
 			          	<div class="row" style="margin-bottom: 20px;">
 					        <div class="col-md-12">
-					        	<a href="" id="link">追加一行用料</a>
+					        	<a class="link" id="addShi">追加一行用料</a>
 					        </div>
 			          	</div>
 			          	
@@ -93,28 +67,43 @@
 					        	做法 
 					        </div>
 			          	</div>
+			          	
 			          	<div class="row" style="margin-bottom: 20px;">
-		            		<div class="col-md-12 col-xs-12">
-		            			<span id="title">1</span>
-		            			<input type="text" placeholder="点击添加菜谱步骤" id="menu_name" style="width: 585px;">X
-		            		</div>
+			            	<div class="col-md-12 col-xs-12" id="steps">
+			            		<div> 
+			            			<span id="title">1</span>
+			            			<input type="text" placeholder="点击添加菜谱步骤" class="menu_name" style="width: 585px;" id="step1">
+			            		</div>
+			            	</div>
 		            	</div>
 		            	<div class="row" style="margin-bottom: 20px;">
 					        <div class="col-md-12">
-					        	<a href="" id="link">追加一行步骤</a>
+					        	<a  class="link" id="addStep">追加一行步骤</a>
+					        </div>
+			          	</div>
+			          	
+			          	<div class="row" style="margin-bottom: 20px;">
+					        <div class="col-md-12" id="title">
+					        	选择菜谱分类
+					        </div>
+			          	</div>
+			          	
+			          	<div class="row" style="margin-bottom: 20px;">
+					        <div class="col-md-12" id="classify">
+					        	
 					        </div>
 			          	</div>
 			          	
 			          	<div class="row" style="margin-bottom: 20px;">
 					        <div class="col-md-12 text-center">
-					        	<a href="" class="btn" style="width: 80px;">发布菜谱</a>
+					        	<a  class="btn" style="width: 80px;"id="publish">发布菜谱</a>
 					        </div>
 			          	</div>
-		            </div>
-		            <div class="col-md-4 col-xs-4">
+		        </div> 
+		        <div class="col-md-4 col-xs-4">
 		            	<div class="row" style="margin-bottom: 40px;">
 		            		<div class="col-md-12 col-xs-12 text-center">
-		            			<div id="menu_info">
+		            			<div class="menu_info">
 		            				<div class="row" style="padding-top:30px;margin-bottom: 20px;">
 					        			<div class="col-md-12" id="title">
 					        				创建菜谱的人是厨房里的天使
@@ -148,9 +137,8 @@
 		            		</div>
 		            	</div>
 		            </div>
-		        </div> 
 		    	<div class="row" style="margin-bottom: 75px;">
-          			<div class="col-md-12 text-center" id="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
+          			<div class="col-md-12 text-center" class="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
         		</div>
       		</div>
 		</div>

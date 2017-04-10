@@ -2,6 +2,8 @@ package com.shiyuji.cy.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shiyuji.cy.pojo.Like;
 import com.shiyuji.cy.pojo.User;
 
@@ -19,7 +21,7 @@ public interface LikeDao {
 	 * @param mId
 	 * @return
 	 */
-	int deleteLike(String uId,String mId);
+	int deleteLike(@Param("uId")String uId,@Param("mId")String mId);
 	
 	/**
 	 * 是否有该条点赞记录
@@ -27,7 +29,7 @@ public interface LikeDao {
 	 * @param mId
 	 * @return
 	 */
-	Like selectLike(String uId,String mId);
+	Like selectLike(@Param("uId")String uId,@Param("mId")String mId);
 	
 	/**
 	 * 查所有我的点赞
@@ -41,7 +43,7 @@ public interface LikeDao {
 	 * @param mId
 	 * @return
 	 */
-	List<Like> selectbyMid(String mId);
+	String selectbyMid(@Param("mId")String mId);
 	
 	/**
 	 * 该菜谱下所有点赞用户

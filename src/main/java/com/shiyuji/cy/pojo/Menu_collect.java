@@ -9,7 +9,7 @@ public class Menu_collect {
 	
 	private String mId;
 	
-	private long collect_time;
+	private long collect_time = System.currentTimeMillis();
 
 	public Menu_collect() {
 	}
@@ -18,6 +18,12 @@ public class Menu_collect {
 		this.uId = uId;
 		this.mId = mId;
 		this.collect_time = collect_time;
+	}
+	
+	public Menu_collect(String uId, String mId) {
+		super();
+		this.uId = uId;
+		this.mId = mId;
 	}
 
 	public String getuId() {

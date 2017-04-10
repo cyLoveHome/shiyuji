@@ -8,7 +8,7 @@ public class Mc_menu {
 	private String mId;
 	
 	private String mcId;
-
+	
 	public Mc_menu() {
 	}
 

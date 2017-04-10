@@ -10,4 +10,11 @@ public interface Menu_classifyDao {
 	 * @return
 	 */
 	List<Menu_classify> selectAll();
+	
+	/**
+	 * 新增菜谱分类
+	 * @param mc
+	 * @return
+	 */
+	int addMenu_classify(Menu_classify mc);
 }

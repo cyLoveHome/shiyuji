@@ -52,4 +52,30 @@
 		AND
 			mId = #{mId}
 	</select>
+	
+	<select id="selectByMid" resultType="User" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			uId
+		IN (
+			SELECT
+				uId 
+			FROM
+				menu_collect
+			WHERE
+				mId = #{mId}
+		)
+	</select>
+	
+	<select id="select" resultType="java.lang.String" parameterType="String">
+		SELECT
+			count(*) 
+		FROM
+			menu_collect
+		WHERE
+			mId = #{mId}
+	</select>
 </mapper>

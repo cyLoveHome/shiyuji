@@ -4,10 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-		<link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<%@ include file="css_js.jsp" %>
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/login_reg.css" rel="stylesheet" type="text/css">
 	</head>
 <body>
@@ -20,7 +17,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 					<p class="navbar-text navbar-right" style="margin-top: 20px;margin-right: 25px;">没有账号？
-						<a href="reg.jsp" class="navbar-link" id="link">注册</a>
+						<a href="reg.jsp" class="navbar-link link">注册</a>
 					</p>
 				</div>
 			</div>
@@ -75,8 +72,8 @@
 			              <div class="form-group">
 			                <div class="col-sm-offset-2 col-sm-10">
 			                  <div class="checkbox">
-			                    <a href="login_email.jsp" id="link">通过邮箱登陆</a>
-			                    <a href="#" id="link" style="margin-left: 113px;">忘记密码</a>
+			                    <a href="${pageContext.request.contextPath}/login_email.jsp" class="link">通过邮箱登陆</a>
+			                    <a href="#" class="link" style="margin-left: 113px;">忘记密码</a>
 			                  </div>
 			                </div>
 			              </div>

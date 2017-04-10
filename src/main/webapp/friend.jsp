@@ -4,29 +4,11 @@
 	<head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/shiyuji_js/nav.js"></script>
-		<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-		<link href="css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+	    <%@ include file="css_js.jsp" %>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/nav.js"></script>
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/shiyuji_css/friend.css" rel="stylesheet" type="text/css">
 		<title>厨友们</title>
-		<style>
-			html,
-			body {
-				background-color: #F5F4F2;
-			}
-			#friend_title{
-				font-size: 35px;
-				font-family: "微软雅黑";
-				font-weight: 600;
-			}
-			input{
-			    width: 200px;
-			    height: 35px;
-			    padding-left: 5px;
-			}
-		</style>
 	</head>
 	<body>
 		<%@ include file="nav.jsp" %> 
@@ -50,10 +32,10 @@
 						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 						          		</div>
 						          		<div class="row user">
-						          			<div class="col-md-12" id="user_info">1657关注</div>
+						          			<div class="col-md-12" class="user_info">1657关注</div>
 						          		</div>
 						          		<div class="row">
-						          			<div class="col-md-12" id="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
+						          			<div class="col-md-12" class="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
 						          		</div>
 						          	</div>
 						          	<div class="col-md-3">
@@ -71,54 +53,10 @@
 						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 						          		</div>
 						          		<div class="row user">
-						          			<div class="col-md-12" id="user_info">1657关注</div>
+						          			<div class="col-md-12" class="user_info">1657关注</div>
 						          		</div>
 						          		<div class="row">
-						          			<div class="col-md-12" id="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
-						          		</div>
-						          	</div>
-						          	<div class="col-md-3">
-						          		<a href="" class="btn" id="focus">关注</a>
-						          	</div>
-			          			</div>
-		            		</div>
-		            	</div>
-		            	<div class="row">
-		            		<div class="col-md-6 col-xs-6">
-		            			<div class="row users">
-						          	<div class="col-md-3">
-						          		<img src="img/user.png" class="center-block img-circle img-responsive" >
-						          	</div>
-						          	<div class="col-md-6">
-						          		<div class="row user" style="margin-top: 4px;">
-						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
-						          		</div>
-						          		<div class="row user">
-						          			<div class="col-md-12" id="user_info">1657关注</div>
-						          		</div>
-						          		<div class="row">
-						          			<div class="col-md-12" id="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
-						          		</div>
-						          	</div>
-						          	<div class="col-md-3">
-						          		<a href="" class="btn" id="focus">关注</a>
-						          	</div>
-			          			</div>
-		            		</div>
-		            		<div class="col-md-6 col-xs-6">
-		            			<div class="row users">
-						          	<div class="col-md-3">
-						          		<img src="img/user.png" class="center-block img-circle img-responsive" >
-						          	</div>
-						          	<div class="col-md-6">
-						          		<div class="row user" style="margin-top: 4px;">
-						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
-						          		</div>
-						          		<div class="row user">
-						          			<div class="col-md-12" id="user_info">1657关注</div>
-						          		</div>
-						          		<div class="row">
-						          			<div class="col-md-12" id="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
+						          			<div class="col-md-12" class="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
 						          		</div>
 						          	</div>
 						          	<div class="col-md-3">
@@ -138,10 +76,10 @@
 						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 						          		</div>
 						          		<div class="row user">
-						          			<div class="col-md-12" id="user_info">1657关注</div>
+						          			<div class="col-md-12" class="user_info">1657关注</div>
 						          		</div>
 						          		<div class="row">
-						          			<div class="col-md-12" id="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
+						          			<div class="col-md-12" class="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
 						          		</div>
 						          	</div>
 						          	<div class="col-md-3">
@@ -159,10 +97,54 @@
 						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
 						          		</div>
 						          		<div class="row user">
-						          			<div class="col-md-12" id="user_info">1657关注</div>
+						          			<div class="col-md-12" class="user_info">1657关注</div>
 						          		</div>
 						          		<div class="row">
-						          			<div class="col-md-12" id="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
+						          			<div class="col-md-12" class="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
+						          		</div>
+						          	</div>
+						          	<div class="col-md-3">
+						          		<a href="" class="btn" id="focus">关注</a>
+						          	</div>
+			          			</div>
+		            		</div>
+		            	</div>
+		            	<div class="row">
+		            		<div class="col-md-6 col-xs-6">
+		            			<div class="row users">
+						          	<div class="col-md-3">
+						          		<img src="img/user.png" class="center-block img-circle img-responsive" >
+						          	</div>
+						          	<div class="col-md-6">
+						          		<div class="row user" style="margin-top: 4px;">
+						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
+						          		</div>
+						          		<div class="row user">
+						          			<div class="col-md-12" class="user_info">1657关注</div>
+						          		</div>
+						          		<div class="row">
+						          			<div class="col-md-12" class="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
+						          		</div>
+						          	</div>
+						          	<div class="col-md-3">
+						          		<a href="" class="btn" id="focus">关注</a>
+						          	</div>
+			          			</div>
+		            		</div>
+		            		<div class="col-md-6 col-xs-6">
+		            			<div class="row users">
+						          	<div class="col-md-3">
+						          		<img src="img/user.png" class="center-block img-circle img-responsive" >
+						          	</div>
+						          	<div class="col-md-6">
+						          		<div class="row user" style="margin-top: 4px;">
+						          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
+						          		</div>
+						          		<div class="row user">
+						          			<div class="col-md-12" class="user_info">1657关注</div>
+						          		</div>
+						          		<div class="row">
+						          			<div class="col-md-12" class="user_info">1个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>
 						          		</div>
 						          	</div>
 						          	<div class="col-md-3">
@@ -189,7 +171,7 @@
 		            </div>
 		        </div>
 		    	<div class="row" style="margin-bottom: 75px;">
-          			<div class="col-md-12 text-center" id="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
+          			<div class="col-md-12 text-center" class="user_info" style="font-size:20px ;">唯有美食与爱不可辜负</div>
         		</div>
       		</div>
 		</div>

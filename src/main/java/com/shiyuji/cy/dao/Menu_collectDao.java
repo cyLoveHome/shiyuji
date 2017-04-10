@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.shiyuji.cy.pojo.Menu;
 import com.shiyuji.cy.pojo.Menu_collect;
+import com.shiyuji.cy.pojo.User;
 
 public interface Menu_collectDao {
 
@@ -35,6 +36,20 @@ public interface Menu_collectDao {
 	 * @param msId
 	 * @return
 	 */
-	Menu_collect isSelect(String uId,String msId);
+	Menu_collect isSelect(String uId,String mId);
+	
+	/**
+	 * 收藏该菜谱的所有用户
+	 * @param mId
+	 * @return
+	 */
+	List<User> selectByMid(String mId);
+	
+	/**
+	 * 查该菜谱被多少人收藏,返回数量
+	 * @param mId
+	 * @return
+	 */
+	String select(String mId);
 	
 }

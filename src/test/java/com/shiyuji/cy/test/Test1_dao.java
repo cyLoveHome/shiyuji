@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.shiyuji.cy.dao.BookDao;
 import com.shiyuji.cy.pojo.Book;
+import com.shiyuji.cy.service.Impl.LikeServiceImpl;
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit spring配置文件
 @ContextConfiguration({ "classpath:spring/spring-dao.xml", "classpath:spring/spring-service.xml" })
@@ -20,6 +21,9 @@ public class Test1_dao {
 
 	@Autowired
 	private BookDao bookDao;
+	
+	@Autowired 
+	private LikeServiceImpl likeService;
 
 	@Test
 	public void testQueryById() throws Exception {
@@ -41,5 +45,10 @@ public class Test1_dao {
 		long bookId = 1000;
 		int update = bookDao.reduceNumber(bookId);
 		System.out.println("update=" + update);
+	}
+	
+	@Test
+	public void testLike(){
+		
 	}
 }
