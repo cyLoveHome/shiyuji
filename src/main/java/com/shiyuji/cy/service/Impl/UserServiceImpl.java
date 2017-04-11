@@ -68,6 +68,17 @@ public class UserServiceImpl implements UserService{
 		return userDao.selectByUid(uId);
 	}
 	
+	@Override
+	public List<User> selectUsers(String uId) {
+		return userDao.selectUsers(uId);
+	}
+	
+	@Override
+	public List<User> selectRandEightUsers(String uId) {
+		return userDao.selectRandEightUsers(uId);
+	}
+
+	
 	
 	//处理注册 发送邮件
 	private boolean processReg(String bind_email,String code,String method){

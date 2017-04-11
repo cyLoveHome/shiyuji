@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyuji.cy.dao.QuestionDao">
+	<insert id="addQuestion" parameterType="Question">
+		INSERT 
+		INTO 
+			question
+	    VALUES(
+			#{qId},
+			#{uId},
+			#{qTitle},
+			#{qInfo},
+			#{createTime}
+		)
+	</insert>
+	
+	<delete id="deleteQuestion" parameterType="String">
+		DELETE
+		FROM 
+			question
+		WHERE
+			qId = #{qId}
+	</delete>
+	
+	<select id="selectByUid" resultType="Question" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			question
+		WHERE
+			uId = #{uId}
+	</select>
+	
+	<select id="selectAll" resultType="Question">
+		SELECT 
+			* 
+		FROM
+			question
+	</select>
+	
+	<select id="selectRand" resultType="Question">
+		SELECT 
+			* 
+		FROM
+			question
+		ORDER BY RAND()
+		LIMIT 5
+	</select>
+	
+	<select id="selectOne" resultType="Question" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			question
+		WHERE
+			qId = #{qId}
+	</select>
+</mapper>

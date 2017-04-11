@@ -56,7 +56,7 @@ public interface UserDao {
 	 * @param uName
 	 * @return
 	 */
-	List<User> selectByUname(String uName);
+	List<User> selectByUname(@Param("uName")String uName);
 	
 	/**
 	 * 根据邮箱地址查找用户
@@ -64,4 +64,23 @@ public interface UserDao {
 	 * @return
 	 */
 	User selectByEmailAddress(String bind_email);
+	
+	/**
+	 * 所有厨友，除了当前用户
+	 * @return
+	 */
+	List<User> selectUsers(String uId);
+
+	/**
+	 * 随机刷出8位厨友
+	 * @param uId
+	 * @return
+	 */
+	List<User> selectRandEightUsers(String uId);
+	
+	
+	
 }
+	
+	
+	

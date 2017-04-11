@@ -1,0 +1,10 @@
+#friend_title{
+				font-size: 35px;
+				font-family: "微软雅黑";
+				font-weight: 600;
+			}
+			input{
+			    width: 200px;
+			    height: 35px;
+			    padding-left: 5px;
+			}

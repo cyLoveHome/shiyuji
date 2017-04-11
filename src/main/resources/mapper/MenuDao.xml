@@ -56,4 +56,13 @@
 		WHERE
 			uId = #{uId}
 	</select>
+	
+	<select id="selectNum" resultType="java.lang.String" parameterType="String">
+		SELECT 
+			count(*) 
+		FROM
+			menu
+		WHERE
+			uId = #{uId}
+	</select>
 </mapper>

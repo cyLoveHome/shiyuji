@@ -10,14 +10,39 @@
 	    VALUES(
 			#{uId},
 			#{mId},
-			#{comment_info},
-			#{comment_time}
+			#{commentInfo},
+			#{commentTime}
 			)
 	</insert>
 	
-	<select id="selectByMid" parameterType="String" resultType="Comment">
+	<select id="selectByMid" resultType="Comment">
 		SELECT 
 			* 
+		FROM
+			comment
+		WHERE
+			mId = #{mId}
+		ORDER BY
+			commentTime
+		DESC
+	</select>
+	
+	<select id="selectTwo" resultType="Comment">
+		SELECT 
+			* 
+		FROM
+			comment
+		WHERE
+			mId = #{mId}
+		ORDER BY
+			commentTime
+		DESC
+		LIMIT 0,2
+	</select>
+	
+	<select id="selectNum" resultType="java.lang.String">
+		SELECT 
+			count(*) 
 		FROM
 			comment
 		WHERE
@@ -25,21 +50,24 @@
 	</select>
 	
 	<select id="selectAllUser" parameterType="String" resultType="User">
-	SELECT
-		*
-	FROM
-		user
-	WHERE
-		uId
-	IN(
-		SELECT 
-			uId 
+		SELECT
+			*
 		FROM
-			comment
+			user
 		WHERE
-			mId = #{mId}
-	)
-		
+			uId
+		IN(
+			SELECT 
+				uId 
+			FROM
+				comment
+			WHERE
+				mId = #{mId}
+			ORDER BY
+				commentTime
+			DESC
+		)
 	</select>
+	
 
 </mapper>

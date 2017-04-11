@@ -37,6 +37,15 @@ public class User {
 	
 	private String uInfo;
 	
+	//以下不存数据库
+	private String focusNum = "0"; //被关注人数
+	
+	private String menuNum = "0";//菜谱总数
+	
+	private String menusNum = "0";//菜单总数
+	
+	private String isFriend;//是否与该用户是好友关系
+	
 	public User() {
 	}
 
@@ -170,6 +179,48 @@ public class User {
 	public void setuInfo(String uInfo) {
 		this.uInfo = uInfo;
 	}
+	
+
+	public String getFocusNum() {
+		return focusNum;
+	}
+
+
+	public void setFocusNum(String focusNum) {
+		this.focusNum = focusNum;
+	}
+
+
+	public String getMenuNum() {
+		return menuNum;
+	}
+
+
+	public void setMenuNum(String menuNum) {
+		this.menuNum = menuNum;
+	}
+
+
+	public String getMenusNum() {
+		return menusNum;
+	}
+
+
+	public void setMenusNum(String menusNum) {
+		this.menusNum = menusNum;
+	}
+
+	
+	
+	public String getIsFriend() {
+		return isFriend;
+	}
+
+
+	public void setIsFriend(String isFriend) {
+		this.isFriend = isFriend;
+	}
+
 
 	@Override
 	public String toString() {

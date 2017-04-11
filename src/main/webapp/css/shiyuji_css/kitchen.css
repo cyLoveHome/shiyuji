@@ -1,0 +1,35 @@
+#kitchen_font{
+				font-size: 30px;
+				font-family: "微软雅黑";
+				font-weight: 600;
+			}
+			#oneself_info{
+			    background-color: #E8E6E3;
+			}
+			#focus{
+				font-size: 13px;
+			}
+			.anniu {
+				border-radius: 0px;
+				background-color: #E8E6E3;
+				color: black;
+				width: 80px;
+				border: none;
+				margin-left: -4px;
+				height: 34px;
+				margin-left: .1px;
+			}
+			.anniu:hover {
+				background-color: #921;
+				color: white;
+			}
+			.img_style{
+				padding: 8px 0px 8px 8px;
+			}
+			#author{
+				color: #a5a7a6;
+			}
+			#author:hover{
+				background-color: #a5a7a6;
+				color: white;
+			}

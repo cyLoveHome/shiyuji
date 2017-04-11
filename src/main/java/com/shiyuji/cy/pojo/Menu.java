@@ -29,7 +29,7 @@ public class Menu {
 	//以下不存数据库，查出放在one_menu中
 	private String likeNum = "0";//点赞总数
 
-	private int commentNum = 0;//评论总数
+	private String commentNum = "0";//评论总数
 	
 	private String menuCollectNum = "0"; //收藏总数
 	
@@ -105,12 +105,12 @@ public class Menu {
 	}
 
 
-	public int getCommentNum() {
+	public String getCommentNum() {
 		return commentNum;
 	}
 
 
-	public void setCommentNum(int commentNum) {
+	public void setCommentNum(String commentNum) {
 		this.commentNum = commentNum;
 	}
 

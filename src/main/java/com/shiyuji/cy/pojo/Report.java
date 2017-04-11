@@ -16,11 +16,11 @@ public class Report {
 	public Report() {
 	}
 
-	public Report(String uId, String mId, String cause, long report_time) {
+	public Report(String uId, String mId, String cause) {
 		this.uId = uId;
 		this.mId = mId;
 		this.cause = cause;
-		this.report_time = report_time;
+		this.report_time = System.currentTimeMillis();
 	}
 
 	public String getuId() {

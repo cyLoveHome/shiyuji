@@ -1,0 +1,23 @@
+			.menu_name{
+				width: 600px;
+				height: 50px;
+				background-color: #fffce9;
+				border: none;
+				padding-left: 10px;
+			}
+			#menu_pic{
+				background-color: #E8E6E3;
+				width: 600px;
+				min-height: 200px;
+				height:auto;
+			}
+			.menu_info{
+				background-color: #E8E6E3;
+				width: 300px;
+    			margin-top: 72px;
+    			height: 150px;
+			}
+			#menu_font{
+				color: #a5a7a6;
+				font-size: 14px;
+			}

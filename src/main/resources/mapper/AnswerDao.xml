@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyuji.cy.dao.AnswerDao">
+	<insert id="addAnswer" parameterType="Answer">
+		INSERT 
+		INTO 
+			answer
+	    VALUES(
+			#{aId},
+			#{qId},
+			#{uId},
+			#{aInfo},
+			#{aTime}
+		)
+	</insert>
+	
+	
+	<select id="selectAll" resultType="Answer" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			answer
+		WHERE
+			qId = #{qId}
+	</select>
+	
+	<select id="selectNum" resultType="java.lang.String" parameterType="String">
+		SELECT 
+			count(*) 
+		FROM
+			answer
+		WHERE
+			qId = #{qId}
+	</select>
+	
+	
+</mapper>

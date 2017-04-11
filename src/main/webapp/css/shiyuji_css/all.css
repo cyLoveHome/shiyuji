@@ -1,0 +1,35 @@
+#all_font{
+				color: black;
+				font-size: 17px;
+				font-family: "微软雅黑";
+			}
+			#all_font:hover{
+				color: #992222;
+			}
+			li{
+				list-style: none;
+				margin-bottom: 15px;
+			}
+			#gray_font{
+				color: #a5a7a6;
+				font-size: 16px;
+			}
+			#title_font{
+				font-size: 30px;
+				font-family: "微软雅黑";
+				font-weight: 600;
+			}
+			#m_name{
+				font-size: 20px;
+				font-family: "微软雅黑";
+				font-weight: 600;
+				color: black;
+			}
+			#m_name:hover{
+				color: #992222;
+			}
+			.all_style{
+				margin-bottom: 10px;
+				color: #a5a7a6;
+				font-size: 14px;
+			}

@@ -9,26 +9,21 @@ public class Comment {
 	
 	private String mId;
 	
-	private String comment_info;
+	private String commentInfo;
 	
-	private long comment_time = System.currentTimeMillis();
+	private long commentTime ;
 
 	public Comment() {
 	}
 
-	public Comment(String uId, String mId, String comment_info, long comment_time) {
+	public Comment(String uId, String mId, String commentInfo) {
 		this.uId = uId;
 		this.mId = mId;
-		this.comment_info = comment_info;
-		this.comment_time = comment_time;
+		this.commentInfo = commentInfo;
+		this.commentTime = System.currentTimeMillis();
 	}
 	
-
-	public Comment(String uId, String mId, String comment_info) {
-		this.uId = uId;
-		this.mId = mId;
-		this.comment_info = comment_info;
-	}
+	
 
 	public String getuId() {
 		return uId;
@@ -46,22 +41,28 @@ public class Comment {
 		this.mId = mId;
 	}
 
-	public String getComment_info() {
-		return comment_info;
+	public String getCommentInfo() {
+		return commentInfo;
 	}
 
-	public void setComment_info(String comment_info) {
-		this.comment_info = comment_info;
+	public void setCommentInfo(String commentInfo) {
+		this.commentInfo = commentInfo;
 	}
 
-	public long getComment_time() {
-		return comment_time;
+	public long getCommentTime() {
+		return commentTime;
 	}
 
-	public void setComment_time(long comment_time) {
-		this.comment_time = comment_time;
+	public void setCommentTime(long commentTime) {
+		this.commentTime = commentTime;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Comment [uId=" + uId + ", mId=" + mId + ", commentInfo=" + commentInfo + ", commentTime=" + commentTime
+				+ "]";
+	}
+
 	
 
 }

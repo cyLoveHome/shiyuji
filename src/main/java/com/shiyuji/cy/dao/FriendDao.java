@@ -2,6 +2,8 @@ package com.shiyuji.cy.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shiyuji.cy.pojo.Friend;
 
 public interface FriendDao {
@@ -13,11 +15,25 @@ public interface FriendDao {
 	List<Friend> selectByUid(String uId);
 	
 	/**
+	 * 我关注的总数
+	 * @param uId
+	 * @return
+	 */
+	String selectUnum(String uId);
+	
+	/**
 	 * 查关注我的好友
 	 * @param FId
 	 * @return
 	 */
-	List<Friend> selectByFid(String FId);
+	List<Friend> selectByFid(String fId);
+	
+	/**
+	 * 关注我的好友总数
+	 * @param FId
+	 * @return
+	 */
+	String selectFnum(String fId);
 
 	/**
 	 * 新增关注好友
@@ -31,5 +47,13 @@ public interface FriendDao {
 	 * @param fId
 	 * @return
 	 */
-	int deleteFriend(String uId,String fId);
+	int deleteFriend(@Param("uId")String uId,@Param("fId")String fId);
+	
+	/**
+	 * 查数据库是否有好友记录
+	 * @param uId
+	 * @param fId
+	 * @return
+	 */
+	Friend selectFriend(@Param("uId")String uId,@Param("fId")String fId);
 }

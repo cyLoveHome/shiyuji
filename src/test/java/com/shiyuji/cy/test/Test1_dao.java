@@ -2,6 +2,8 @@ package com.shiyuji.cy.test;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -12,6 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.shiyuji.cy.dao.BookDao;
 import com.shiyuji.cy.pojo.Book;
+import com.shiyuji.cy.pojo.Comment;
+import com.shiyuji.cy.service.Impl.CommentServiceImpl;
 import com.shiyuji.cy.service.Impl.LikeServiceImpl;
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit spring配置文件
@@ -24,7 +28,9 @@ public class Test1_dao {
 	
 	@Autowired 
 	private LikeServiceImpl likeService;
-
+	@Autowired 
+	private CommentServiceImpl commentService;
+	
 	@Test
 	public void testQueryById() throws Exception {
 		long bookId = 1000;
@@ -49,6 +55,9 @@ public class Test1_dao {
 	
 	@Test
 	public void testLike(){
-		
+		List<Comment> commList = commentService.selectByMid("39c5e441-67ad-4079-8011-d980c811f0f4");
+		for (Comment comment : commList) {
+			logger.warn(comment.toString());
+		}
 	}
 }

@@ -47,5 +47,16 @@ public interface UserService {
 	 */
 	User SelectByUid(String uId);
 	
-
+	/**
+	 * 所有厨友
+	 * @return
+	 */
+	List<User> selectUsers(String uId);
+	
+	/**
+	 * 随机8位厨友
+	 * @param uId
+	 * @return
+	 */
+	List<User> selectRandEightUsers(String uId);
 }

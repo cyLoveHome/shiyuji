@@ -1,0 +1,50 @@
+			#font{
+				font-family: "微软雅黑";
+				font-size: 32px;
+				font-weight: bold;
+			}
+			#user{
+				font-size: 18px;
+				font-family: '微软雅黑';
+				margin-left: 5px;
+			}
+			.a_hover{
+				color: black;
+			}
+			.a_hover:hover{
+				color: #992222;
+			}
+			#user_red{
+				display: inline-block;
+				font-size: 10px;
+				font-family: '微软雅黑';
+				margin-left: 5px;
+				color: #992222;
+			}
+			.one_menu{
+				font-size: 16px;
+			    font-family: "微软雅黑";
+			}
+			#comment{
+				background-color: #a5a7a6;
+			}
+			.comment_font{
+				font-size: 12px;
+			}
+			.comment_reply{
+				color: #a5a7a6;
+				font-size: 12px;
+			}
+			.comment_reply:hover{
+				background-color: #a5a7a6;
+				color: white;
+			}
+			.comment_margin{
+				margin-top: 5px;
+			}
+			.com_info{
+				width: 100%;
+				height: 30px;
+				border: none;
+				padding-left: 5px;
+			}

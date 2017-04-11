@@ -9,7 +9,7 @@ public class Friend {
 	
 	private String fId;
 	
-	private long focus_time;
+	private long focus_time = System.currentTimeMillis();
 
 	public Friend() {
 	}
@@ -18,6 +18,12 @@ public class Friend {
 		this.uId = uId;
 		this.fId = fId;
 		this.focus_time = focus_time;
+	}
+	
+	public Friend(String uId, String fId) {
+		super();
+		this.uId = uId;
+		this.fId = fId;
 	}
 
 	public String getuId() {

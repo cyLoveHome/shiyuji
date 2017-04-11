@@ -13,7 +13,7 @@
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/one_menu.css" rel="stylesheet" type="text/css">
 		<title>菜谱</title>
 	</head>
-	<body onload="changeTime('${Menu.create_time }')">
+	<body onload="changeTime('${Menu.create_time }');changeCommTime('${uc.c.commentTime}');">
 		<%@ include file="nav.jsp" %> 
 		<div class="section" id="sec">
       		<div class="container">
@@ -64,46 +64,56 @@
 					        	<div class="col-md-12">
 					        		<div class="row" style="margin-bottom: 20px;" id="appendComm">
 							        	<div class="col-md-12">
-							        		<a href="" class="link" id="more_comment" onclick="moreComm('${comments}','${commUsers}')">
-							        			展开更多${Menu.commentNum}条评论
+							        		<a href="" class="navbar-link link" id="more_comment"  data-toggle="modal" data-target="#myModal" onclick="moreComm('${Menu.mId}')">
+							        			展开更多${Menu.commentNum-2}条评论
 							        		</a>
+							        		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+																&times;
+															</button>
+															<h4 class="modal-title" id="myModalLabel">
+																全部${Menu.commentNum}条评论
+															</h4>
+														</div>
+														<div class="modal-body" id="all">
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
 							        	</div>
 					        		</div>
-					        		<div class="row" style="margin-bottom: 10px;">
-							        	<div class="col-md-1" id=>
-							        		<a href="">
-						          				<img src="${pageContext.request.contextPath}/img/user.png" class="img-circle img-responsive" width="30">
-							        		</a>
-						          		</div>
-						          		<div class="col-md-9 col-xs-9 comment_margin" style="padding-left: 0px;">
-							          		<a href="" class="link" class="comment_font">山间清泉</a>&nbsp;&nbsp;&nbsp;
-							          		<p style="display: inline-block;" class="comment_font">真漂亮，好好吃，真喜欢，要学做</p>
-							          	</div>
-							          	<div class="col-md-2 col-xs-2 comment_margin text-right">
-							          		<a href="" id="comment_reply">回复</a>
-							          	</div>
-					        		</div>
-					        		<div class="row" style="margin-bottom: 10px;">
-					        			<div class="col-md-1">
-							        		<a href="">
-						          				<img src="${pageContext.request.contextPath}/img/user.png" class="img-circle img-responsive" width="30">
-							        		</a>
-						          		</div>
-						          		<div class="col-md-9 col-xs-9 comment_margin" style="padding-left: 0px;">
-							          		<a href="" class="link" class="comment_font">山间清泉</a>&nbsp;&nbsp;&nbsp;
-							          		<p style="display: inline-block;" class="comment_font">真漂亮，好好吃，真喜欢，要学做</p>
-							          	</div>
-							          	<div class="col-md-2 col-xs-2 comment_margin text-right">
-							          		<a href="" id="comment_reply">回复</a>
-							          	</div>
-					        		</div>
+					        		<c:forEach  items="${Twocomments}" var="uc">
+						        		<div class="row" style="margin-bottom: 10px;">
+								        	<div class="col-md-1">
+								        		<a href="">
+							          				<img src="${pageContext.request.contextPath}/img/user.png" class="img-circle img-responsive" width="30">
+								        		</a>
+							          		</div>
+							          		<div class="col-md-9 col-xs-9 comment_margin" style="padding-left: 0px;">
+								          		<a href="" class="link" class="comment_font">${uc.u.uName}</a>&nbsp;&nbsp;&nbsp;
+								          		<p style="display: inline-block;" class="comment_font">${uc.c.commentInfo}</p>
+								          	</div>
+								          	<div class="col-md-2 col-xs-2 comment_margin text-right">
+								          		<span class="comment_reply" id="time"></span>
+								          	</div>
+						        		</div> 
+						        		<hr>
+					        		</c:forEach>
+					        		
 					        		
 					        		<div class="row"  style="margin-bottom: 20px;">
 					        			<div class="col-md-10 col-xs-10">
 					        				<input type="text" placeholder="评论" class="com_info comment_font" id="c_info"/>
 					        			</div>
 					        			<div class="col-md-2 col-xs-2 text-right">
-					        				<div class="btn" style="height: 30px;" onclick="addComm('${comments}','${commUsers}')">评论</div>
+					        				<div class="btn" style="height: 30px;" onclick="addComm('${Menu.mId}','${user.uId }')">评论</div>
 					        			</div>
 					        		</div>
 					        		<hr>
@@ -298,10 +308,56 @@
 			          	</div>
 			          	
 			          	<div class="row">
-					        <div class="col-md-12 text-center">
-					        	<a href="">
-					        		<span class="link" >举报该菜谱</span>
+					        <div class="col-md-12">
+					        	<a href=""  class=" navbar-link link" data-toggle="modal" data-target="#Modal" onclick="isReport('${Menu.mId}','${user.uId }');">
+					        		举报该菜谱
 					        	</a>
+					        	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+													&times;
+												</button>
+												<h4 class="modal-title" id="myModalLabel">
+													举报         ${Menu.mName}
+												</h4>
+											</div>
+											<div class="modal-body" id="reportInfo">
+												<div class="radio">
+													<label>
+														<input type="radio" name="optionsRadios" id="optionsRadios1" value=" 广告或垃圾信息" checked> 广告或垃圾信息
+													</label>
+												</div>
+												<div class="radio">
+													<label>
+														<input type="radio" name="optionsRadios" id="optionsRadios2" value="与主题不符">与主题不符
+													</label>
+												</div>
+												<div class="radio">
+													<label>
+														<input type="radio" name="optionsRadios" id="optionsRadios3" value="非美食图片">非美食图片
+													</label>
+												</div>
+												<div class="radio">
+													<label>
+														<input type="radio" name="optionsRadios" id="optionsRadios4" value="其他原因">其他原因
+													</label>
+												</div>
+												<form role="form">
+													<div class="form-group">
+														<textarea class="form-control" rows="3" id="reportCause" placeholder="请输入其他原因"></textarea>
+													</div>
+												</form>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn" onclick="reportIt('${Menu.mId}','${user.uId }');">
+													举报
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
 					        </div>
 			          	</div>
 		            </div>

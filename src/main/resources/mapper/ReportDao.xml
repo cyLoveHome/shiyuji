@@ -24,11 +24,24 @@
 			uId = #{uId}
 	</select>
 	
+	<select id="selectOne" resultType="Report" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			report
+		WHERE
+			uId = #{uId}
+		AND
+			mId = #{mId}
+	</select>
+	
 	<delete id="delete" parameterType="String">
 		DELETE
 		FROM
 			report
 		WHERE
+			uId = #{uId}
+		AND
 			mId = #{mId}
 	</delete>
 </mapper>

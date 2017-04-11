@@ -1,4 +1,5 @@
 <%@ page language="java" isELIgnored="false" contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,6 +7,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <%@ include file="css_js.jsp" %>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/nav.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/main.js"></script>
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/main.css" rel="stylesheet" type="text/css">
 		<title>首页</title>
@@ -99,7 +101,7 @@
 			          		</div>
 			          		
 				          	<div class="row">
-				          		<a href="" id="shicai_link">
+				          		<a href="${pageContext.request.contextPath}/createMenu/selectOne/39c5e441-67ad-4079-8011-d980c811f0f4" id="shicai_link">
 					          		<div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
@@ -157,20 +159,20 @@
 								</a>
 				        	</div>
 			          	</div>
-		          </div>
-			        <div class="row">
-			          	<div class="col-md-12" style="margin-top: 35px;">
+		          	</div>
+			        <div class="row"  id="replace">
+			          	<div class="col-md-12" style="margin-top: 35px;margin-bottom: 20px">
 			          		<div class="row">
 				          		<div class="col-md-8">
 				          			<span id="title">厨房问答</span>&nbsp;&nbsp;&nbsp;&nbsp;
-				          			<a href=" "class="link">全部</a>
+				          			<a href=""class="link">全部</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
-				          			<a href=" "class="link">提问题</a>
+				          			<a class="link" onclick="addQuestion('${user.uId}');">提问题</a>
 				          		</div>
 				          	</div>
 			          		
-			          		<div class="row question_style" style="margin-top: 20px;">
+			          		<div class="row question_style">
 				          		<div class="col-md-8">
 				          			<a href=" "class="link">茄子怎样炒不会黑？</a>
 				          		</div>
@@ -181,7 +183,7 @@
 			          		
 			          		<div class="row question_style">
 				          		<div class="col-md-8">
-				          			<a href=" "class="link">做面包揉面买厨师机还是面包机？</a>
+				          			<a href=""class="link">做面包揉面买厨师机还是面包机？</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<span id="answer">7 回答</span>
@@ -565,97 +567,41 @@
 		          			<div class="row" style="margin-bottom: 20px;margin-top: 35px;">
 					          	<div class="col-md-12">
 					          		<span id="title">食遇记的厨神们</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					          		<a href="friends.jsp" class="link">更多</a>
+					          		<a href="${pageContext.request.contextPath}/user/selectAllUser/${user.uId}" class="link">更多</a>
 					          	</div>
 			          		</div>
 			          		
+			          		<c:forEach  items="${users}" var="u">
 			          		<div class="row users">
 					          	<div class="col-md-3">
 					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
 					          	</div>
 					          	<div class="col-md-6">
 					          		<div class="row user">
-					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
+					          			<div class="col-md-12 user_name" id="shicai_link">${u.uName }</div>
 					          		</div>
 					          		<div class="row user">
-					          			<div class="col-md-12" class="user_info">1657关注</div>
+					          			<div class="col-md-12 user_info">${u.focusNum }关注</div>
 					          		</div>
 					          		<div class="row">
-					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
+					          			<div class="col-md-12 user_info">${u.menuNum }个菜谱  273个作品</div>
 					          		</div>
 					          	</div>
 					          	<div class="col-md-3">
-					          		<a href="" class="btn" id="focus">关注</a>
+					          		<c:if test="${u.isFriend eq '1'}">
+					          			<div class="btn" id="focus${u.uId }" onclick="focusUser('${user.uId}','${u.uId }')">已关注</div>
+					          		</c:if>
+					          		<c:if test="${u.isFriend eq '0'}">
+					          			<div class="btn" id="focus${u.uId }" onclick="focusUser('${user.uId}','${u.uId }')">关注</div>
+					          		</c:if>
 					          	</div>
 			          		</div>
 			          		<hr>
-			          		
-			          		<div class="row users">
-					          	<div class="col-md-3">
-					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
-					          	</div>
-					          	<div class="col-md-6">
-					          		<div class="row user">
-					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
-					          		</div>
-					          		<div class="row user">
-					          			<div class="col-md-12" class="user_info">1657关注</div>
-					          		</div>
-					          		<div class="row">
-					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
-					          		</div>
-					          	</div>
-					          	<div class="col-md-3">
-					          		<a href="" class="btn" id="focus">关注</a>
-					          	</div>
-			          		</div>
-			          		<hr>
-			          		
-			          		<div class="row users">
-					          	<div class="col-md-3">
-					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
-					          	</div>
-					          	<div class="col-md-6">
-					          		<div class="row user">
-					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
-					          		</div>
-					          		<div class="row user">
-					          			<div class="col-md-12" class="user_info">1657关注</div>
-					          		</div>
-					          		<div class="row">
-					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
-					          		</div>
-					          	</div>
-					          	<div class="col-md-3">
-					          		<a href="" class="btn" id="focus">关注</a>
-					          	</div>
-			          		</div>
-			          		<hr>
-			          		
-			          		<div class="row users">
-					          	<div class="col-md-3">
-					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
-					          	</div>
-					          	<div class="col-md-6">
-					          		<div class="row user">
-					          			<div class="col-md-12 user_name" id="shicai_link">山间清泉</div>
-					          		</div>
-					          		<div class="row user">
-					          			<div class="col-md-12" class="user_info">1657关注</div>
-					          		</div>
-					          		<div class="row">
-					          			<div class="col-md-12" class="user_info">1个菜谱  273个作品</div>
-					          		</div>
-					          	</div>
-					          	<div class="col-md-3">
-					          		<a href="" class="btn" id="focus">关注</a>
-					          	</div>
-			          		</div>
-			          		<hr>
+			          		</c:forEach>
 			          		
 			          		<div class="row">
 			          			<div class="col-md-12 col-xs-12 text-center">
-			          				<a href="friends.jsp" class="link">查看更多厨友们</a>
+			          				<a href="${pageContext.request.contextPath}/user/selectAllUser/${user.uId}" class="link">查看更多厨友们</a>
 			          			</div>
 			          		</div>
 			          	</div>

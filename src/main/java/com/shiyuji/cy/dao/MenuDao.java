@@ -39,4 +39,12 @@ public interface MenuDao {
 	 * @return
 	 */
 	List<Menu> selectByUid(String uId);
+	
+	
+	/**
+	 * 该用户创建的菜谱总数
+	 * @param uId
+	 * @return
+	 */
+	String selectNum(String uId);
 }

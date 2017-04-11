@@ -2,6 +2,8 @@ package com.shiyuji.cy.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shiyuji.cy.pojo.Comment;
 import com.shiyuji.cy.pojo.User;
 
@@ -18,7 +20,20 @@ public interface CommentDao {
 	 * @param mId
 	 * @return
 	 */
-	List<Comment> selectByMid(String mId);
+	List<Comment> selectByMid(@Param("mId")String mId);
+	
+	/**
+	 * 查出最新两条评论
+	 * @return
+	 */
+	List<Comment> selectTwo(@Param("mId")String mId);
+	
+	/**
+	 * 查出该菜谱的所有评论数
+	 * @param mId
+	 * @return
+	 */
+	String selectNum(@Param("mId")String mId);
 	
 	/**
 	 * 查所有评论人信息
@@ -26,5 +41,6 @@ public interface CommentDao {
 	 * @return
 	 */
 	List<User> selectAllUser(String mId);
+	
 
 }

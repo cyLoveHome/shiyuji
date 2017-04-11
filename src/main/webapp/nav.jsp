@@ -2,7 +2,7 @@
     <div class="navbar navbar-fixed-top" id="nav">
 		    <div class="container" style="width: 1000px;">
 		        <div class="navbar-header">
-		          <a class="navbar-brand" href="main.jsp">
+		          <a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">
 		          	<img height="45" alt="logo" src="${pageContext.request.contextPath}/img/logo.png" class="img-rounded">
 		          </a>
 		        </div>
@@ -20,7 +20,7 @@
 		            <div type="submit" class="btn btn-default">搜索</div>
 		        </form>
 		        <p class="navbar-text">
-		            <a href="main.jsp" class="navbar-link link">首页</a>
+		            <a href="${pageContext.request.contextPath}/main.jsp" class="navbar-link link">首页</a>
 		        </p>
 		        <p class="navbar-text">
 		            <a href="#" class="navbar-link link">菜谱分类</a>
@@ -36,7 +36,7 @@
     </div>
     <div class="drop_border">
         <div class="drop_line">
-         	<a href="kitchen.jsp" class="link">我的厨房</a>
+         	<a href="${pageContext.request.contextPath}/kitchen.jsp" class="link">我的厨房</a>
         </div>
         <div class="drop_line">
          	<a href="#" class="link">我的菜单</a>

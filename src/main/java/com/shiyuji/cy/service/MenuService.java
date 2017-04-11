@@ -31,6 +31,13 @@ public interface MenuService {
 	List<Menu> selectByUid(String uId);
 	
 	/**
+	 * 菜谱总数
+	 * @param uId
+	 * @return
+	 */
+	String selecNum(String uId);
+	
+	/**
 	 * 根据菜谱id找到菜谱全部信息
 	 * @param mId
 	 * @return

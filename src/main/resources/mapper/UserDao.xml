@@ -28,7 +28,6 @@
 		UPDATE 
 			user
 		SET
-			uId = #{uId},
 			uName = #{uName},
 			password = #{password},
 			rId = #{rId},
@@ -41,6 +40,8 @@
 			hometown = #{hometown},
 			create_time = #{create_time},
 			uInfo = #{uInfo}
+		WUERE
+			uId = #{uId}
 	</update>
 	
 	
@@ -93,7 +94,7 @@
 		WHERE
 			uName 
 		LIKE
-			'%${uName}%'
+			CONCAT('%','${uName}','%' )
 	</select>
 	
 	<select id="selectByEmailAddress" resultType="User" parameterType="String">
@@ -103,6 +104,25 @@
 			user
 		WHERE
 			bind_email = #{bind_email}
+	</select>
+	
+	<select id="selectUsers" resultType="User" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			uId != #{uId}
+	</select>
+	
+	<select id="selectRandEightUsers" resultType="User" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			uId != #{uId}
+		LIMIT 0,2
 	</select>
 
 </mapper>
