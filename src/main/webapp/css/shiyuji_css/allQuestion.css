@@ -1,0 +1,33 @@
+.title{
+			font-size: 24px;
+			font-weight: 600;
+			font-family: "微软雅黑";
+		}
+		.bg{
+			background-color: #E8E6E3;
+		    width: 300px;
+		    margin-top: 40px;
+		    height: 180px;
+		}
+		.qFont{
+			font-size: 18px;
+			color: #a5a7a6;
+			text-align: center;
+			padding-top: 25px;
+		}
+		.qLink:hover{
+			color: #992222;
+		}
+		.qLink{
+			color: black;
+		}
+		.qName{
+			font-size: 12px;
+		}
+		.answer{
+			color: #909090;
+    		font-size: 13px;
+		}
+		.qTitle{
+			font-size: 20px;
+		}

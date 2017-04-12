@@ -19,7 +19,7 @@ public class Question {
 	
 	//以下不存数据库
 	private String answerNum = "0";
-
+	
 	public Question() {
 	}
 
@@ -78,6 +78,7 @@ public class Question {
 	public void setAnswerNum(String answerNum) {
 		this.answerNum = answerNum;
 	}
+	
 
 	@Override
 	public String toString() {

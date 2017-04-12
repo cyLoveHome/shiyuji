@@ -23,8 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shiyuji.cy.pojo.Answer;
+import com.shiyuji.cy.pojo.Comment;
 import com.shiyuji.cy.pojo.Question;
 import com.shiyuji.cy.pojo.User;
+import com.shiyuji.cy.pojo.UserAndAnswer;
+import com.shiyuji.cy.pojo.UserAndComment;
 import com.shiyuji.cy.service.Impl.AnswerServiceImpl;
 import com.shiyuji.cy.service.Impl.QuestionServiceImpl;
 import com.shiyuji.cy.service.Impl.UserServiceImpl;
@@ -37,9 +41,19 @@ public class AnswerController {
 	@Autowired
 	private AnswerServiceImpl answerService;
 	
+	@Autowired
+	private UserServiceImpl userService;
+	
 	@RequestMapping(value="/addAns")
 	@ResponseBody
-	public void  addAues(HttpServletRequest request,HttpServletResponse response,String uId,String qTitle,String qInfo) throws IOException{
+	public void  addAues(HttpServletRequest request,HttpServletResponse response,String qId,String uId,String aInfo) throws IOException{
+		Answer a = new Answer(qId, uId, aInfo);
+		User u = userService.SelectByUid(uId);
+		UserAndAnswer ua = new UserAndAnswer(u, a);
+		boolean isSuccess = answerService.addAnswer(a);
+		if(isSuccess){
+			new ObjectMapper().writeValue(response.getOutputStream(), ua);
+		}
 	}
 	
 	

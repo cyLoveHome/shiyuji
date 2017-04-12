@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +27,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shiyuji.cy.pojo.Answer;
 import com.shiyuji.cy.pojo.Question;
 import com.shiyuji.cy.pojo.User;
+import com.shiyuji.cy.pojo.UserAndAnswer;
 import com.shiyuji.cy.pojo.UserAndComment;
+import com.shiyuji.cy.pojo.UserAndQuestion;
 import com.shiyuji.cy.service.Impl.AnswerServiceImpl;
 import com.shiyuji.cy.service.Impl.QuestionServiceImpl;
 import com.shiyuji.cy.service.Impl.UserServiceImpl;
@@ -42,6 +45,9 @@ public class QuestionController {
 	@Autowired
 	private AnswerServiceImpl answerService;
 	
+	@Autowired
+	private UserServiceImpl userService;
+	
 	@RequestMapping(value="/addQue")
 	@ResponseBody
 	public void  addQues(HttpServletRequest request,HttpServletResponse response,String uId,String qTitle,String qInfo) throws IOException{
@@ -49,8 +55,11 @@ public class QuestionController {
 		boolean isSuccess = questionService.addQuestion(q);
 		if(isSuccess){
 			List<Question> queList = questionService.selectRand();
-			List<Question> list = questionService.selectRand();
-			if(queList.size()>0){
+			List<Question> list = new ArrayList<>();
+			System.out.println("_______________________________________");
+			System.out.println(queList.size());
+			System.out.println("_______________________________________");
+			if(queList.size()>=5){
 				for(int i = 0;i<queList.size();i++){
 					String qId = queList.get(i).getqId();
 					String answerNum = answerService.selectNum(qId);
@@ -69,34 +78,61 @@ public class QuestionController {
 	
 	@RequestMapping(value="/all")
 	@ResponseBody
-	public void  selectAll(HttpServletRequest request,HttpServletResponse response,String uId) throws IOException{
+	public ModelAndView  selectAll(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		ModelAndView model = new ModelAndView();
 		List<Question> alls = questionService.selectAll();
-		List<Question> list = questionService.selectRand();
+		List<UserAndQuestion> list = new ArrayList<>();
 		if(alls.size()>0){
 			for(int i = 0;i<alls.size();i++){
+				String uId= alls.get(i).getuId();
+				User u = userService.SelectByUid(uId);
+				
 				String qId = alls.get(i).getqId();
 				String answerNum = answerService.selectNum(qId);
 				alls.get(i).setAnswerNum(answerNum);
-				list.add(alls.get(i));
+				
+				UserAndQuestion uq = new UserAndQuestion(u, alls.get(i));
+				list.add(uq);
 			}
-			new ObjectMapper().writeValue(response.getOutputStream(), list);
+			model.addObject("allQue", list);
 		}else{
-			response.getOutputStream().print("null");
+			model.addObject("allQue", "null");
 		}
+		model.setViewName("forward:/allQuestion.jsp");
+		return model;
 	}
 	
 
 	
-	@RequestMapping(value="/one")
+	@RequestMapping(value="/one/{qId}")
 	@ResponseBody
-	public void  selectOne(HttpServletRequest request,HttpServletResponse response,String qId) throws IOException{
+	public ModelAndView  selectOne(HttpServletRequest request,HttpServletResponse response,@PathVariable("qId")String qId) throws IOException{
+		ModelAndView model = new ModelAndView();
 		Question q = questionService.selectOne(qId);
+		System.out.println("___________________________");
+		System.out.println(q);
+		System.out.println("___________________________");
 		if(q!=null){
+			User us = userService.SelectByUid(q.getuId());
+			
 			List<Answer> allAnswer = answerService.selectAll(qId);
+			List<UserAndAnswer> answers = new ArrayList<>();
 			if(allAnswer.size()>0){
+				q.setAnswerNum(allAnswer.size()+"");
 				
+				for(int i = 0 ;i<allAnswer.size();i++){
+					String uId = allAnswer.get(i).getuId();
+					User user = userService.SelectByUid(uId);
+					UserAndAnswer ua = new UserAndAnswer(user, allAnswer.get(i));
+					answers.add(ua);
+				}
 			}
+			UserAndQuestion uq = new UserAndQuestion(us, q);
+			model.addObject("oneQue", uq);
+			model.addObject("answers", answers);
 		}
+		model.setViewName("forward:/one-question.jsp");
+		return model;
 	}
 	
 }

@@ -165,7 +165,7 @@
 			          		<div class="row">
 				          		<div class="col-md-8">
 				          			<span id="title">厨房问答</span>&nbsp;&nbsp;&nbsp;&nbsp;
-				          			<a href=""class="link">全部</a>
+				          			<a href="${pageContext.request.contextPath}/question/all" class="link">全部</a>
 				          		</div>
 				          		<div class="col-md-4 text-right">
 				          			<a class="link" onclick="addQuestion('${user.uId}');">提问题</a>

@@ -120,7 +120,7 @@
 		
 		function addComm(mId,uId){
 			var info = $("#c_info").val();
-			$("#c_info").empty();
+			$("#c_info").val("");
 			$.post(
 					"http://localhost:8080/shiyuji/comment/addComment",
 					{"mId":mId,"uId":uId,"commInfo":info},

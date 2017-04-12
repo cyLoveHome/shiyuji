@@ -39,6 +39,8 @@ function addQuestion(uId){
 function publishQue(uId){
 	var qTitle = $("#queTitle").val();
 	var qInfo = $("#queInfo").val();
+	$("#replace").empty();
+	console.debug(uId);
 	$.post(
 			"http://localhost:8080/shiyuji/question/addQue",
 			{"uId":uId,"qTitle":qTitle,"qInfo":qInfo},
@@ -48,7 +50,7 @@ function publishQue(uId){
 				}else if(data="null"){
 					alert("获取失败，请刷新");
 				}else{
-					var arr = eval(data);
+					var arr = eval("("+data+")");
 						var str = "<div class='col-md-12' style='margin-top: 35px;margin-bottom: 20px'>";
 						str += "<div class='row'>";
 						str += "<div class='col-md-8'>";
@@ -70,6 +72,7 @@ function publishQue(uId){
 							str += "</div>";
 							str += "</div>";
 					}
+						$("#replace").append(str);
 				}
 			}
 	);
