@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyuji.cy.dao.SuggestDao">
+	<insert id="addSugg" parameterType="Suggest">
+		INSERT 
+		INTO 
+			suggest
+	    VALUES(
+			#{sId},
+			#{uId},
+			#{sInfo},
+			#{createTime}
+			)
+	</insert>
+	
+	<delete id="deleteSugg" parameterType="String">
+		DELETE
+		FROM
+			suggest
+		WHERE 
+			sId = #{sId}
+	</delete>
+	
+	
+	<select id="selectAll" resultType="Suggest">
+		SELECT 
+			* 
+		FROM
+			suggest
+	</select>
+	
+	<select id="selectNew" resultType="Suggest">
+		SELECT 
+			* 
+		FROM
+			suggest
+		ORDER BY
+			createTime
+		DESC
+		LIMIT 0,6
+	</select>
+	
+
+</mapper>
