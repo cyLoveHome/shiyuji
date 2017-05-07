@@ -34,8 +34,8 @@
 		            	</div>
 		            	<div class="row" style="margin-bottom: 20px;">
 		            		<div class="col-md-12 col-xs-12">
-		            			<img src="img/user.png" class="img-circle" width="60">&nbsp;&nbsp;
-		            			<span>${user.uName}的厨房</span>
+		            			<img src="${pageContext.request.contextPath}/img/${user.headPic}" class="img-circle" width="60">&nbsp;&nbsp;
+		            			<span>${user.uName} 的厨房</span>
 		            		</div>
 		            	</div>
 		            	<div class="row" style="margin-bottom: 20px;">
@@ -96,7 +96,7 @@
 			          	
 			          	<div class="row" style="margin-bottom: 20px;">
 					        <div class="col-md-12 text-center">
-					        	<a  class="btn" style="width: 80px;"id="publish">发布菜谱</a>
+					        	<a  class="btn" style="width: 80px;" id="publish">发布菜谱</a>
 					        </div>
 			          	</div>
 		        </div> 

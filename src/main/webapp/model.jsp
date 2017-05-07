@@ -6,6 +6,23 @@
 	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
 	<%@ include file="css_js.jsp" %>
 </head>
+<style>
+        	.queTitle{
+        		width: 100%;
+        		height: 45px;
+        		margin-bottom: 35px;
+        	}
+        	.textInfo{
+        		border-radius: 0px;
+        	}
+        	.modal-header{
+        	    background-color: #b24422;
+    			border-radius: 6px 6px 0px 0px;
+        	}
+        	.close{
+        	    font-size: 31px;
+        	    }
+</style>
 <body>
 
 <!-- 按钮触发模态框 -->
@@ -20,16 +37,16 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					举报 
-				</h4>
+				<h3 class="modal-title" id="myModalLabel">
+					意见反馈
+				</h3>
 			</div>
 			<div class="modal-body" id="all">
-				
+				<h4>请输入您的建议或者您的反馈：</h4><textarea class="form-control textInfo" rows="8" id="reportCause"></textarea>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn">
-					发布
+					提交
 				</button>
 			</div>
 		</div><!-- /.modal-content -->

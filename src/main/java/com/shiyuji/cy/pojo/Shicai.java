@@ -7,8 +7,6 @@ package com.shiyuji.cy.pojo;
 public class Shicai {
 	private String shicaiInfo;
 	
-	
-
 	public Shicai() {
 	}
 

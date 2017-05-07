@@ -7,12 +7,13 @@
 		INSERT 
 		INTO 
 			menus
+			(msId,uId,msName,createTime,msInfo,state)
 	    VALUES(
 			#{msId},
 			#{uId},
 			#{msName},
-			#{msInfo},
 			#{create_time},
+			#{msInfo},
 			#{state}
 		)
 	</insert>
@@ -41,5 +42,22 @@
 			menus
 	</select>
 	
+	<select id="selectByMsid" resultType="Menus" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			menus
+		WHERE
+			msId = #{msId}
+	</select>
+	
+	<select id="selectRan" resultType="Menus">
+		SELECT 
+			* 
+		FROM
+			menus
+		ORDER BY RAND()
+		LIMIT 10
+	</select>
 
 </mapper>

@@ -21,18 +21,18 @@ public class UserServiceImpl implements UserService{
 	private UserDao userDao;
 	
 	@Override
-	public boolean reg(String uName, String password, String bind_email) {
+	public boolean reg(String uName, String password, String bindEmail) {
 		boolean isSuccess = false;
-		User user = new User(uName, password, bind_email);
+		User user = new User(uName, password, bindEmail);
 		int rowNum = userDao.addUser(user);
 		isSuccess = rowNum>0;
 		return isSuccess;
 	}
 
 	@Override
-	public boolean activate(String bind_email, String code) {
+	public boolean activate(String bindEmail, String code) {
 		boolean isActivate = false;
-		User user  = userDao.selectByEmailAddress(bind_email);
+		User user  = userDao.selectByEmailAddress(bindEmail);
 		if(user!=null && code.equals(user.getCode())){
 			user.setState(1);//账户激活
 			int affectRow = userDao.updateUser(user);
@@ -77,15 +77,20 @@ public class UserServiceImpl implements UserService{
 	public List<User> selectRandEightUsers(String uId) {
 		return userDao.selectRandEightUsers(uId);
 	}
+	
 
+	@Override
+	public boolean deleteByUid(String uId) {
+		return userDao.deleteByUid(uId)>0;
+	}
 	
 	
 	//处理注册 发送邮件
-	private boolean processReg(String bind_email,String code,String method){
+	private boolean processReg(String bindEmail,String code,String method){
 		 ///邮件的内容  
-        String mailInfo = generatMailInfo(bind_email, code, method);
+        String mailInfo = generatMailInfo(bindEmail, code, method);
       //发送邮件  
-        return SendEmail.send(bind_email, mailInfo.toString());
+        return SendEmail.send(bindEmail, mailInfo.toString());
         
 	}
 	//产生邮件

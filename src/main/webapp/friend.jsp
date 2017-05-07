@@ -29,7 +29,7 @@
 			            		<div class="col-md-6 col-xs-6">
 			            			<div class="row users">
 							          	<div class="col-md-3">
-							          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
+							          		<img src="${pageContext.request.contextPath}/img/${u.headPic}" class="center-block img-circle img-responsive" >
 							          	</div>
 							          	<div class="col-md-6">
 							          		<div class="row user" style="margin-top: 4px;">

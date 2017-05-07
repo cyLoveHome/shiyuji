@@ -39,6 +39,18 @@ public interface QuestionDao {
 	List<Question> selectRand();
 	
 	
+	/**
+	 * 一条详细问题
+	 * @param qId
+	 * @return
+	 */
 	Question selectOne(String qId);
+	
+	/**
+	 * 查找一些问题
+	 * @param Info
+	 * @return
+	 */
+	List<Question> selectSome(String Info);
 
 }

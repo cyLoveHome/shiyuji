@@ -57,4 +57,15 @@
 		WHERE
 			qId = #{qId}
 	</select>
+	
+	<select id="selectSome" resultType="Question" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			question
+		WHERE
+			qTitle
+		LIKE
+			CONCAT('%','${qTitle}','%' )
+	</select>
 </mapper>

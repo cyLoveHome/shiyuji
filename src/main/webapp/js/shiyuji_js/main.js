@@ -45,9 +45,10 @@ function publishQue(uId){
 			"http://localhost:8080/shiyuji/question/addQue",
 			{"uId":uId,"qTitle":qTitle,"qInfo":qInfo},
 			function(data){
+				console.debug(data);
 				if(data=="false"){
 					alert("提问失败");
-				}else if(data="null"){
+				}else if(data=="nodata"){
 					alert("获取失败，请刷新");
 				}else{
 					var arr = eval("("+data+")");
@@ -58,14 +59,14 @@ function publishQue(uId){
 						str += "<a href='' class='link'>全部</a>";
 						str += "</div>";
 						str += "<div class='col-md-4 text-right'>";
-						str += "<a class='link' onclick='addQuestion('${user.uId}');'>提问题</a>";
+						str += "<a class='link' onclick='addQuestion(\""+uId+"\");'>提问题</a>";
 						str += "</div>";
 						str += "</div>";
 						for(var i = 0;i<arr.length;i++){
 							var question = arr[i];
 							str += "<div class='row question_style'>";
 							str += "<div class='col-md-8'>";
-							str += "<a href='' class='link'>"+question.qTitle+"</a>";
+							str += "<a href='http://localhost:8080/shiyuji/question/one/"+question.qId+"' class='link'>"+question.qTitle+"</a>";
 							str += "</div>";
 							str += "<div class='col-md-4 text-right'>";
 							str += "<span id='answer'>"+question.answerNum+" 回答</span>";

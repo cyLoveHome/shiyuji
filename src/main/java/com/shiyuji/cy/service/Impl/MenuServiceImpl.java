@@ -50,4 +50,9 @@ public class MenuServiceImpl implements MenuService {
 		return menuDao.selectNum(uId);
 	}
 
+	@Override
+	public List<Menu> select() {
+		return menuDao.select();
+	}
+
 }

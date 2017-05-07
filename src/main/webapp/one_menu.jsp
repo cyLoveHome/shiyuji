@@ -1,6 +1,11 @@
 <%@ page language="java" isELIgnored="false" contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.shiyuji.cy.pojo.Comment" %>
+<%@ page import="com.shiyuji.cy.pojo.UserAndComment" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +18,7 @@
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/one_menu.css" rel="stylesheet" type="text/css">
 		<title>菜谱</title>
 	</head>
-	<body onload="changeTime('${Menu.create_time }');changeCommTime('${uc.c.commentTime}');">
+	<body onload="changeTime('${Menu.create_time }');">
 		<%@ include file="nav.jsp" %> 
 		<div class="section" id="sec">
       		<div class="container">
@@ -89,11 +94,20 @@
 											</div>
 							        	</div>
 					        		</div>
+					        		<%
+									        List<UserAndComment> uc = (List<UserAndComment>)request.getAttribute("Twocomments"); 
+					        				int i =0;
+					        		%>
 					        		<c:forEach  items="${Twocomments}" var="uc">
+					        		 <%
+				        		 			Date date = new Date(uc.get(i).getC().getCommentTime());
+					        		 		i++;
+					        		 %>
+									
 						        		<div class="row" style="margin-bottom: 10px;">
 								        	<div class="col-md-1">
 								        		<a href="">
-							          				<img src="${pageContext.request.contextPath}/img/user.png" class="img-circle img-responsive" width="30">
+							          				<img src="${pageContext.request.contextPath}/img/${uc.u.headPic}" class="img-circle img-responsive" width="30">
 								        		</a>
 							          		</div>
 							          		<div class="col-md-9 col-xs-9 comment_margin" style="padding-left: 0px;">
@@ -101,7 +115,7 @@
 								          		<p style="display: inline-block;" class="comment_font">${uc.c.commentInfo}</p>
 								          	</div>
 								          	<div class="col-md-2 col-xs-2 comment_margin text-right">
-								          		<span class="comment_reply" id="time"></span>
+								          		<span class="comment_reply" id="time"><%= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date) %></span>
 								          	</div>
 						        		</div> 
 						        		<hr>
@@ -123,14 +137,13 @@
 		        		
 		        		<div class="row" style="margin-bottom: 30px;">
 					        <div class="col-md-12">
-					          	<img src="${pageContext.request.contextPath}/img/user.png" class="img-circle" width="60">
-					          	<div id="user" style="display: inline-block;">敏-35</div>
+					          	<img src="${pageContext.request.contextPath}/img/${user.headPic}" class="img-circle" width="60">
+					          	<div id="user" style="display: inline-block;">${user.uName }</div>
 					        </div>
 			          	</div>
 			          	<div class="row" style="margin-bottom: 30px;">
 					        <div class="col-md-12" id="user">
-					          	镜头之下，有你，有我，有我们……<br>
-   								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建个不正经的菜谱，只为了记录生活中温暖的小事，曼妙的风景以及爱生活的心情。
+					          	${Menu.mInfo }
 					        </div>
 			          	</div>
 			          	<div class="row" style="margin-bottom: 30px;">
@@ -181,7 +194,7 @@
 										    </div>
 										    <div class="row" style="margin: 5px 0px">
 										    	<div class="col-md-12">
-										    		<img src="img/user.png" class="img-circle" width="20">
+										    		<img src="${pageContext.request.contextPath}/img/user.png" class="img-circle" width="20">
 						          					<div id="user_red">秒江南</div>
 										    	</div>
 									    	</div>

@@ -33,3 +33,18 @@
 				background-color: #a5a7a6;
 				color: white;
 			}
+			.queTitle{
+        		width: 100%;
+        		height: 45px;
+        		margin-bottom: 35px;
+        	}
+        	.textInfo{
+        		border-radius: 0px;
+        	}
+        	.modal-header{
+        	    background-color: #992222;
+    			border-radius: 6px 6px 0px 0px;
+        	}
+        	.close{
+        	    font-size: 31px;
+        	    }

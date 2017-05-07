@@ -10,6 +10,22 @@
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/allQuestion.css" rel="stylesheet" type="text/css">
 		<title>厨房问答</title>
+		<style>
+        	.queTitle{
+        		width: 100%;
+        		height: 45px;
+        		margin-bottom: 35px;
+        	}
+        	.bgModel{
+        		width: 100%;
+        		height: 30px;
+        		display: block;
+        		background-color: rgba(128, 128, 128, 0.24);
+        	}
+        	.textInfo{
+        		border-radius: 0px;
+        	}
+        </style>
 	<body>
 		<%@ include file="nav.jsp" %> 
 		<div class="section" id="sec">
@@ -31,12 +47,12 @@
 							          			<a href="${pageContext.request.contextPath}/question/one/${UserAndQuestion.que.qId}" class="qLink qTitle">${UserAndQuestion.que.qTitle }</a>
 							          		</div>
 							          		<div class="col-md-4 text-right">
-							          			<a href="" class="answer qLink">${UserAndQuestion.que.answerNum } 回答</a>
+							          			<a href="${pageContext.request.contextPath}/question/one/${UserAndQuestion.que.qId}" class="answer qLink">${UserAndQuestion.que.answerNum } 回答</a>
 							          		</div>
 					          			</div> 
 					          			<div class="row">
 					          				<div class="col-md-12">
-					          					<a href="" class="qLink qName">${UserAndQuestion.us.uName }</a>
+					          					<a href="${pageContext.request.contextPath}/kitchen/myself/${UserAndQuestion.us.uId}" class="qLink qName">${UserAndQuestion.us.uName }</a>
 					          				</div>
 					          			</div>
 					          			<hr />
@@ -47,25 +63,20 @@
 		            	
 		            </div>
 		            <div class="col-md-4 col-xs-4">
-		            	<div class="row" style="margin-bottom: 30px;">
-		            		<div class="col-md-12 col-xs-12 text-center">
-		            			<div class="bg">
-			          				<div class="row">
-					        			<div class="col-md-12 qFont">
-					        				我们希望每一个疑惑都有好的解答<br>提出你的问题<br>让厨友为你答疑解惑
-					        			</div>
-			          				</div>
-			          				<div class="row" style="margin-top: 15px;">
-					        			<div class="col-md-12" >
-					        				<a class="btn" >提问</a>
-					        			</div>
-			          				</div>
-		            			</div>
-		            		</div>
-		            	</div>
-		            	<div class="row" style="margin-bottom: 20px;">
-		            		
-		            	</div>
+		            	<%@ include file="askPublic.jsp" %> 
+		            		<div class="row" style="margin-bottom: 20px;">
+			            		<div class="col-md-12 col-xs-12" id="title">食遇记里有众多问题<br>供你搜索</div>
+			            	</div>
+			            	<div class="row" style="margin-bottom: 20px;">
+			            		<div class="col-md-12 col-xs-12">
+			            			<input type="text" placeholder="搜问题"  style="padding-left: 5px;" id="findQuestion"/>
+			            		</div>
+			            	</div>
+			            	<div class="row">
+			            		<div class="col-md-12 col-xs-12">
+			            			<a class="btn" style="width: 100px;margin-left: 1px;" onclick="findQuestion();">搜问题</a>
+			            		</div>
+			            	</div>
 		            </div>
 		        </div> 
 		    	<div class="row" style="margin-bottom: 75px;">

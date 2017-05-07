@@ -14,10 +14,10 @@ public class Menus_collect {
 	public Menus_collect() {
 	}
 
-	public Menus_collect(String uId, String msId, long collect_time) {
+	public Menus_collect(String uId, String msId) {
 		this.uId = uId;
 		this.msId = msId;
-		this.collect_time = collect_time;
+		this.collect_time = System.currentTimeMillis();
 	}
 
 	public String getuId() {

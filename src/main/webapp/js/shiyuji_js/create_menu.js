@@ -112,8 +112,8 @@
 				"http://localhost:8080/shiyuji/menu/classify",
 				function(data){
 					var str = "<select name='classify' id='selectId'>";
+					str += "<option>选择</option>";
 					for(var i= 0;i<data.length;i++){
-						str += "<option>选择</option>";
 						str += "<option value='"+data[i].mcId+"'>"+data[i].mcName+"</option>";
 					}
 					str += "</select>";

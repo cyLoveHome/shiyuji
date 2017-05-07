@@ -2,6 +2,8 @@ package com.shiyuji.cy.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shiyuji.cy.pojo.Menus;
 import com.shiyuji.cy.pojo.Menus_collect;
 
@@ -20,7 +22,7 @@ public interface Menus_collectDao {
 	 * @param msId
 	 * @return
 	 */
-	int delete(String uId,String msId);
+	int delete(@Param("uId")String uId,@Param("msId")String msId);
 	
 	/**
 	 * 查询某用户收藏的所有菜单
@@ -35,6 +37,13 @@ public interface Menus_collectDao {
 	 * @param msId
 	 * @return
 	 */
-	Menus_collect isSelect(String uId,String msId);
+	Menus_collect isSelect(@Param("uId")String uId,@Param("msId")String msId);
+	
+	/**
+	 * 该菜单被收藏的总数
+	 * @param msId
+	 * @return
+	 */
+	String collectNum(String msId);
 	
 }

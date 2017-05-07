@@ -51,5 +51,11 @@ public interface MenuService {
 	 */
 	List<Menu> selectByMname(String mName);
 	
+	/**
+	 * main查
+	 * @return
+	 */
+	List<Menu> select();
+	
 	
 }

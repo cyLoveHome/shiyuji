@@ -19,13 +19,13 @@ public class User {
 	
 	private String rId;
 	
-	private String bind_email;
+	private String bindEmail;
 	
 	private String code;//激活码
 	
 	private int state = 0;// 激活状态     0--未激活   1--激活  2--封号
 	
-	private String headPic;
+	private String headPic = "user.png";
 	
 	private int sex = 1;
 	
@@ -33,7 +33,7 @@ public class User {
 	
 	private String hometown;
 	
-	private long create_time = System.currentTimeMillis();
+	private long createTime;
 	
 	private String uInfo;
 	
@@ -50,30 +50,30 @@ public class User {
 	}
 
 	
-	public User(String uId, String uName, String password, String rId, String bind_email, String code, int state,
-			String headPic, int sex, long birth, String hometown, long create_time, String uInfo) {
+	public User(String uId, String uName, String password, String rId, String bindEmail, String code, int state,
+			String headPic, int sex, long birth, String hometown, String uInfo) {
 		this.uId = UUID.randomUUID()+"";
 		this.uName = uName;
 		this.password = password;
 		this.rId = rId;
-		this.bind_email = bind_email;
+		this.bindEmail = bindEmail;
 		this.code = code;
 		this.state = state;
 		this.headPic = headPic;
 		this.sex = sex;
 		this.birth = birth;
 		this.hometown = hometown;
-		this.create_time = create_time;
+		this.createTime = System.currentTimeMillis();
 		this.uInfo = uInfo;
 	}
 
 
-	public User(String uName, String password, String bind_email) {
+	public User(String uName, String password, String bindEmail) {
 		this.uId = UUID.randomUUID()+"";
 		this.uName = uName;
 		this.password = MD5Util.encode2hex(password);
-		this.bind_email = bind_email;
-		this.code = MD5Util.encode2hex(bind_email);
+		this.bindEmail = bindEmail;
+		this.code = MD5Util.encode2hex(bindEmail);
 	}
 
 	public String getuId() {
@@ -108,13 +108,16 @@ public class User {
 		this.rId = rId;
 	}
 
-	public String getBind_email() {
-		return bind_email;
+
+	public String getBindEmail() {
+		return bindEmail;
 	}
 
-	public void setBind_email(String bind_email) {
-		this.bind_email = bind_email;
+
+	public void setBindEmail(String bindEmail) {
+		this.bindEmail = bindEmail;
 	}
+
 
 	public String getCode() {
 		return code;
@@ -164,22 +167,26 @@ public class User {
 		this.hometown = hometown;
 	}
 
-	public long getCreate_time() {
-		return create_time;
+
+	public long getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreate_time(long create_time) {
-		this.create_time = create_time;
+
+	public void setCreateTime(long createTime) {
+		this.createTime = createTime;
 	}
+
 
 	public String getuInfo() {
 		return uInfo;
 	}
 
+
 	public void setuInfo(String uInfo) {
 		this.uInfo = uInfo;
 	}
-	
+
 
 	public String getFocusNum() {
 		return focusNum;
@@ -224,7 +231,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [uName=" + uName + ", password=" + password + ", bind_email=" + bind_email + ", state=" + state
+		return "User [uName=" + uName + ", password=" + password + ", bindEmail=" + bindEmail + ", state=" + state
 				+ "]";
 	}
 

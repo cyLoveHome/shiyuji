@@ -47,4 +47,10 @@ public interface MenuDao {
 	 * @return
 	 */
 	String selectNum(String uId);
+	
+	/**
+	 * 默认查前13条数据
+	 * @return
+	 */
+	List<Menu> select();
 }

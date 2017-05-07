@@ -17,7 +17,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                     <p class="navbar-text navbar-right" style="margin-top: 20px;margin-right: 25px;">已有账号？
-                        <a href="login_name.jsp" class="navbar-link link">登录</a>
+                        <a href="${pageContext.request.contextPath}/login_name.jsp" class="navbar-link link">登录</a>
                     </p>
                 </div>
             </div>

@@ -59,4 +59,11 @@ public interface UserService {
 	 * @return
 	 */
 	List<User> selectRandEightUsers(String uId);
+	
+	/**
+	 * 根据uId封号
+	 * @param uId
+	 * @return
+	 */
+	boolean deleteByUid(String uId);
 }

@@ -25,10 +25,20 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shiyuji.cy.pojo.Friend;
+import com.shiyuji.cy.pojo.Menu;
+import com.shiyuji.cy.pojo.Menu_classify;
+import com.shiyuji.cy.pojo.Menus;
+import com.shiyuji.cy.pojo.Question;
 import com.shiyuji.cy.pojo.User;
+import com.shiyuji.cy.pojo.UserAndMenu;
+import com.shiyuji.cy.pojo.UserAndQuestion;
 import com.shiyuji.cy.service.UserService;
+import com.shiyuji.cy.service.Impl.AnswerServiceImpl;
 import com.shiyuji.cy.service.Impl.FriendServiceImpl;
 import com.shiyuji.cy.service.Impl.MenuServiceImpl;
+import com.shiyuji.cy.service.Impl.Menu_classifyServiceImpl;
+import com.shiyuji.cy.service.Impl.MenusServiceImpl;
+import com.shiyuji.cy.service.Impl.QuestionServiceImpl;
 import com.shiyuji.cy.service.Impl.UserServiceImpl;
 
 @Controller
@@ -44,6 +54,18 @@ public class UserController {
 	
 	@Autowired
 	private MenuServiceImpl menuService;
+	
+	@Autowired
+	private MenusServiceImpl menusService;
+	
+	@Autowired
+	private Menu_classifyServiceImpl mcService;
+	
+	@Autowired
+	private QuestionServiceImpl questionService;
+	
+	@Autowired
+	private AnswerServiceImpl answerService;
 	
 	@RequestMapping(value="/register",method={RequestMethod.POST})
 	public ModelAndView  reg(HttpServletRequest request,HttpServletResponse response,String uName,String pwd,String bind_email ){
@@ -66,35 +88,76 @@ public class UserController {
 			model.setViewName("forward:../login_name.jsp");
 		}else{
 			HttpSession session = request.getSession(true);
+			session.setMaxInactiveInterval(30*60);
 			User user = userService.login(loginType, pwd);
 			if(user != null){
 				session.setAttribute("user", user);
-				String uId = user.getuId();
-				List<User> randUsers = userService.selectRandEightUsers(uId);//随机用户
-				List<User> users = new ArrayList<>();
-				for(int i = 0;i<randUsers.size();i++){
-					String focusNum = friendServiceImpl.selectFnum(randUsers.get(i).getuId());
-					randUsers.get(i).setFocusNum(focusNum);//关注总数
-					
-					String menuNum = menuService.selecNum(randUsers.get(i).getuId());
-					randUsers.get(i).setMenuNum(menuNum);//创建菜谱总数
-					
-					Friend f = friendServiceImpl.selectFriend(uId, randUsers.get(i).getuId());
-					if(f!=null){
-						 randUsers.get(i).setIsFriend("1");//当前登录用户与该随机用户是好友
-					}else{
-						randUsers.get(i).setIsFriend("0");//当前登录用户与该随机用户不是好友
-					}
-					users.add(randUsers.get(i));
-				}
-				model.addObject("users", users);
-				model.setViewName("forward:/main.jsp");
+				
+				model.setViewName("redirect:main");
 			}else{
 				model.setViewName("forward:/login_name.jsp");
 			}
 		}
 		return model;
 	}
+	
+	@RequestMapping(value="/main",method={RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView main(HttpServletRequest request,HttpServletResponse response){
+		ModelAndView model = new ModelAndView();
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("user");
+		String uId = user.getuId();
+		List<Menu_classify> mcList = mcService.select();//取所有菜谱分类
+		
+		List<User> randUsers = userService.selectRandEightUsers(uId);//随机获取8位厨友
+		List<User> randUserList = new ArrayList<>();
+		for(int i = 0;i<randUsers.size();i++){
+			String focusNum = friendServiceImpl.selectFnum(randUsers.get(i).getuId());
+			randUsers.get(i).setFocusNum(focusNum);//关注总数
+			
+			String menuNum = menuService.selecNum(randUsers.get(i).getuId());
+			randUsers.get(i).setMenuNum(menuNum);//创建菜谱总数
+			
+			Friend f = friendServiceImpl.selectFriend(uId, randUsers.get(i).getuId());
+			if(f!=null){
+				 randUsers.get(i).setIsFriend("1");//当前登录用户与该随机用户是好友
+			}else{
+				randUsers.get(i).setIsFriend("0");//当前登录用户与该随机用户不是好友
+			}
+			randUserList.add(randUsers.get(i));
+		}
+		
+		List<Question> queList = questionService.selectRand();//随机获取5条问题
+		List<Question> queRandList = new ArrayList<>();
+		for(int i = 0;i<queList.size();i++){
+			String qId = queList.get(i).getqId();
+			String answerNum = answerService.selectNum(qId);
+			queList.get(i).setAnswerNum(answerNum);
+			queRandList.add(queList.get(i));
+		}
+		
+		List<Menu> menuList = menuService.select();//默认查最新13条menu
+		List<UserAndMenu> umList = new ArrayList<>();
+			for(int i = 0;i<menuList.size();i++){
+				String id = menuList.get(i).getuId();
+				User u = userService.SelectByUid(uId);
+				UserAndMenu um = new UserAndMenu(u, menuList.get(i));
+				umList.add(um);
+			}
+			
+		List<Menus> ranList = menusService.selectRan();
+		
+		model.addObject("ranList", ranList);
+		model.addObject("mcList", mcList);
+		model.addObject("randUserList", randUserList);
+		model.addObject("queRandList", queRandList);
+		model.addObject("umList", umList);
+		model.setViewName("forward:/main.jsp");
+		return model;
+	}
+	
+
+	
 	
 	@RequestMapping(value="/selectAllUser/{uId}",method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView selectAll(HttpServletRequest request,HttpServletResponse response,@PathVariable("uId")String uId){

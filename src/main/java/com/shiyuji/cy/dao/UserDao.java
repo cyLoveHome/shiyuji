@@ -15,7 +15,7 @@ public interface UserDao {
 	int addUser(User user);
 	
 	/**
-	 * 根据uId删除用户
+	 * 根据uId封号用户
 	 * @param uId
 	 * @return
 	 */
@@ -49,7 +49,7 @@ public interface UserDao {
 	 * @param password
 	 * @return
 	 */
-	User selectByEmail(@Param("bind_email")String bind_email,@Param("password")String password);
+	User selectByEmail(@Param("bind_email")String bindEmail,@Param("password")String password);
 	
 	/**
 	 * 根据用户名模糊查询用户
@@ -63,7 +63,7 @@ public interface UserDao {
 	 * @param bind_email
 	 * @return
 	 */
-	User selectByEmailAddress(String bind_email);
+	User selectByEmailAddress(String bindEmail);
 	
 	/**
 	 * 所有厨友，除了当前用户

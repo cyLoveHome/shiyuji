@@ -1,4 +1,7 @@
 package com.shiyuji.cy.pojo;
+
+import java.util.UUID;
+
 /**
  * 菜单实体类
  * @author cy
@@ -13,20 +16,25 @@ public class Menus {
 	
 	private String msInfo;
 	
-	private long create_time;
+	private long create_time = System.currentTimeMillis();
 	
-	private int state;
+	private int state = 1; //1 在库  0 删除;
+	
+	//以下不存数据库
+	private String menusCollectNum = "0"; //被收藏总数
+	
+	private String isCollect;//是否被当前用户收藏
+	
+	private String collMenu = "0";//收藏的菜谱总数
 
 	public Menus() {
 	}
 
-	public Menus(String msId, String uId, String msName, String msInfo, long create_time, int state) {
-		this.msId = msId;
+	public Menus(String uId, String msName, String msInfo) {
+		this.msId = UUID.randomUUID()+"";
 		this.uId = uId;
 		this.msName = msName;
 		this.msInfo = msInfo;
-		this.create_time = create_time;
-		this.state = state;
 	}
 
 	public String getMsId() {
@@ -75,7 +83,30 @@ public class Menus {
 
 	public void setState(int state) {
 		this.state = state;
+	}
+
+	public String getMenusCollectNum() {
+		return menusCollectNum;
+	}
+
+	public void setMenusCollectNum(String menusCollectNum) {
+		this.menusCollectNum = menusCollectNum;
+	}
+
+	public String getIsCollect() {
+		return isCollect;
+	}
+
+	public void setIsCollect(String isCollect) {
+		this.isCollect = isCollect;
+	}
+
+	public String getCollMenu() {
+		return collMenu;
+	}
+
+	public void setCollMenu(String collMenu) {
+		this.collMenu = collMenu;
 	} 
-	
 	
 }

@@ -57,7 +57,7 @@ public class MenuController {
 	@ResponseBody
 	public void upload(HttpServletRequest request,HttpServletResponse response,String mName,
 			String mpicPath,String mInfo,String shicai,String steps,String mcId) throws IOException{
-		String mId = menuService.uploadMenu(mName, mpicPath, mInfo, shicai,steps);
+			String mId = menuService.uploadMenu(mName, mpicPath, mInfo, shicai,steps);
 			boolean addSuccess = mc_menuService.add(mId, mcId);
 			if(addSuccess){
 				response.getOutputStream().print(mId);
@@ -108,7 +108,10 @@ public class MenuController {
 		String menu_collectNum = menu_collectService.select(mId);
 		menu.setMenuCollectNum(menu_collectNum);
 		
+		User u = userService.SelectByUid(menu.getuId());
+		
 		model.addObject("Menu", menu);
+		model.addObject("us", u);
 		model.addObject("Twocomments", list);
 		model.setViewName("forward:/one_menu.jsp");
 		return model;

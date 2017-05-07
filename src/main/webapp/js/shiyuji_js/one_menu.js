@@ -30,11 +30,6 @@
 			$("#menu_time").html(menuTime);
 		};
 		
-		function changeCommTime(time){
-			var commTime=getMyDate(time);
-			console.debug("-----comm=="+commTime);
-			$("#time").html(commTime);
-		}
 		
 		function clickZan(mId,uId){
 			$.post(
@@ -99,7 +94,7 @@
 								var str = "<div class='row' style='margin-bottom: 10px;'>";
 								str += "<div class='col-md-1'>";
 								str += "<a href=''>";
-								str += "<img src='${pageContext.request.contextPath}/img/user.png' class='img-circle img-responsive' width='30'>";
+								str += "<img src='http://localhost:8080/shiyuji/img/"+user.headPic+"' class='img-circle img-responsive' width='30'>";
 								str += "</a>";
 								str += "</div>";
 								str += "<div class='col-md-9 col-xs-9 comment_margin' style='padding-left: 0px;'>";
@@ -142,11 +137,11 @@
 						str += "<p style='display: inline-block;' class='comment_font'>"+comm.commentInfo+"</p>";
 						str += "</div>";
 						str += "<div class='col-md-2 col-xs-2 comment_margin text-right'>";
-//						str += "<a id='comment_reply'>"+getMyDate(comm.commentTime)+"</a>";
+						str += "<a class='comment_reply'>"+getMyDate(comm.commentTime)+"</a>";
 						str += "</div>";
 						str += "</div> ";
 						str += "<hr> ";
-						$("#appendComm").append(str);
+						$("#appendComm").prepend(str);
 					}
 			);
 		};

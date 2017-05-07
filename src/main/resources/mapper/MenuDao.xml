@@ -65,4 +65,13 @@
 		WHERE
 			uId = #{uId}
 	</select>
+	
+	<select id="select" resultType="Menu">
+		SELECT 
+			* 
+		FROM
+			menu
+		ORDER BY create_time DESC
+		LIMIT 0,1
+	</select>
 </mapper>

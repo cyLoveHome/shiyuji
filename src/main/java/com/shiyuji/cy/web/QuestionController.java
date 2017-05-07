@@ -56,9 +56,7 @@ public class QuestionController {
 		if(isSuccess){
 			List<Question> queList = questionService.selectRand();
 			List<Question> list = new ArrayList<>();
-			System.out.println("_______________________________________");
-			System.out.println(queList.size());
-			System.out.println("_______________________________________");
+			list.add(q);
 			if(queList.size()>=5){
 				for(int i = 0;i<queList.size();i++){
 					String qId = queList.get(i).getqId();
@@ -68,7 +66,7 @@ public class QuestionController {
 				}
 				new ObjectMapper().writeValue(response.getOutputStream(), list);
 			}else{
-				response.getOutputStream().print("null");
+				response.getOutputStream().print("nodata");
 			}
 		}else{
 			response.getOutputStream().print("false");
@@ -100,6 +98,17 @@ public class QuestionController {
 		}
 		model.setViewName("forward:/allQuestion.jsp");
 		return model;
+	}
+	
+	@RequestMapping(value="/selectSome")
+	@ResponseBody
+	public void  selectSome(HttpServletRequest request,HttpServletResponse response,String info) throws IOException{
+		List<Question> qList = questionService.selectSome(info);
+		if(qList.size()>0){
+			new ObjectMapper().writeValue(response.getOutputStream(), qList);
+		}else{
+			response.getOutputStream().print("false");
+		}
 	}
 	
 

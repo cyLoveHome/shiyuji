@@ -52,4 +52,13 @@
 		AND
 			msId = #{msId}
 	</select>
+	
+	<select id="collectNum" resultType="String" parameterType="String">
+		SELECT 
+			count(*) 
+		FROM
+			menus_collect
+		WHERE
+			msId = #{msId}
+	</select>
 </mapper>

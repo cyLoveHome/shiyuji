@@ -47,5 +47,10 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionDao.selectOne(qId);
 	}
 
+	@Override
+	public List<Question> selectSome(String Info) {
+		return questionDao.selectSome(Info);
+	}
+
 	
 }

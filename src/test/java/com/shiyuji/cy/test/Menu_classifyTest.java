@@ -19,7 +19,7 @@ public class Menu_classifyTest {
 	
 	@Test
 	public void add(){
-		boolean isSucces = mcService.createMc("快手菜");
+		boolean isSucces = mcService.createMc("素食");
 		System.out.println("isSuccess-----"+isSucces);
 		
 	}

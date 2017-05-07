@@ -24,7 +24,7 @@ public class Menu {
 	
 	private String steps;
 	
-	private int state = 1; //1 在库 0 删除
+	private int state = 1; //1 在库  0 删除
 	
 	//以下不存数据库，查出放在one_menu中
 	private String likeNum = "0";//点赞总数

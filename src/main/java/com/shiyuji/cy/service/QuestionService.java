@@ -16,7 +16,7 @@ public interface QuestionService {
 	boolean addQuestion(Question q);
 	
 	/**
-	 * 删除个人提问
+	 * 删除个人提问String uId
 	 * @param qId
 	 * @return
 	 */
@@ -47,5 +47,12 @@ public interface QuestionService {
 	 * @return
 	 */
 	Question selectOne(String qId);
+	
+	/**
+	 * 模糊查找一些问题
+	 * @param Info
+	 * @return
+	 */
+	List<Question> selectSome(String Info);
 
 }

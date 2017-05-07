@@ -31,5 +31,16 @@ public interface MenusDao {
 	 * @return
 	 */
 	List<Menus> selectAll();
-
+	
+	/**
+	 * 查具体一条菜单
+	 * @param msId
+	 * @return
+	 */
+	Menus selectByMsid(String msId);
+	
+	/**
+	 * 随机10条菜单
+	 */
+	List<Menus> selectRan();
 }

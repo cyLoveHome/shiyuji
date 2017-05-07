@@ -38,25 +38,32 @@
 		
 		
 		
-		function addAnswer(qId,uId){
+		function addAnswer(qId,uId,answerNum){
 			var aInfo = $("#ansInfo").val();
+			var num = $("#updateNum").text();
+			console.debug("1111--"+num);
 			$.post(
 					"http://localhost:8080/shiyuji/answer/addAns",
 					{"qId":qId,"uId":uId,"aInfo":aInfo},
 					function(data){
+						var changeNum = parseInt(num)+1;
+						console.debug("1111--"+changeNum);
+//						console.debug(answerNum);
 						console.debug(data);
 						var arr = eval("("+data+")");
 						console.debug(arr);
 						var answer = eval(arr.ans);
 						var user = eval(arr.u);
+						$("#updateNum").text(changeNum);
 						var str = "<div class='col-md-12'>";
 						str += "<span class='ansInfo'>"+answer.aInfo+"</span>";
 						str += "</div>";
 						str += "<div class='col-md-12' style='margin-top: 6px;margin-bottom: 25px;'>";
 						str += " <a href='' class='qLink uName'>"+user.uName+"</a>&nbsp;&nbsp;&nbsp;";
-						str += " <span href='' class='time'>回答时间："+answer.aTime+"</span>";
+						str += " <span href='' class='time'>回答时间："+getMyDate(answer.aTime)+"</span>";
 						str += "</div>";
 						str += "<hr>";
+						console.debug("answer time:"+answer.aTime);
 						$("#appendAnswer").prepend(str);
 						$("#ansInfo").val("");
 					}

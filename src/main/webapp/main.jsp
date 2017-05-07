@@ -22,25 +22,13 @@
         <div class="row">
           <div class="col-md-2 col-xs-2">
             <ul class="dropdown">
+            <c:if test="${not empty mcList}">
+            <c:forEach  items="${mcList}" var="mc">
               <li>
-                <i></i>
-                <a href=" " class="link">家常菜</a>
+                <a href="" class="link">${mc.mcName}</a>
               </li>
-              <li>
-                <a href=" "class="link">快手菜</a>
-              </li>
-              <li>
-                <i></i>
-                <a href=" "class="link">下饭菜</a>
-              </li>
-              <li>
-                <i></i>
-                <a href=" "class="link">早餐</a>
-              </li>
-              <li>
-                <i></i>
-                <a href=" "class="link">肉</a>
-              </li>
+              </c:forEach>
+              </c:if>
             </ul>
           </div>
           <div class="col-md-10 col-xs-10 col-sm-10">
@@ -56,25 +44,13 @@
 						  </ol>  
 		                  <div class="carousel-inner">
 		                    <div class="item active">
-		                      <img style="height: 230px;" src="${pageContext.request.contextPath}/img/滚动1.jpg" >
-		                      <div class="carousel-caption" id="img_info">
-		                        <a href=" " class="link">Title</a>
-		                        <p>Description1</p>
-		                      </div>
+		                      <a href=""><img style="height: 230px;width:620px;" src="${pageContext.request.contextPath}/img/test.jpg" ></a>
 		                    </div>
 		                    <div class="item">
-								<img style="height: 230px;" src="${pageContext.request.contextPath}/img/滚动2.jpg" >
-		                      	<div class="carousel-caption" id="img_info">
-		                        <a href=" " class="link">Title</a>
-		                        <p>Description2</p>
-		                      </div>
+								<img style="height: 230px;width:620px;" src="${pageContext.request.contextPath}/img/滚动2.jpg" >
 							</div>
 							<div class="item">
-								<img style="height: 230px;" src="${pageContext.request.contextPath}/img/滚动3.jpg" >
-		                      	<div class="carousel-caption" id="img_info">
-		                        <a href=" " class="link">Title</a>
-		                        <p>Description3</p>
-		                      </div>
+								<img style="height: 230px;width:620px;" src="${pageContext.request.contextPath}/img/滚动3.jpg" >
 							</div>
 		                  </div>
 		                  <a class="left carousel-control" href="#carousel" data-slide="prev">
@@ -101,11 +77,29 @@
 			          		</div>
 			          		
 				          	<div class="row">
-				          		<a href="${pageContext.request.contextPath}/createMenu/selectOne/39c5e441-67ad-4079-8011-d980c811f0f4" id="shicai_link">
+				        <%--   	<c:if test="${not empty umList }">
+				          	<c:forEach items="${umList }" var="um">
+				          		<a href="${pageContext.request.contextPath}/createMenu/selectOne/${um.menu.mId}" id="shicai_link">
 					          		<div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/img/3.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/upload/${um.menu.mPic}" class="img-responsive" width="162.5">
+									        </div>
+									    </div>
+									    <div class="row">
+									    	<div class="col-md-12 text-center">
+									    		<div class="font">${um.menu.mName }</div>
+									    	</div>
+									    </div>
+									</div>
+								</a>
+							</c:forEach>
+							</c:if> --%>
+								<a href="" id="shicai_link">
+									<div class="col-md-3 col-xs-3">
+				            			<div class="row">
+				              				<div class="col-md-12">
+				                				<img src="${pageContext.request.contextPath}/img/test.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -119,12 +113,12 @@
 							        <div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/img/4.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/img/新秀1.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
 									    	<div class="col-md-12 text-center">
-									    		<div class="font">柠檬</div>
+									    		<div class="font">蒸蛋糕</div>
 									    	</div>
 									    </div>
 									</div>
@@ -133,12 +127,12 @@
 									<div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/img/5.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/img/新秀2.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
 									    	<div class="col-md-12 text-center">
-									    		<div class="font">柠檬</div>
+									    		<div class="font">葫芦饼</div>
 									    	</div>
 									    </div>
 									</div>
@@ -147,12 +141,12 @@
 									<div class="col-md-3 col-xs-3">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/img/6.jpg" class="img-responsive" width="162.5">
+				                				<img src="${pageContext.request.contextPath}/img/新秀3.jpg" class="img-responsive" width="162.5">
 									        </div>
 									    </div>
 									    <div class="row">
 									    	<div class="col-md-12 text-center">
-									    		<div class="font">柠檬</div>
+									    		<div class="font">小豆沙</div>
 									    	</div>
 									    </div>
 									</div>
@@ -161,8 +155,8 @@
 			          	</div>
 		          	</div>
 			        <div class="row"  id="replace">
-			          	<div class="col-md-12" style="margin-top: 35px;margin-bottom: 20px">
-			          		<div class="row">
+			          	<div class="col-md-12" style="margin-top: 35px;">
+			          		<div class="row" style="margin-bottom: 20px;">
 				          		<div class="col-md-8">
 				          			<span id="title">厨房问答</span>&nbsp;&nbsp;&nbsp;&nbsp;
 				          			<a href="${pageContext.request.contextPath}/question/all" class="link">全部</a>
@@ -172,52 +166,21 @@
 				          		</div>
 				          	</div>
 			          		
-			          		<div class="row question_style">
-				          		<div class="col-md-8">
-				          			<a href=" "class="link">茄子怎样炒不会黑？</a>
+			          		<c:if test="${not empty queRandList}">
+			          		<c:forEach  items="${queRandList}" var="que">
+				          		<div class="row question_style">
+					          		<div class="col-md-8">
+					          			<a href="${pageContext.request.contextPath}/question/one/${que.qId}" class="link">${que.qTitle }</a>
+					          		</div>
+					          		<div class="col-md-4 text-right">
+					          			<span id="answer">${que.answerNum } 回答</span>
+					          		</div>
 				          		</div>
-				          		<div class="col-md-4 text-right">
-				          			<span id="answer">4 回答</span>
-				          		</div>
-			          		</div>
-			          		
-			          		<div class="row question_style">
-				          		<div class="col-md-8">
-				          			<a href=""class="link">做面包揉面买厨师机还是面包机？</a>
-				          		</div>
-				          		<div class="col-md-4 text-right">
-				          			<span id="answer">7 回答</span>
-				          		</div>
-			          		</div>
-			          		
-			          		<div class="row question_style">
-				          		<div class="col-md-8">
-				          			<a href=" "class="link">红烧茄子怎么做才能不油？</a>
-				          		</div>
-				          		<div class="col-md-4 text-right">
-				          			<span id="answer">11 回答</span>
-				          		</div>
-				          	</div>
-			          		
-			          		<div class="row question_style">
-				          		<div class="col-md-8">
-				          			<a href=" "class="link">烙饼怎么保存和加热？</a>
-				          		</div>
-				          		<div class="col-md-4 text-right">
-				          			<span id="answer">9 回答</span>
-				          		</div>
-			          		</div>
-			          		
-			          		<div class="row">
-				          		<div class="col-md-8">
-				          			<a href=" "class="link">铸铁锅第一次使用要注意些什么？</a>
-				          		</div>
-				          		<div class="col-md-4 text-right">
-				          			<span id="answer">3 回答</span>
-				          		</div>
-			          		</div>
+			          		</c:forEach>
+			          		</c:if>
 			          	</div>
 			        </div>
+			        
 		          	<div class="row">
 			          	<div class="col-md-12" style="margin-top: 35px;">
 			          		<div class="row" style="margin-bottom: 20px;">
@@ -233,7 +196,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/test.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -250,7 +213,7 @@
 					          		<div class="col-md-6 col-xs-6">
 				            			<div class="row">
 				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/img/1.jpg" class="img-responsive" width="325">
+				                				<img src="${pageContext.request.contextPath}/img/test.jpg" class="img-responsive" width="325">
 									        </div>
 									    </div>
 									    <div class="row">
@@ -441,14 +404,19 @@
 	            			<div id="log_reg">
 	            				<div class="row" style="padding-top: 25px;">
 		                			<div class="col-md-12">
-		                    			<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" style="width: 100px;">
+		                    			<img src="${pageContext.request.contextPath}/img/${user.headPic}" class="center-block img-circle img-responsive" style="width: 100px;">
 		                			</div>
 		            			</div>
-		            		<div class="row" style="margin-top: 50px;">
-		                		<div class="col-md-12 text-center" style="font-size: 12px;">
-		                    		<a href="${pageContext.request.contextPath}/create_menu.jsp" class="link">创建菜谱</a>&nbsp;
-		                		</div>
-		            		</div>
+		            			<div class="row" style="margin-top: 20px;">
+			                		<div class="col-md-12 text-center" style="font-size: 12px;">
+			                    		<a href="${pageContext.request.contextPath}/kitchen.jsp" class="link">${user.uName }</a>&nbsp;
+			                		</div>
+			            		</div>
+			            		<div class="row" style="margin-top: 30px;">
+			                		<div class="col-md-12 text-center" style="font-size: 12px;">
+			                    		<a href="${pageContext.request.contextPath}/create_menu.jsp" class="link">创建菜谱</a>&nbsp;
+			                		</div>
+			            		</div>
 	            			</div>
 	            		</div>
 	            	</div>
@@ -529,37 +497,15 @@
 					          		<a href="" class="link">全部</a>
 					          	</div>
 			          		</div>
-			          		
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="shicai_link" class="font">买了个电饭盒</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="shicai_link" class="font">减脂增肌碳水篇（超快手&高颜值）</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="shicai_link" class="font">包子饼子饺子馒头发糕年糕开会</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="shicai_link" class="font">为爸妈量身打造</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="shicai_link" class="font">软糯朴实还是轻盈酥脆？当然是主食</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="shicai_link" class="font">❤生日蛋糕造型❤</a>
-			          			</div>
-			          		</div>
+			          		<c:if test="${not empty ranList}">
+	            				<c:forEach  items="${ranList}" var="menus">
+					          		<div class="row menu">
+					          			<div class="col-md-12 col-xs-12">
+					          				<a href="" id="shicai_link" class="font">${menus.msName }</a>
+					          			</div>
+					          		</div>
+					           	</c:forEach>
+				          	</c:if>
 			          	</div>
 			        </div>
 	            	<div class="row">
@@ -571,10 +517,11 @@
 					          	</div>
 			          		</div>
 			          		
-			          		<c:forEach  items="${users}" var="u">
+			          		<c:if test="${not empty randUserList}">
+			          		<c:forEach  items="${randUserList}" var="u">
 			          		<div class="row users">
 					          	<div class="col-md-3">
-					          		<img src="${pageContext.request.contextPath}/img/user.png" class="center-block img-circle img-responsive" >
+					          		<img src="${pageContext.request.contextPath}/img/${u.headPic}" class="center-block img-circle img-responsive" >
 					          	</div>
 					          	<div class="col-md-6">
 					          		<div class="row user">
@@ -598,6 +545,7 @@
 			          		</div>
 			          		<hr>
 			          		</c:forEach>
+			          		</c:if>
 			          		
 			          		<div class="row">
 			          			<div class="col-md-12 col-xs-12 text-center">

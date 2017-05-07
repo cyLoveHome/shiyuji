@@ -17,7 +17,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 					<p class="navbar-text navbar-right" style="margin-top: 20px;margin-right: 25px;">没有账号？
-						<a href="reg.jsp" class="navbar-link link">注册</a>
+						<a href="${pageContext.request.contextPath}/reg.jsp" class="navbar-link link">注册</a>
 					</p>
 				</div>
 			</div>
