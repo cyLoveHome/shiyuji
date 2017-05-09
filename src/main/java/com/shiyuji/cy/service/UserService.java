@@ -66,4 +66,6 @@ public interface UserService {
 	 * @return
 	 */
 	boolean deleteByUid(String uId);
+	
+	String userFindPwd(String bind_email);
 }

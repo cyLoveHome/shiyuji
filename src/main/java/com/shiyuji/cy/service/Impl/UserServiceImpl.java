@@ -11,10 +11,10 @@ import com.shiyuji.cy.pojo.User;
 import com.shiyuji.cy.service.UserService;
 import com.shiyuji.cy.utils.MD5Util;
 import com.shiyuji.cy.utils.SendEmail;
+import com.shiyuji.cy.utils.VerifyCodeUtils;
 
 @Service
 public class UserServiceImpl implements UserService{
-	
 	private static final String ACTIVATE_URL = "http://localhost:8080/shiyuji/user/activate";
 	private static final String FINDPWD_URL = "http://localhost:8080/shiyuji/user/findpwd?action=verify";
 	@Autowired
@@ -83,38 +83,34 @@ public class UserServiceImpl implements UserService{
 	public boolean deleteByUid(String uId) {
 		return userDao.deleteByUid(uId)>0;
 	}
-	
-	
-	//处理注册 发送邮件
-	private boolean processReg(String bindEmail,String code,String method){
-		 ///邮件的内容  
-        String mailInfo = generatMailInfo(bindEmail, code, method);
-      //发送邮件  
-        return SendEmail.send(bindEmail, mailInfo.toString());
-        
-	}
-	//产生邮件
-	private String generatMailInfo(String bind_email,String email_code,String method){
-		StringBuffer mailInfo=new StringBuffer();
-		if("reg".equals(method)){
-			mailInfo.append("点击下面链接激活账号，10分钟内有效，否则重新注册账号，链接只能使用一次，请尽快激活！<br/>");
-			mailInfo.append("<a href='"+ACTIVATE_URL+"?email=");  
-		    mailInfo.append(bind_email);   
-		    mailInfo.append("&validateCode=");   
-		    mailInfo.append(email_code);  
-		    mailInfo.append("'>点此激活");   
-		    mailInfo.append("</a>");
-		}else if("findpwd".equals(method)){
-			mailInfo.append("点击下面链接找回密码，10分钟内有效，否则重新发送，链接只能使用一次，请尽快使用！<br/>");
-			mailInfo.append("<a href='"+FINDPWD_URL+"&email=");  
-		    mailInfo.append(bind_email);   
-		    mailInfo.append("&validateCode=");   
-		    mailInfo.append(email_code);  
-		    mailInfo.append("'>点此激活");   
-		    mailInfo.append("</a>");
-		}
-		return mailInfo.toString();
+
+	@Override
+	public String userFindPwd(String bind_email) {
+		boolean isSuccess = false;
+		String rs ="";
+		User user = userDao.selectByEmailAddress(bind_email);
+			if(user!=null){
+				rs = VerifyCodeUtils.generateVerifyCode(6);
+				isSuccess = processFindPwd(bind_email,rs);
+			}
+		return isSuccess?rs:"";
 	}
 
+	//处理注册 发送邮件
+	private boolean processFindPwd(String bind_email,String email_code){
+			 ///邮件的内容  
+	        String mailInfo = generatMailInfo(bind_email, email_code);
+	      //发送邮件  
+	        return SendEmail.send(bind_email, mailInfo.toString(),"邮箱找回密码验证码");
+	}
+	
+	//产生邮件
+		private String generatMailInfo(String bind_email,String email_code){
+			StringBuffer mailInfo=new StringBuffer();
+				mailInfo.append("<h1>shiyuji--密码系统<h1>");
+				mailInfo.append("正在通过邮箱找回修改密码,请保管好您的密码，尽快使用！<br/>");
+				mailInfo.append("<h3>"+email_code+"</h3>");  
+			return mailInfo.toString();
+		}
 
 }

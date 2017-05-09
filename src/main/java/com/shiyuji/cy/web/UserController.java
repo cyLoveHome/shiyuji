@@ -1,10 +1,12 @@
 package com.shiyuji.cy.web;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.Session;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shiyuji.cy.dao.UserDao;
 import com.shiyuji.cy.pojo.Friend;
 import com.shiyuji.cy.pojo.Menu;
 import com.shiyuji.cy.pojo.Menu_classify;
@@ -40,6 +43,7 @@ import com.shiyuji.cy.service.Impl.Menu_classifyServiceImpl;
 import com.shiyuji.cy.service.Impl.MenusServiceImpl;
 import com.shiyuji.cy.service.Impl.QuestionServiceImpl;
 import com.shiyuji.cy.service.Impl.UserServiceImpl;
+import com.shiyuji.cy.utils.VerifyCodeUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -48,6 +52,8 @@ public class UserController {
 	
 	@Autowired
 	private UserServiceImpl userService;
+	@Autowired
+	private UserDao userDao;
 	
 	@Autowired
 	private FriendServiceImpl friendServiceImpl;
@@ -213,4 +219,69 @@ public class UserController {
 		}
 		new ObjectMapper().writeValue(response.getOutputStream(), users);
 	}
+	
+	@RequestMapping(value="/{email}/email/check")
+	@ResponseBody
+	public void checkEmailExsist(HttpServletRequest request,HttpServletResponse response,
+			@PathVariable("email")String email) throws JsonGenerationException, JsonMappingException, IOException{
+		User user = userDao.selectByEmailAddress(email);
+		new ObjectMapper().writeValue(response.getOutputStream(), user!=null);
+	}
+	@RequestMapping(value="/email/{bindEmail}/send",method={RequestMethod.GET,RequestMethod.POST})  
+	@ResponseBody
+    public void  emailSend(HttpServletRequest request,HttpServletResponse response,
+    		@PathVariable("bindEmail")String bindEmail
+    		) throws ParseException, IOException{ 
+		logger.warn("email------"+bindEmail);
+		ServletOutputStream outputStream = response.getOutputStream();
+		String userFindPwd = userService.userFindPwd(bindEmail);
+		User myuser = userDao.selectByEmailAddress(bindEmail);
+		myuser.setCode(userFindPwd);
+		boolean userUpdate = userDao.updateUser(myuser)>0;
+		outputStream.print((userFindPwd!=""&&userUpdate)?"1":"2");
+		
+    }
+	
+	@RequestMapping(value="/email/code/{bind_email}/{code}/verify",method={RequestMethod.GET,RequestMethod.POST})  
+	@ResponseBody
+    public void  emailCodeVerify(HttpServletRequest request,HttpServletResponse response,
+    		@PathVariable("bind_email")String bind_email,
+    		@PathVariable("code")String code
+    		) throws ParseException, IOException{ 
+		logger.warn("email------"+bind_email);
+		ServletOutputStream outputStream = response.getOutputStream();
+		boolean email_bind_user_exsist = userDao.selectByEmailAddress(bind_email)!=null;
+		if(email_bind_user_exsist){
+			User myuser = userDao.selectByEmailAddress(bind_email);
+			String email_code = myuser.getCode();
+			if(code.equalsIgnoreCase(email_code)){
+				outputStream.print("1");
+			}else{
+				outputStream.print("2");
+			}
+		}else{
+			outputStream.print("2");
+		}
+    }
+	
+	
+	@RequestMapping(value="/pwd/{pwd}/email/{bind_email}/modify",method={RequestMethod.GET,RequestMethod.POST})  
+	@ResponseBody
+    public void  pwdModifyEmail(HttpServletRequest request,HttpServletResponse response,
+    		@PathVariable("pwd")String pwd,
+    		@PathVariable("bind_email")String bind_email
+    		) throws ParseException, IOException{ 
+		String verifyPwd = com.shiyuji.cy.utils.MD5Util.encode2hex(pwd);
+		ServletOutputStream outputStream = response.getOutputStream();
+		boolean email_bind_user_exsist = userDao.selectByEmailAddress(bind_email)!=null;
+		if(email_bind_user_exsist){
+			User myuser = userDao.selectByEmailAddress(bind_email);
+			myuser.setPassword(verifyPwd);
+			boolean userUpdate = userDao.updateUser(myuser)>0;
+			outputStream.print(userUpdate?"1":"2");
+		}else{
+			outputStream.print("2");
+		}
+		
+    }
 }

@@ -18,7 +18,7 @@ public class SendEmail {
     public static final String PROTOCOL = "smtp";     
     public static final int PORT = 25;  
     public static final String FROM = "15061137872@163.com";//发件人的email  
-    public static final String PWD = "cy12108023cyy";//发件人密码  
+    public static final String PWD = "cy12108023cyy..";//发件人密码  
       
     /** 
      * 获取Session 
@@ -42,7 +42,8 @@ public class SendEmail {
         return session;  
     }  
       
-    public static boolean send(String toEmail , String content) { 
+    
+    public static boolean send(String toEmail , String content,String subject) { 
         Session session = getSession();  
         try {  
             System.out.println("--send--"+content);  
@@ -53,7 +54,7 @@ public class SendEmail {
             msg.setFrom(new InternetAddress(FROM));  
             InternetAddress[] address = {new InternetAddress(toEmail)};  
             msg.setRecipients(Message.RecipientType.TO, address);  
-            msg.setSubject("账号激活邮件");  
+            msg.setSubject(subject);  
             msg.setSentDate(new Date());  
             msg.setContent(content , "text/html;charset=utf-8");  
    

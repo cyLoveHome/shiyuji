@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/friend.js"></script>
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/personal.css" rel="stylesheet" type="text/css">
-		<title>厨友们</title>
+		<title>个人信息中心</title>
 	</head>
 	<body>
 		<%@ include file="nav.jsp" %>
