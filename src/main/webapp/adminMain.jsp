@@ -21,6 +21,12 @@
     <link href="${pageContext.request.contextPath}/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
     <link href="${pageContext.request.contextPath}/css/adminCss/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/adminCss/style-responsive.css" rel="stylesheet" />
+	
+	<!-- easyui -->
+		<script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.easyui.min.js" ></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/easyui/themes/bootstrap/easyui.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/easyui/themes/icon.css" />
+	
 	<style>
 		.moreClick{
 			margin-left: 1100px;
@@ -333,7 +339,7 @@
 							          			%>
 				                                  <td><%= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) %></td>
 				                                  <td><a class="label label-success btn" href="${pageContext.request.contextPath}/createMenu/kitchen/${ru.rus.uId}?admin=1" target="_blank">查看详情</a>
-	                                  				 <a class="label label-danger btn" style="margin-left: 10px;" onclick="click('');">处理</a>
+	                                  				 <a class="label label-danger btn" style="margin-left: 10px;" id="handle${ reportUser.ruId }" onclick="handle('${ reportUser.ruId }','${ reportUser.uName }','${ reportUser.reportTime }')">处理</a>
 	                                  				 <%@ include file="adminModel.jsp" %>
 	                                  			  </td>
 				                            </tr>
@@ -398,6 +404,8 @@
     <script src="${pageContext.request.contextPath}/js/adminJs/common-scripts.js"  type="text/javascript" ></script>
     <script src="${pageContext.request.contextPath}/js/adminJs/sparkline-chart.js"  type="text/javascript" ></script>
     <script src="${pageContext.request.contextPath}/js/adminJs/easy-pie-chart.js"  type="text/javascript" ></script> 
+    
+     <script src="${pageContext.request.contextPath}/js/admin-report.js"  type="text/javascript" ></script> 
   <script>
       $(document).ready(function() {
           $("#owl-demo").owlCarousel({
@@ -413,5 +421,7 @@
           $('select.styled').customSelect();
       });
   	</script> 
+  	
+  	<jsp:include page="adminModel.jsp"></jsp:include>
   </body>
 </html>
