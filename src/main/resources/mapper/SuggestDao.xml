@@ -51,5 +51,18 @@
 			uId = #{uId}
 	</select>
 	
+	<select id="selectSuggestByPage" resultType="Suggest">
+		SELECT 
+			* 
+		FROM
+			suggest
+		ORDER BY 
+			createTime
+		DESC
+		LIMIT
+		#{start},
+		#{pageSize}
+	</select>
+	
 
 </mapper>

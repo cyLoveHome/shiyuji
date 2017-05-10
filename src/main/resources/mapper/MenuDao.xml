@@ -92,4 +92,16 @@
 		FROM
 			menu
 	</select>
+	
+	
+	<select id="selectMenuByPage" resultType="Menu">
+		SELECT 
+			* 
+		FROM
+			menu
+		ORDER BY createTime DESC
+		LIMIT
+		#{start},
+		#{pageSize}
+	</select>
 </mapper>

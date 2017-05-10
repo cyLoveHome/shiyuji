@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.shiyuji.cy.pojo.Menu;
+import com.shiyuji.cy.pojo.Suggest;
 
 public interface MenuDao {
 	/**
@@ -67,4 +68,6 @@ public interface MenuDao {
 	 * @return
 	 */
 	List<Menu> selectAll();
+	
+	List<Menu> selectMenuByPage(@Param("start")int start,@Param("pageSize")int pageSize);
 }

@@ -37,6 +37,8 @@ public class User {
 	
 	private String uInfo;
 	
+	private long banTime;
+	
 	//以下不存数据库
 	private String focusNum = "0"; //被关注人数
 	
@@ -47,6 +49,8 @@ public class User {
 	private String menusNum = "0";//菜单总数
 	
 	private String isFriend;//是否与该用户是好友关系
+	
+
 	
 	public User() {
 	}
@@ -67,6 +71,7 @@ public class User {
 		this.hometown = hometown;
 		this.createTime = System.currentTimeMillis();
 		this.uInfo = uInfo;
+		this.banTime=0;
 	}
 
 
@@ -76,7 +81,19 @@ public class User {
 		this.password = MD5Util.encode2hex(password);
 		this.bindEmail = bindEmail;
 		this.code = MD5Util.encode2hex(bindEmail);
+		this.createTime = System.currentTimeMillis();
 	}
+	
+	
+	public long getBanTime() {
+		return banTime;
+	}
+
+
+	public void setBanTime(long banTime) {
+		this.banTime = banTime;
+	}
+
 
 	public String getuId() {
 		return uId;

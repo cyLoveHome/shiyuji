@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.shiyuji.cy.pojo.Report;
+import com.shiyuji.cy.pojo.User;
 
 public interface ReportDao {
 	
@@ -38,5 +39,14 @@ public interface ReportDao {
 	Report selectOne(@Param("uId")String uId,@Param("mId")String mId);
 	
 	List<Report> selectNew();
+	
+	List<Report> selectAll2();
+	
+	/**
+	 * 
+	 * @param todayTime
+	 * @return
+	 */
+	List<Report> selectReportByPage(@Param("start")int start,@Param("pageSize")int pageSize);
 
 }

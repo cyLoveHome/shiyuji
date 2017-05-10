@@ -49,6 +49,13 @@
 			uId != #{uId}
 	</select>
 	
+	<select id="selectAll2" resultType="Question">
+		SELECT 
+			* 
+		FROM
+			question
+	</select>
+	
 	<select id="selectRand" resultType="Question">
 		SELECT 
 			* 
@@ -87,5 +94,18 @@
 			qTitle
 		LIKE
 			CONCAT('%','${qTitle}','%' )
+	</select>
+	
+	<select id="selectQuestionByPage" resultType="Question">
+		SELECT 
+			* 
+		FROM
+			question
+		ORDER BY 
+			createTime
+		DESC
+		LIMIT
+		#{start},
+		#{pageSize}
 	</select>
 </mapper>

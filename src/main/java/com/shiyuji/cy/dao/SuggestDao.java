@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.shiyuji.cy.pojo.Report;
 import com.shiyuji.cy.pojo.Suggest;
 
 public interface SuggestDao {
@@ -39,5 +40,7 @@ public interface SuggestDao {
 	 * @return
 	 */
 	List<Suggest> selectMy(String uId);
+	
+	List<Suggest> selectSuggestByPage(@Param("start")int start,@Param("pageSize")int pageSize);
 
 }

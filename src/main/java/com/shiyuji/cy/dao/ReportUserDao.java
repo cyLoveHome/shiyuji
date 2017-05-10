@@ -31,6 +31,14 @@ public interface ReportUserDao {
 	 */
 	List<ReportUser> selectAll(String uId);
 	
+	
+	/**
+	 * 查询我所有举报
+	 * @param uId
+	 * @return
+	 */
+	List<ReportUser> selectAll2();
+	
 	/**
 	 * 查是否举报过
 	 * @param uId
@@ -40,5 +48,12 @@ public interface ReportUserDao {
 	ReportUser selectOne(@Param("uId")String uId,@Param("ruId")String ruId);
 	
 	List<ReportUser> selectNew();
+	
+	/**
+	 * 
+	 * @param todayTime
+	 * @return
+	 */
+	List<ReportUser> selectReportUserByPage(@Param("start")int start,@Param("pageSize")int pageSize);
 
 }

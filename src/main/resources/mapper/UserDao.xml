@@ -20,7 +20,8 @@
 			#{birth},
 			#{hometown},
 			#{createTime},
-			#{uInfo}
+			#{uInfo},
+			#{banTime}
 		)
 	</insert>
 	
@@ -39,7 +40,8 @@
 			birth = #{birth},
 			hometown = #{hometown},
 			createTime = #{createTime},
-			uInfo = #{uInfo}
+			uInfo = #{uInfo},
+			banTime = #{banTime}
 		WHERE
 			uId = #{uId}
 	</update>
@@ -194,6 +196,34 @@
 			password = #{password}
 		AND
 			rId = '1'
+	</select>
+	
+	<select id="selectUserByPage" resultType="User">
+		SELECT
+			*
+		FROM
+			user
+		WHERE
+			rId != '1'
+		ORDER BY regTime
+		LIMIT
+		#{start},
+		#{pageSize}
+	</select>
+	
+	<select id="selectAdminByPage" resultType="User">
+		SELECT
+			*
+		FROM
+			user
+			WHERE
+			rId = '1'
+		AND
+			uId != #{uId}
+		ORDER BY regTime
+		LIMIT
+		#{start},
+		#{pageSize}
 	</select>
 
 </mapper>

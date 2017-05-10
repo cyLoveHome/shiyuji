@@ -92,5 +92,18 @@
 		AND
 			uId != #{uId}
 	</select>
+	
+	<select id="selectMenusByPage" resultType="Menus" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			menus
+		ORDER BY 
+			createTime
+		DESC
+		LIMIT
+		#{start},
+		#{pageSize}
+	</select>
 
 </mapper>

@@ -113,6 +113,19 @@ public interface UserDao {
 	 */
 	User adminByEmail(@Param("bind_email")String bindEmail,@Param("password")String password);
 	
+	/**
+	 * 
+	 * @param todayTime
+	 * @return
+	 */
+	List<User> selectUserByPage(@Param("start")int start,@Param("pageSize")int pageSize);
+	
+	/**
+	 * 
+	 * @param todayTime
+	 * @return
+	 */
+	List<User> selectAdminByPage(@Param("start")int start,@Param("pageSize")int pageSize,@Param("uId")String uId);
 }
 	
 	

@@ -1,6 +1,7 @@
 package com.shiyuji.cy.web;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +21,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shiyuji.cy.dao.MenuDao;
+import com.shiyuji.cy.dao.MenusDao;
+import com.shiyuji.cy.dao.QuestionDao;
+import com.shiyuji.cy.dao.ReportDao;
+import com.shiyuji.cy.dao.ReportUserDao;
+import com.shiyuji.cy.dao.SuggestDao;
+import com.shiyuji.cy.dao.UserDao;
 import com.shiyuji.cy.pojo.Comment;
 import com.shiyuji.cy.pojo.Like;
 import com.shiyuji.cy.pojo.Menu;
 import com.shiyuji.cy.pojo.Menu_collect;
 import com.shiyuji.cy.pojo.Menus;
 import com.shiyuji.cy.pojo.Menus_menu;
+import com.shiyuji.cy.pojo.Page;
 import com.shiyuji.cy.pojo.Question;
 import com.shiyuji.cy.pojo.Report;
 import com.shiyuji.cy.pojo.ReportUser;
@@ -100,6 +109,9 @@ public class AdminController {
 	@Autowired
 	private FriendServiceImpl friService;
 	
+	@Autowired
+	private UserDao userDao;
+	
 	@RequestMapping(value="/login",method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView login(HttpServletRequest request,HttpServletResponse response,String loginType,String pwd){
 		ModelAndView model = new ModelAndView();
@@ -111,7 +123,7 @@ public class AdminController {
 			session.setMaxInactiveInterval(30*60);
 			User user = userService.adminLogin(loginType, pwd);
 			if(user != null){
-				session.setAttribute("user", user);
+				session.setAttribute("admin", user);
 				model.setViewName("redirect:load");
 			}else{
 				model.setViewName("forward:/login_name.jsp");
@@ -221,5 +233,237 @@ public class AdminController {
 		
 		return model;
 	}
+	
+
+	
+	@RequestMapping(value="/user/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  useStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/allUser.jsp");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = userService.selectAll().size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<User> users = userDao.selectUserByPage(page.getStartPos(), page.getPageSize());
+		mav.addObject("allusers", users);
+		mav.addObject("page", page);
+		return mav;
+	}
+	
+	@RequestMapping(value="/admin/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  adminStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/allAdmin.jsp");
+		String adminUid = (String) request.getSession(true).getAttribute("admin");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = userService.selectAdmin(adminUid).size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<User> users = userDao.selectAdminByPage(page.getStartPos(), page.getPageSize(),adminUid);
+		mav.addObject("alladmins", users);
+		mav.addObject("page", page);
+		return mav;
+	}
+	
+	@Autowired
+	ReportDao reportDao;
+	
+	@RequestMapping(value="/report/menu/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  menuReportStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/reportMenuInfo.jsp");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = reportDao.selectAll2().size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<Report> reports = reportDao.selectReportByPage(page.getStartPos(), page.getPageSize());
+		List<UserAndReport> rList = new ArrayList<>();
+		for(Report report : reports){
+			UserAndReport ur = new UserAndReport();
+			User u = userService.SelectByUid(report.getuId());
+			ur.setM(menuService.selectByMid(report.getmId()));
+			ur.setR(report);
+			ur.setU(u);
+			rList.add(ur);
+		}
+		
+			
+		mav.addObject("rList", rList);
+		mav.addObject("page", page);
+		return mav;
+	}
+	
+	@Autowired
+	ReportUserDao reportUserDao;
+	
+	@RequestMapping(value="/report/user/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  userReportStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/reportUserInfo.jsp");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = reportUserDao.selectAll2().size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<ReportUser> reports = reportUserDao.selectReportUserByPage(page.getStartPos(), page.getPageSize());
+		List<UserAndReport> ruList = new ArrayList<>();
+		for(ReportUser reportuser : reports){
+			UserAndReport ur = new UserAndReport();
+			User rus = userService.SelectByUid(reportuser.getRuId());
+			User u = userService.SelectByUid(reportuser.getuId());
+			ur.setRu(reportuser);
+			ur.setU(u);
+			ur.setRus(rus);
+			ruList.add(ur);
+		}
+		mav.addObject("ruList", ruList);
+		mav.addObject("page", page);
+		return mav;
+	}
+	
+	@Autowired
+	SuggestDao suggestDao;
+	
+	@RequestMapping(value="/suggestion/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  suggestionStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/suggInfo.jsp");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = suggestDao.selectAll().size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<Suggest> suggestions = suggestDao.selectSuggestByPage(page.getStartPos(), page.getPageSize());
+		List<UserAndSugg> sList = new ArrayList<>();
+		for (Suggest suggestion : suggestions) {
+			UserAndSugg us = new UserAndSugg();
+			User u = userService.SelectByUid(suggestion.getuId());
+			us.setS(suggestion);
+			us.setU(u);
+			sList.add(us);
+		}
+		mav.addObject("sList", sList);
+		mav.addObject("page", page);
+		return mav;
+	}
+	@Autowired
+	MenuDao menuDao;
+	
+	@RequestMapping(value="/menu/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  menuStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/dataMenu.jsp");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = menuService.selectAll().size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<Menu> allMenu = menuDao.selectMenuByPage(page.getStartPos(), page.getPageSize());
+		List<UserAndMenu> mlist = new ArrayList<>();
+		for(Menu menu : allMenu){
+			UserAndMenu um = new UserAndMenu();
+			User u = userService.SelectByUid(menu.getuId());
+			um.setMenu(menu);
+			um.setU(u);
+			mlist.add(um);
+		}
+		mav.addObject("mlist", mlist);
+		mav.addObject("page", page);
+		return mav;
+	}
+	
+	@Autowired
+	QuestionDao questionDao;
+	
+	@RequestMapping(value="/question/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  questionStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/dataQuestion.jsp");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = queService.selectAll().size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<Question> questions = questionDao.selectQuestionByPage(page.getStartPos(), page.getPageSize());
+		List<UserAndQuestion> qlist = new ArrayList<>();
+		for(Question question: questions){
+			String uId= question.getuId();
+			User u = userService.SelectByUid(uId);
+			String qId =question.getqId();
+			String answerNum = answerService.selectNum(qId);
+			question.setAnswerNum(answerNum);
+			UserAndQuestion uq = new UserAndQuestion(u, question);
+			qlist.add(uq);
+		}
+		mav.addObject("qlist", qlist);
+		mav.addObject("page", page);
+		return mav;
+	}
+	
+	@Autowired
+	MenusDao menusDao;
+	
+	@RequestMapping(value="/menus/all",method={RequestMethod.GET,RequestMethod.POST})  
+	public ModelAndView  menusStatistics(HttpServletRequest request,HttpServletResponse response
+			) throws ParseException{
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("forward:/dataMenus.jsp");
+		String currentPage = (String)request.getParameter("currentpage");
+		Page page = null;
+		Integer totalCount = menusService.selectAllMenus().size();
+		Integer pageNow = 1;
+		if(currentPage != null && !currentPage.isEmpty()){
+			pageNow = Integer.parseInt(currentPage);
+		}
+		page = new Page(totalCount, pageNow);
+		List<Menus> allMenus = menusDao.selectMenusByPage(page.getStartPos(), page.getPageSize());
+		List<Menus> list1 = menusService.selectNew();
+		List<UserAndMenus> mslist = new ArrayList<>();
+		for(Menus menus : allMenus){
+			UserAndMenus ums = new UserAndMenus();
+			User u = userService.SelectByUid(menus.getuId());
+			ums.setMenus(menus);
+			ums.setU(u);
+			mslist.add(ums);
+		}
+		mav.addObject("mslist", mslist);
+		mav.addObject("page", page);
+		return mav;
+	}
+	
+
+	
+	
 
 }

@@ -56,4 +56,27 @@
 		DESC
 		LIMIT 0,3
 	</select>
+	
+	
+	<select id="selectAll2" resultType="Report">
+		SELECT 
+			* 
+		FROM
+			report
+	</select>
+	
+	
+		
+	<select id="selectReportByPage" resultType="Report">
+		SELECT 
+			* 
+		FROM
+			report
+		ORDER BY 
+			reportTime
+		DESC
+		LIMIT
+		#{start},
+		#{pageSize}
+	</select>
 </mapper>

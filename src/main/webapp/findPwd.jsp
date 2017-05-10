@@ -34,7 +34,7 @@
 							
 							<div class="col-md-12 col-xs-12 boxBody">
 						        <label class="boxLabel">邮 箱 :</label>
-						        <input type="text" class="boxInput" id="bind_email" onkeyup="verifyEmail()" autocomplete="off" />
+						        <input type="text" class="boxInput" id="bind_email" onkeyup="verifyEmail()" autocomplete="off" placeholder="请输入绑定邮箱" />
 						        <span style="margin-left: 20px;" id="emailStatus">邮箱不存在</span>
 						        <button id="sendEmail" id="sendEmail" disabled="disabled" onclick="sendEmailCode()">发送验证码</button>
 							</div>

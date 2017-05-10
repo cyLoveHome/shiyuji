@@ -25,6 +25,13 @@
 			uId = #{uId}
 	</select>
 	
+	<select id="selectAll2" resultType="ReportUser" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			reportuser
+	</select>
+	
 	<select id="selectOne" resultType="ReportUser" parameterType="String">
 		SELECT 
 			* 
@@ -56,4 +63,17 @@
 		AND
 			ruId = #{ruId}
 	</delete>
+	
+	<select id="selectReportUserByPage" resultType="ReportUser">
+		SELECT 
+			* 
+		FROM
+			reportuser
+		ORDER BY 
+			reportTime
+		DESC
+		LIMIT
+		#{start},
+		#{pageSize}
+	</select>
 </mapper>
