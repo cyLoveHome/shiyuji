@@ -11,7 +11,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="${pageContext.request.contextPath}/img/avatar1.jpg" width="29">
-                            <span class="username">管理员</span>
+                            <span class="username">${admin.uName }</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">

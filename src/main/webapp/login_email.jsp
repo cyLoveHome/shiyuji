@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<%@ include file="css_js.jsp" %>
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/login_reg.css" rel="stylesheet" type="text/css">
+		<link href="${pageContext.request.contextPath}/css/adminCss/bootstrap-reset.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -20,6 +21,7 @@
 					<p class="navbar-text navbar-right" style="margin-top: 20px;margin-right: 25px;">没有账号？
 						<a href="${pageContext.request.contextPath}/reg.jsp" class="navbar-link link">注册</a>
 					</p>
+					<%@ include file="adminLogin.jsp" %>
 				</div>
 			</div>
 		</div>
@@ -80,7 +82,7 @@
 			              </div>
 			              <div class="form-group">
 			                <div class="col-sm-offset-2 col-sm-10">
-			                  <button type="submit" class="btn btn-default">登录</button>
+			                  <button type="submit" class="btn">登录</button>
 			                </div>
 			              </div>
 			            </form>
