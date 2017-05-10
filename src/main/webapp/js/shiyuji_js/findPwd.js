@@ -1,75 +1,64 @@
 	 $(function(){
 		 	path = "http://localhost:8080/shiyuji";
 		 
-			$("#email").keyup(function(){
-				console.debug("email -- key up");
-				var emailVal = $("#email").val().trim();
-				var str = "";
-				if(emailVal.length>0){
-					var pattern = /\w+[@]{1}\w+[.]\w+/;
-					if(pattern.test(emailVal) && emailVal.indexof("@163.com")>0){
-						var result = checkEmailExsist(emailVal);
-						console.debug("result  ===++>"+result);
-						if(result=="1"){
-							str = "邮箱正确可用";
-						}else{
-							str = "邮箱不存在";
-						}
-					}else{
-						str = "邮箱格式不正确，格式为**@163.com";
-					}
-				}else{
-					str = "邮箱不可为空，格式为**@163.com";
-				}
-				$("#checkemail").text(str);
-			});	
+//			$("#email").keyup(function(){
+//				verifyEmail();
+//			});
+//				
+//				var emailVal = $("#email").val().trim();
+//				console.debug("email -- key up ===》"+emailVal);
+//				if(emailVal.length==0){
+//					$("#checkemail").text("邮箱不可为空，格式为**@163.com");
+//					return;
+//				}
+//				if(emailVal.length>0){
+//					var pattern = /\w+[@]{1}\w+[.]\w+/;
+//					if(!pattern.test(emailVal) || emailVal.indexOf("@163.com")<=0){
+//						$("#checkemail").text("邮箱格式不正确，格式为**@163.com");
+//						return;
+//					}else{
+//						$.post(
+//								"http://localhost:8080/shiyuji/user/"+emailVal+"/email/check",
+//								function(rs){
+//									console.debug("checkEmailExsist eamil==>"+emailVal+"rs==>"+rs);
+//									var st = "";
+//									if(rs=="1"){
+//										st = "邮箱正确可用";
+//									}else{
+//										st = "邮箱不存在";
+//									}
+//									console.debug(" keyup chekc post  :"+st);
+//									$("#checkemail").text(st);
+//								}
+//					);
+//				}
+//			});	
 				
 	 });
 	 
-	 function checkEmailExsist(emailVal){
-		 var str ="2";
-		 $.post(
-					path+"/user/"+emailVal+"/email/check",
-					function(rs){
-						console.debug("checkEmailExsist eamil==>"+eamilVal+"rs==>"+rs);
-						if(rs==true){
-							str = "1";
-						}
-					}
-			);
-		 return str;
-	 }
 	 function verifyEmail(){
-			var bind_email = $("#bind_email").val().trim();
+			var bind_email =  $("#bind_email").val().trim();
 			console.debug("verifyEmail++++++"+bind_email);
 			var reg = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
 			if(!reg.test(bind_email)){
-				var str="请输入正确的邮箱格式";
-				$("#emailStatus").text(str);
-				$("#emailStatus").removeClass("alert-success");
-				$("#emailStatus").addClass("alert-danger");
+				$("#emailStatus").text("请输入正确的邮箱格式");
 				$("#sendEmail").attr("disabled","disabled");
 				return;
 			}
-			verifyemailurl = path+"/user/email/"+bind_email+"/verify";
+			verifyemailurl = path+"/user/"+bind_email+"/email/check";
 			$.post(
 					verifyemailurl,
 					function(rs){
 						console.debug("youxiang rs:"+rs);
 						if(rs=="1"){
-							var str ="邮箱认证成功";
-							$("#emailStatus").text(str);
-							$("#emailStatus").removeClass("alert-danger");
-							$("#emailStatus").addClass("alert-success");
+							console.debug("========1======");
+							$("#emailStatus").text("邮箱认证成功");
 							$("#sendEmail").removeAttr("disabled");
-						}else{
-							var str ="邮箱认证失败";
-							$("#emailStatus").text(str);
-							$("#emailStatus").removeClass("alert-success");
-							$("#emailStatus").addClass("alert-danger");
+						}else if(rs=="2"){
+							console.debug("========2======");
+							$("#emailStatus").text("邮箱认证失败");
 							$("#sendEmail").attr("disabled","disabled");
 						}
-						
 					}	
 				);
 		}
@@ -83,8 +72,8 @@
 						if(rs=="1"){
 							var str ="邮箱验证码发送成功";
 							wuya_messager("无涯-邮箱验证码",str,"info");
-							$("#content2").toggle();
-							$("#content1").toggle();
+//							$("#content2").toggle();
+//							$("#content1").toggle();
 							$("#bind_email").attr("readonly","readonly");
 							$("#email_code_input").removeAttr("readonly");
 						}else{
@@ -110,10 +99,10 @@
 						if(rs=="1"){
 							var str ="邮箱验证码验证成功";
 							wuya_messager("无涯-邮箱验证码",str,"info");
-							$("#content2").toggle();
-							$("#content3").toggle();
+//							$("#content2").toggle();
+//							$("#content3").toggle();
 							$("#newPwd").removeAttr("readonly");
-							$("#newPwd2").removeAttr("readonly");
+//							$("#newPwd2").removeAttr("readonly");
 						}else{
 							var str ="邮箱验证码雅正失败";
 							wuya_messager("无涯-邮箱验证码",str,"error");
@@ -128,12 +117,13 @@
 			var str="";
 			if(pwd.length<8){
 				str ="密码长度不可小于8位";
-				$("#newstatus").removeClass("alert-success");
-				$("#newstatus").addClass("alert-danger");
+//				$("#newstatus").removeClass("alert-success");
+//				$("#newstatus").addClass("alert-danger");
 			}else{
 				str="密码可用";
-				$("#newstatus").removeClass("alert-danger");
-				$("#newstatus").addClass("alert-success");
+//				$("#newstatus").removeClass("alert-danger");
+//				$("#newstatus").addClass("alert-success");
+				$("#newPwd2").removeAttr("readonly");
 			}
 			
 		}

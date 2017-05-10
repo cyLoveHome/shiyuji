@@ -40,7 +40,7 @@
 			hometown = #{hometown},
 			createTime = #{createTime},
 			uInfo = #{uInfo}
-		WUERE
+		WHERE
 			uId = #{uId}
 	</update>
 	

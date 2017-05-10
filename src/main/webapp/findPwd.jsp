@@ -34,28 +34,28 @@
 							
 							<div class="col-md-12 col-xs-12 boxBody">
 						        <label class="boxLabel">邮 箱 :</label>
-						        <input type="text" class="boxInput" placeholder="输入绑定邮箱号" id="email" />
-						        <span style="margin-left: 20px;" id="checkemail">邮箱不存在</span>
-						        <button >发送验证码</button>
+						        <input type="text" class="boxInput" id="bind_email" onkeyup="verifyEmail()" autocomplete="off" />
+						        <span style="margin-left: 20px;" id="emailStatus">邮箱不存在</span>
+						        <button id="sendEmail" id="sendEmail" disabled="disabled" onclick="sendEmailCode()">发送验证码</button>
 							</div>
 							<div class="col-md-12 col-xs-12 boxBody">
 						        <label class="boxLabel">验证码 :</label>
-						        <input type="text" class="boxInput" placeholder="验证码" id="emailcode"/>
-						        <span style="margin-left: 20px;" id="checkcode">邮箱不存在</span>
-						        <button >校验验证码</button>
+						        <input type="text" class="boxInput" id="email_code_input" readonly="readonly" placeholder="请输入邮箱验证码"/>
+						        <!-- <span style="margin-left: 20px;" id="checkcode">邮箱不存在</span> -->
+						        <button id="verifyEmail" onclick="verifyCode()">校验验证码</button>
 							</div>
 							<div class="col-md-12 col-xs-12 boxBody">
 						        <label class="boxLabel">新密码 :</label>
-						        <input type="text" class="boxInput" placeholder="New Pwd" id=""/>
-						        <span style="margin-left: 20px;" id="checkpwd">邮箱不存在</span>
+						        <input type="text" class="boxInput" id="newPwd" readonly="readonly" placeholder="输入新密码" onkeyup="verifyNewPwd()"/>
+						        <span style="margin-left: 20px;" id="newstatus">请输入新密码</span>
 							</div>
 							<div class="col-md-12 col-xs-12 boxBody">
 						        <label class="boxLabel">确认新密码:</label>
-						        <input type="text" class="boxInput" placeholder="Check Pwd" />
-						        <span style="margin-left: 20px;" id="checkpwd2">邮箱不存在</span>
+						        <input type="text" class="boxInput" id="newPwd2" readonly="readonly" placeholder="再次输入密码" onkeyup="verifyNewPwdAgain()"/>
+						        <span style="margin-left: 20px;" id="newstatus2">请再一次输入密码</span>
 							</div>
 							<div class="col-md-12 col-xs-12 boxSave">
-						        <button type="submit" class="btn" id="submitpwd">确认</button>
+						        <button type="submit" class="btn" id="submitPwd" onclick="modifyCode()">确认</button>
 							</div>
 		            	</div>
 		            </div>

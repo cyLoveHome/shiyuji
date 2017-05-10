@@ -73,7 +73,7 @@
 			                <div class="col-sm-offset-2 col-sm-10">
 			                  <div class="checkbox">
 			                    <a href="${pageContext.request.contextPath}/login_email.jsp" class="link">通过邮箱登陆</a>
-			                    <a href="#" class="link" style="margin-left: 113px;">忘记密码</a>
+			                    <a href="${pageContext.request.contextPath}/user/pwd/find" class="link" style="margin-left: 113px;">忘记密码</a>
 			                  </div>
 			                </div>
 			              </div>

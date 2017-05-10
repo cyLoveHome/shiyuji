@@ -220,12 +220,22 @@ public class UserController {
 		new ObjectMapper().writeValue(response.getOutputStream(), users);
 	}
 	
+	@RequestMapping(value="/pwd/find",method={RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView jumptoFindPwd(HttpServletRequest request,HttpServletResponse response){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("forward:/findPwd.jsp");
+		return model;
+	}
+	
+	
 	@RequestMapping(value="/{email}/email/check")
 	@ResponseBody
 	public void checkEmailExsist(HttpServletRequest request,HttpServletResponse response,
 			@PathVariable("email")String email) throws JsonGenerationException, JsonMappingException, IOException{
 		User user = userDao.selectByEmailAddress(email);
-		new ObjectMapper().writeValue(response.getOutputStream(), user!=null);
+		String rs = user!=null?"1":"2";
+		logger.warn("checkEmailExsist email:++++++>"+email+"rs===>"+rs);
+		response.getOutputStream().print(rs);
 	}
 	@RequestMapping(value="/email/{bindEmail}/send",method={RequestMethod.GET,RequestMethod.POST})  
 	@ResponseBody

@@ -13,8 +13,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.shiyuji.cy.dao.BookDao;
+import com.shiyuji.cy.dao.UserDao;
 import com.shiyuji.cy.pojo.Book;
 import com.shiyuji.cy.pojo.Comment;
+import com.shiyuji.cy.pojo.User;
 import com.shiyuji.cy.service.Impl.CommentServiceImpl;
 import com.shiyuji.cy.service.Impl.LikeServiceImpl;
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -60,4 +62,14 @@ public class Test1_dao {
 			logger.warn(comment.toString());
 		}
 	}
+	
+	@Autowired
+	UserDao userDao;
+	@Test
+	public void test_email(){
+		User user = userDao.selectByEmailAddress("15061137872@163.com");
+		System.out.println(user.toString());
+	}
+	
+	
 }
