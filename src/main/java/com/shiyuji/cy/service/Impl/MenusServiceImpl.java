@@ -32,11 +32,6 @@ public class MenusServiceImpl implements MenusService {
 	}
 
 	@Override
-	public List<Menus> selectAll() {
-		return menusDao.selectAll();
-	}
-
-	@Override
 	public Menus selectByMsid(String msId) {
 		return menusDao.selectByMsid(msId);
 	}
@@ -44,6 +39,26 @@ public class MenusServiceImpl implements MenusService {
 	@Override
 	public List<Menus> selectRan() {
 		return menusDao.selectRan();
+	}
+
+	@Override
+	public List<Menus> selectAll(String uId) {
+		return menusDao.selectAll(uId);
+	}
+
+	@Override
+	public List<Menus> selectByInfo(String msName,String uId) {
+		return menusDao.selectByInfo(msName,uId);
+	}
+
+	@Override
+	public List<Menus> selectAllMenus() {
+		return  menusDao.selectAllMenus();
+	}
+
+	@Override
+	public List<Menus> selectNew() {
+		return menusDao.selectNew();
 	}
 	
 	

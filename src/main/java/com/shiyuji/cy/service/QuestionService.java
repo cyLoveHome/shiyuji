@@ -22,6 +22,8 @@ public interface QuestionService {
 	 */
 	boolean deleteQuestion(String qId);
 	
+	List<Question> selectNew();
+	
 	/**
 	 * 我的提问
 	 * @param uId
@@ -35,6 +37,12 @@ public interface QuestionService {
 	 */
 	List<Question> selectAll();
 	
+	/**
+	 * 除去当前用户的所有问题
+	 * @param uId
+	 * @return
+	 */
+	List<Question> selectAll(String uId);
 	/**
 	 * 随机查5条问题
 	 * @return

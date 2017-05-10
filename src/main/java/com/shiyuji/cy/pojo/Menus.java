@@ -16,7 +16,7 @@ public class Menus {
 	
 	private String msInfo;
 	
-	private long create_time = System.currentTimeMillis();
+	private long createTime;
 	
 	private int state = 1; //1 在库  0 删除;
 	
@@ -35,6 +35,7 @@ public class Menus {
 		this.uId = uId;
 		this.msName = msName;
 		this.msInfo = msInfo;
+		this.createTime = System.currentTimeMillis();
 	}
 
 	public String getMsId() {
@@ -69,12 +70,13 @@ public class Menus {
 		this.msInfo = msInfo;
 	}
 
-	public long getCreate_time() {
-		return create_time;
+
+	public long getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreate_time(long create_time) {
-		this.create_time = create_time;
+	public void setCreateTime(long createTime) {
+		this.createTime = createTime;
 	}
 
 	public int getState() {

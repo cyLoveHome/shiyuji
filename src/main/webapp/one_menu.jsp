@@ -4,6 +4,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.shiyuji.cy.pojo.Comment" %>
+<%@ page import="com.shiyuji.cy.pojo.Menu" %>
 <%@ page import="com.shiyuji.cy.pojo.UserAndComment" %>
 
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/one_menu.css" rel="stylesheet" type="text/css">
 		<title>菜谱</title>
 	</head>
-	<body onload="changeTime('${Menu.create_time }');">
+	<body>
 		<%@ include file="nav.jsp" %> 
 		<div class="section" id="sec">
       		<div class="container">
@@ -53,7 +54,8 @@
 		          			</c:if>
 		          			</div>
 		          			<div class="col-md-6 col-xs-6 text-right">
-		          				<div class="btn" style="margin-right: 3px;"><i class="fa fa-align-left" style="font-size: 23"></i></div>
+		          				<div class="btn" style="margin-right: 3px;" data-toggle="modal" data-target="#Modal3"><i class="fa fa-align-left" style="font-size: 23"></i></div>
+		          				 <%@ include file="addMenus.jsp" %>
 		          				<c:if test="${Menu.isCollect eq '1'}">
 		          					<div class="btn" style="width: 100px;font-size: 16px;" onclick="clickCollect('${Menu.mId}','${user.uId }')" id="coll_info">已收藏</div>
 		          				</c:if>	
@@ -137,8 +139,8 @@
 		        		
 		        		<div class="row" style="margin-bottom: 30px;">
 					        <div class="col-md-12">
-					          	<img src="${pageContext.request.contextPath}/img/${user.headPic}" class="img-circle" width="60">
-					          	<div id="user" style="display: inline-block;">${user.uName }</div>
+					          	<img src="${pageContext.request.contextPath}/img/${us.headPic}" class="img-circle" width="60">
+					          	<div id="user" style="display: inline-block;">${us.uName }</div>
 					        </div>
 			          	</div>
 			          	<div class="row" style="margin-bottom: 30px;">
@@ -265,33 +267,31 @@
 					        <div class="col-md-12">
 					        	<span id="title" style="font-size: 20px;">被大家加入到以下菜单</span>
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					        	<a href="" class="link">加入菜单</a>
-					        </div>
-			          	</div>
-			          	<div class="row" style="margin-bottom: 15px;">
-					        <div class="col-md-12">
-					        	<span class="a_hover one_menu">水晶样点心</span>
-					        </div>
-			          	</div>
-			          	<div class="row" style="margin-bottom: 15px;">
-					        <div class="col-md-12">
-					        	<span class="a_hover one_menu">水晶样点心</span>
-					        </div>
-			          	</div>
-			          	<div class="row" style="margin-bottom: 15px;">
-					        <div class="col-md-12">
-					        	<span class="a_hover one_menu">水晶样点心</span>
-					        </div>
-			          	</div>
-			          	<div class="row" style="margin-bottom: 15px;">
-					        <div class="col-md-12">
-					        	<span class="a_hover one_menu">水晶样点心</span>
+					        	<a href="" class="link" data-toggle="modal" data-target="#Modal3">加入菜单</a>
+					        	<%@ include file="addMenus.jsp" %>
 					        </div>
 			          	</div>
 			          	
+			          	<c:if test="${not empty classifyMenus}">
+		            		<c:forEach  items="${classifyMenus}" var="menus">
+					          	<div class="row" style="margin-bottom: 15px;">
+							        <div class="col-md-12">
+							        	<span class="a_hover one_menu">${menus.msName }</span>
+							        </div>
+					          	</div>
+					         </c:forEach>
+					    </c:if>
+					    <c:if test="${empty classifyMenus}">
+					          	<div class="row" style="margin-bottom: 15px;">
+							        <div class="col-md-12">
+							        	<span class="one_menu">暂未被加入任何菜单</span>
+							        </div>
+					          	</div>
+					    </c:if>
+			          	
 			          	<div class="row" style="margin-bottom: 15px;">
 					        <div class="col-md-12 text-center">
-					        	<a href="" class="link">全部菜单</a>
+					        	<a href="${pageContext.request.contextPath}/menus/all/${user.uId }" class="link">全部菜单</a>
 					        </div>
 			          	</div>
 			          	
@@ -311,7 +311,11 @@
 				        
 				        <div class="row" style="margin-bottom: 20px;">
 					        <div class="col-md-12">
-					        	<span class="user_info" style="font-size: 15px;">该菜谱创建于<span id="menu_time"></span></span>
+					        <%
+							          				Menu menu = (Menu)request.getAttribute("Menu");
+							          				Date date = new Date(menu.getCreateTime()); 
+							          			%>
+					        	<span class="user_info" style="font-size: 15px;">该菜谱创建于<span id="menu_time"><%= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) %></span></span>
 					        </div>
 			          	</div>
 			          	<div class="row" style="margin-bottom: 50px;">
@@ -322,10 +326,10 @@
 			          	
 			          	<div class="row">
 					        <div class="col-md-12">
-					        	<a href=""  class=" navbar-link link" data-toggle="modal" data-target="#Modal" onclick="isReport('${Menu.mId}','${user.uId }');">
+					        	<a href=""  class=" navbar-link link" data-toggle="modal" data-target="#Modal1" onclick="isReport('${Menu.mId}','${user.uId }');">
 					        		举报该菜谱
 					        	</a>
-					        	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					        	<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">

@@ -29,11 +29,15 @@
 			            		<div class="col-md-6 col-xs-6">
 			            			<div class="row users">
 							          	<div class="col-md-3">
-							          		<img src="${pageContext.request.contextPath}/img/${u.headPic}" class="center-block img-circle img-responsive" >
+							          		<a href="${pageContext.request.contextPath}/createMenu/kitchen/${u.uId}" class="link">
+							          			<img src="${pageContext.request.contextPath}/img/${u.headPic}" class="center-block img-circle img-responsive" >
+							          		</a>
 							          	</div>
 							          	<div class="col-md-6">
 							          		<div class="row user" style="margin-top: 4px;">
-							          			<div class="col-md-12 user_name" id="shicai_link">${u.uName }</div>
+							          			<a href="${pageContext.request.contextPath}/createMenu/kitchen/${u.uId}" class="link">
+							          				<div class="col-md-12 user_name" id="shicai_link">${u.uName }</div>
+							          			</a>
 							          		</div>
 							          		<div class="row user">
 							          			<div class="col-md-12 user_info">${u.focusNum }关注</div>

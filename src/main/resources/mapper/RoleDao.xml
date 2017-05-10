@@ -11,5 +11,15 @@
 		WHERE
 			rId = #{rId}
 	</select>
+	
+	<insert id="addRole" parameterType="Role">
+		INSERT 
+		INTO 
+			role
+	    VALUES(
+			#{rId},
+			#{rName}
+		)
+	</insert>
 
 </mapper>

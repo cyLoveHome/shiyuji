@@ -38,19 +38,26 @@
 					&times;
 				</button>
 				<h3 class="modal-title" id="myModalLabel">
-					意见反馈
+					把 ${Menu.mName } 加入到你的菜单专辑
 				</h3>
 			</div>
 			<div class="modal-body" id="all">
-				<h4>请输入您的建议或者您的反馈：</h4><textarea class="form-control textInfo" rows="8" id="reportCause"></textarea>
+				<select id="selectId">
+					<option>选择</option>
+					<c:if test="${not empty myMenus}">
+		            	<c:forEach  items="${myMenus}" var="menus">
+							<option value="${menus.msId }">${menus.msName }</option>
+						</c:forEach>
+					</c:if>
+				</select>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn">
-					提交
+				<button type="submit" class="btn close">
+					确定
 				</button>
 			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
+		</div>
+	</div>
 </div>
 </body>
 </html>

@@ -9,5 +9,13 @@ public interface RoleDao {
 	 * @return
 	 */
 	Role selectByRid(String rId);
+	
+	
+	/**
+	 * 添加用户角色
+	 * @param rName
+	 * @return
+	 */
+	int addRole(Role r);
 
 }

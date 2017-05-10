@@ -1,4 +1,8 @@
    <%@ page language="java" isELIgnored="false" contentType="text/html; charset=utf-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <%String ss = request.getParameter("admin"); 
+   	 if(!"1".equals(ss)){
+   %>
     <div class="navbar navbar-fixed-top" id="nav">
 		    <div class="container" style="width: 1000px;">
 		        <div class="navbar-header">
@@ -33,10 +37,11 @@
 		        </p>
 		        </div>
 		    </div>
+		    
     </div>
     <div class="drop_border">
         <div class="drop_line">
-         	<a href="${pageContext.request.contextPath}/kitchen.jsp" class="link">我的厨房</a>
+         	<a href="${pageContext.request.contextPath}/createMenu/kitchen/${user.uId}" class="link">我的厨房</a>
         </div>
         <div class="drop_line">
          	<a href="${pageContext.request.contextPath}/personal.jsp" class="link">账号设置</a>
@@ -71,3 +76,6 @@
 					</div>
 				</div>
 			</div>
+	<%
+   	 }
+	%>

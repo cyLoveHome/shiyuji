@@ -2,6 +2,8 @@ package com.shiyuji.cy.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shiyuji.cy.pojo.Menu;
 
 public interface MenuDao {
@@ -31,7 +33,7 @@ public interface MenuDao {
 	 * @param mId
 	 * @return
 	 */
-	List<Menu> selectByMname(String mName);
+	List<Menu> selectByMname(@Param("mName")String mName,@Param("uId")String uId);
 	
 	/**
 	 * 搜索该用户创建的所有菜谱
@@ -53,4 +55,16 @@ public interface MenuDao {
 	 * @return
 	 */
 	List<Menu> select();
+	
+	/**
+	 * 默认查前3条数据
+	 * @return
+	 */
+	List<Menu> selectThree();
+	
+	/**
+	 * 系统所有菜谱
+	 * @return
+	 */
+	List<Menu> selectAll();
 }

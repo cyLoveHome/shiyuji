@@ -17,13 +17,13 @@ public class User {
 	
 	private String password;
 	
-	private String rId;
+	private String rId = "0"; //普通用户为0  超级管理员为1
 	
 	private String bindEmail;
 	
 	private String code;//激活码
 	
-	private int state = 0;// 激活状态     0--未激活   1--激活  2--封号
+	private int state = 0;//   0--账号正常     1--封号
 	
 	private String headPic = "user.png";
 	
@@ -39,6 +39,8 @@ public class User {
 	
 	//以下不存数据库
 	private String focusNum = "0"; //被关注人数
+	
+	private String toFocusNum = "0"; //关注人数
 	
 	private String menuNum = "0";//菜谱总数
 	
@@ -195,6 +197,18 @@ public class User {
 
 	public void setFocusNum(String focusNum) {
 		this.focusNum = focusNum;
+	}
+
+
+	
+	
+	public String getToFocusNum() {
+		return toFocusNum;
+	}
+
+
+	public void setToFocusNum(String toFocusNum) {
+		this.toFocusNum = toFocusNum;
 	}
 
 

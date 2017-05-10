@@ -100,12 +100,39 @@ public class QuestionController {
 		return model;
 	}
 	
+	@RequestMapping(value="/myQue")
+	@ResponseBody
+	public void selectMy(HttpServletRequest request,HttpServletResponse response,String uId) throws IOException{
+		List<Question> myQues = questionService.selectByUid(uId);
+		if(myQues.size()>0){
+			for(int i = 0;i<myQues.size();i++){
+				String answerNum = answerService.selectNum(myQues.get(i).getqId());
+				myQues.get(i).setAnswerNum(answerNum);
+			}
+			new ObjectMapper().writeValue(response.getOutputStream(), myQues);
+		}else{
+			response.getOutputStream().print("false");
+		}
+	}
+	
 	@RequestMapping(value="/selectSome")
 	@ResponseBody
 	public void  selectSome(HttpServletRequest request,HttpServletResponse response,String info) throws IOException{
 		List<Question> qList = questionService.selectSome(info);
+		List<UserAndQuestion> list = new ArrayList<>();
 		if(qList.size()>0){
-			new ObjectMapper().writeValue(response.getOutputStream(), qList);
+			for(int i = 0;i<qList.size();i++){
+				String uId= qList.get(i).getuId();
+				User u = userService.SelectByUid(uId);
+				
+				String qId = qList.get(i).getqId();
+				String answerNum = answerService.selectNum(qId);
+				qList.get(i).setAnswerNum(answerNum);
+				
+				UserAndQuestion uq = new UserAndQuestion(u, qList.get(i));
+				list.add(uq);
+			}
+			new ObjectMapper().writeValue(response.getOutputStream(), list);
 		}else{
 			response.getOutputStream().print("false");
 		}

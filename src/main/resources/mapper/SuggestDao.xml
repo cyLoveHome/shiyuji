@@ -39,7 +39,16 @@
 		ORDER BY
 			createTime
 		DESC
-		LIMIT 0,6
+		LIMIT 0,3
+	</select>
+	
+	<select id="selectMy" resultType="Suggest" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			suggest
+		WHERE
+			uId = #{uId}
 	</select>
 	
 

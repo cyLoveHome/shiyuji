@@ -53,4 +53,16 @@ public class SuggestController {
 	}
 	
 	
+	@RequestMapping(value="/mySugg")
+	@ResponseBody
+	public void  mySugg(HttpServletRequest request,HttpServletResponse response,String uId) throws IOException{
+		List<Suggest> mySuggs = suggService.selectMy(uId);
+		if(mySuggs.size()>0){
+			new ObjectMapper().writeValue(response.getOutputStream(), mySuggs);
+		}else{
+			response.getOutputStream().print("false");
+		}
+	}
+	
+	
 }

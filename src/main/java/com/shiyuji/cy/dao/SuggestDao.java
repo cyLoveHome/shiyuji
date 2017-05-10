@@ -28,9 +28,16 @@ public interface SuggestDao {
 	List<Suggest> selectAll();
 	
 	/**
-	 * 查出最新的6条
+	 * 查出最新的3条
 	 * @return
 	 */
 	List<Suggest> selectNew();
+	
+	/**
+	 * 查某用户的意见
+	 * @param uId
+	 * @return
+	 */
+	List<Suggest> selectMy(String uId);
 
 }

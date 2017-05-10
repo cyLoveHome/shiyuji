@@ -1,4 +1,5 @@
 <%@ page language="java" isELIgnored="false" contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.shiyuji.cy.pojo.User" %>
@@ -22,18 +23,19 @@
 		            <div class="col-md-10 col-xs-10 col-sm-10" style="padding-left: 6px;">
 		            	<div class="row" style="margin-bottom: 40px;">
 		            		<div class="col-md-2 col-xs-2 col-sm-2">
-		            			<img src="${pageContext.request.contextPath}/img/${user.headPic }" class="img-circle" width="140">
+		            			<img src="${pageContext.request.contextPath}/img/${us.headPic }" class="img-circle" width="140">
 		            		</div>
 		            		<div class="col-md-7 col-xs-7 col-sm-7">
 		            			<div class="row" style="margin-bottom: 20px;">
 		            				<div class="col-md-12">
-		            					<span id="kitchen_font">${user.uName} 的厨房</span>
+		            					<span id="kitchen_font">${us.uName} 的厨房</span>
 		            				</div>
 		            			</div>
 		            			<div class="row">
 		            				<div class="col-md-12">
+		            				<c:set value="${ us }" var="pageuser" scope="page"></c:set>
 		            				<%
-							          		User u = (User)session.getAttribute("user");
+							          		User u = (User)pageContext.getAttribute("pageuser");
 							          		Date date = new Date((Long)u.getCreateTime()); 
 							          		
 							          	%>
@@ -54,11 +56,11 @@
 				            				<div class="row">
 		            							<div class="col-md-6 text-center" style="margin-top: 5px;">
 		            								<div id="focus">关注的人</div>
-		            								<a href="" class="link" style="font-size: 16px;">0</a>
+		            								<a href="" class="link" style="font-size: 16px;">${us.toFocusNum }</a>
 		            							</div>
 		            							<div class="col-md-6 text-center" style="margin-top: 5px;">
 		            								<div id="focus">被关注</div>
-		            								<a href="" class="link" style="font-size: 16px;">0</a>
+		            								<a href="" class="link" style="font-size: 16px;">${us.focusNum }</a>
 		            							</div>
 		            						</div>
 										</div>
@@ -69,195 +71,94 @@
 		            	</div>
 		            	<div class="row" style="margin-bottom: 30px;">
 		            		<div class="col-md-12 col-xs-12">
-		            			<a onclick="kitchen('1','${user.uId}','${user.uName }')" class="btn anniu">概况</a>
-		            			<a onclick="kitchen('2','${user.uId}');"  class="btn anniu">菜谱 0</a>
-		            			<a onclick="kitchen('3','${user.uId}','${user.uName }');"  class="btn anniu">菜单 0</a>
-		            			<a onclick="kitchen('4','${user.uId}');"  class="btn anniu">收藏</a>
-		            			<a onclick="kitchen('5','${user.uId}');"  class="btn anniu">我的问题</a>
-		            			<a onclick="kitchen('6','${user.uId}');"  class="btn anniu">我的举报</a>
-		            			<a onclick="kitchen('7','${user.uId}');"  class="btn anniu">留言板</a>
+		            			<a href="${pageContext.request.contextPath}/createMenu/kitchen/${us.uId}" class="btn anniu">菜谱 ${us.menuNum }</a>
+		            			<a onclick="kitchen('2','${us.uId}','${us.uName }');"  class="btn anniu">菜单 ${us.menusNum }</a>
+		            			<a onclick="kitchen('3','${us.uId}','${us.uName }');"  class="btn anniu">收藏</a>
+		            			<a onclick="kitchen('4','${us.uId}');"  class="btn anniu">疑惑问题</a>
+		            			<a onclick="kitchen('5','${us.uId}');"  class="btn anniu">举报内容</a>
+		            			<a onclick="kitchen('6','${us.uId}');"  class="btn anniu">意见反馈 </a>
+		            			<c:if test="${user.uId ne us.uId}">
+		            				<a href=""  class=" navbar-link link" style="margin-left: 365px;" data-toggle="modal" data-target="#Modal1" onclick="isReport('${us.uId}','${user.uId }');">
+					        		举报该用户
+					        		</a>
+					        		<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+														&times;
+													</button>
+													<h4 class="modal-title" id="myModalLabel">
+														举报         ${us.uName}
+													</h4>
+												</div>
+												<div class="modal-body" id="reportInfo">
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios1" value=" 广告或垃圾信息" checked> 广告或垃圾信息
+														</label>
+													</div>
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios2" value="与主题不符">与主题不符
+														</label>
+													</div>
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios3" value="非美食图片">非美食图片
+														</label>
+													</div>
+													<div class="radio">
+														<label>
+															<input type="radio" name="optionsRadios" id="optionsRadios4" value="其他原因">其他原因
+														</label>
+													</div>
+													<form role="form">
+														<div class="form-group">
+															<textarea class="form-control" rows="3" id="reportCause" placeholder="请输入其他原因"></textarea>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn" onclick="reportIt('${us.uId}','${user.uId }');">
+														举报
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+		            			</c:if>
 		            		</div>
 		            	</div>
 		            	<div class="kitInfo">
 		            	<div class="row" style="margin-bottom: 40px;">
-		            		<div class="col-md-12 col-xs-12" id="kitchen_font" style="font-size: 18px;">小小的身体～萌萌的(๑• . •๑)我收藏的菜谱</div>
+		            		<div class="col-md-12 col-xs-12" id="kitchen_font" style="font-size: 18px;">${us.uName } 创建的菜谱</div>
 		            	</div>
 		            	<div class="row" style="margin-bottom: 40px;">
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏1.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a href="" id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏2.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a href="" id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏3.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a href="" id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-		            	</div>
-		            	<div class="row" style="margin-bottom: 40px;">
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏1.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a href="" id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏2.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a href="" id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏3.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a href="" id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-		            	</div>
-		            	<div class="row" style="margin-bottom: 40px;">
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏1.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a href="" id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏2.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
-			            	<div class="col-md-4 col-xs-4">
-			            		<div id="line">
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<img src="img/收藏3.jpg" class="img-responsive">
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<a href="" class="link" style="font-size: 18px;">土豆鸡丁</a>
-			            				</div>
-			            			</div>
-			            			<div class="row img_style">
-			            				<div class="col-md-12 col-xs-12">
-			            					<span class="user_info">216 做过 22414 收藏 | <a id="author">芒_草</a></span>
-			            				</div>
-			            			</div>
-			            		</div>
-			            	</div>
+		            		<c:if test="${not empty myMenu }">
+					          	<c:forEach items="${myMenu }" var="menu">
+					            	<div class="col-md-4 col-xs-4">
+					            		<div id="line">
+					            			<div class="row img_style">
+					            				<div class="col-md-12 col-xs-12">
+					            					<img src="${pageContext.request.contextPath}/img/收藏1.jpg" class="img-responsive">
+					            				</div>
+					            			</div>
+					            			<div class="row img_style">
+					            				<div class="col-md-12 col-xs-12">
+					            					<a href="" class="link" style="font-size: 18px;">${menu.mName }</a>
+					            				</div>
+					            			</div>
+					            			<div class="row img_style">
+					            				<div class="col-md-12 col-xs-12">
+					            					<span class="user_info">${menu.likeNum } 赞过 ${menu.menuCollectNum } 收藏 | <a href="" id="author">${us.uName }</a></span>
+					            				</div>
+					            			</div>
+					            		</div>
+					            	</div>
+					            </c:forEach>
+					          </c:if>
+			            	
 		            	</div>
 		            	</div>
 		            </div>

@@ -8,10 +8,11 @@
 		INTO 
 			report
 	    VALUES(
+	    	#{reId},
 			#{uId},
 			#{mId},
 			#{cause},
-			#{report_time}
+			#{reportTime}
 		)
 	</insert>
 	
@@ -44,4 +45,15 @@
 		AND
 			mId = #{mId}
 	</delete>
+	
+	<select id="selectNew" resultType="Report">
+		SELECT 
+			* 
+		FROM
+			report
+		ORDER BY 
+			reportTime
+		DESC
+		LIMIT 0,3
+	</select>
 </mapper>

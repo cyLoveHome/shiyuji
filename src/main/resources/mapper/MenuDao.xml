@@ -46,6 +46,8 @@
 			mName 
 		LIKE
 			'%${mName}%'
+		AND
+			uId != #{uId}
 	</select>
 	
 	<select id="selectByUid" resultType="Menu" parameterType="String">
@@ -71,7 +73,23 @@
 			* 
 		FROM
 			menu
-		ORDER BY create_time DESC
+		ORDER BY createTime DESC
 		LIMIT 0,1
+	</select>
+	
+	<select id="selectThree" resultType="Menu">
+		SELECT 
+			* 
+		FROM
+			menu
+		ORDER BY createTime DESC
+		LIMIT 0,3
+	</select>
+	
+	<select id="selectAll" resultType="Menu">
+		SELECT 
+			* 
+		FROM
+			menu
 	</select>
 </mapper>

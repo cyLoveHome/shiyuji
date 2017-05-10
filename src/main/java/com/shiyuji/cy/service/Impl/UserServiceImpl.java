@@ -48,9 +48,20 @@ public class UserServiceImpl implements UserService{
 		user = userDao.selectByName(loginType, password);//用户名登录
 		if(user == null){
 			if(userDao.selectByEmailAddress(loginType)!=null){
-				if(userDao.selectByEmailAddress(loginType).getState() == 0){
 					user = userDao.selectByEmail(loginType, password);//邮箱登录
-				}
+			}
+		}
+		return user;
+	}
+	
+	@Override
+	public User adminLogin(String loginType, String password) {
+		User user = null;
+		password = MD5Util.encode2hex(password);
+		user = userDao.adminByName(loginType, password);//用户名登录
+		if(user == null){
+			if(userDao.selectByEmailAddress(loginType)!=null){
+					user = userDao.adminByEmail(loginType, password);//邮箱登录
 			}
 		}
 		return user;
@@ -95,6 +106,16 @@ public class UserServiceImpl implements UserService{
 			}
 		return isSuccess?rs:"";
 	}
+	
+	@Override
+	public List<User> selectAll() {
+		return userDao.selectAll();
+	}
+
+	@Override
+	public List<User> selectAdmin(String uId) {
+		return userDao.selectAdmin(uId);
+	}
 
 	//处理注册 发送邮件
 	private boolean processFindPwd(String bind_email,String email_code){
@@ -112,5 +133,11 @@ public class UserServiceImpl implements UserService{
 				mailInfo.append("<h3>"+email_code+"</h3>");  
 			return mailInfo.toString();
 		}
+
+		@Override
+		public List<User> selectNew() {
+			return userDao.selectNew();
+		}
+
 
 }

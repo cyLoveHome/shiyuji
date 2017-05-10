@@ -34,6 +34,11 @@ public class SuggestServiceImpl implements SuggestService{
 	public List<Suggest> selectNew() {
 		return suggestDao.selectNew();
 	}
+
+	@Override
+	public List<Suggest> selectMy(String uId) {
+		return suggestDao.selectMy(uId);
+	}
 	
 	
 	

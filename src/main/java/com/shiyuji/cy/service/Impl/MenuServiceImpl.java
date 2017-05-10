@@ -16,8 +16,8 @@ public class MenuServiceImpl implements MenuService {
 	private MenuDao menuDao;
 
 	@Override
-	public String uploadMenu(String mName, String mPic, String mInfo, String shicai, String steps) {
-		Menu menu = new Menu(mName, mPic, mInfo,shicai,steps);
+	public String uploadMenu(String uId,String mName, String mPic, String mInfo, String shicai, String steps) {
+		Menu menu = new Menu(uId,mName, mPic, mInfo,shicai,steps);
 		int rowNum = menuDao.addMenu(menu);
 		boolean isSuccess = rowNum > 0;
 		return isSuccess?menu.getmId():"false";
@@ -41,8 +41,8 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public List<Menu> selectByMname(String mName) {
-		return menuDao.selectByMname(mName);
+	public List<Menu> selectByMname(String mName,String uId) {
+		return menuDao.selectByMname(mName,uId);
 	}
 
 	@Override
@@ -53,6 +53,16 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public List<Menu> select() {
 		return menuDao.select();
+	}
+
+	@Override
+	public List<Menu> selectAll() {
+		return menuDao.selectAll();
+	}
+
+	@Override
+	public List<Menu> selectThree() {
+		return menuDao.selectThree();
 	}
 
 }

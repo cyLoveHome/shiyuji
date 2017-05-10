@@ -36,12 +36,12 @@
 				            					<div class="col-md-12" style="margin-left:40px">
 											      	<div class="row" style="margin-bottom: 10px;">
 												        	<div class="col-md-1">
-												        		<a href="">
+												        		<a href="${pageContext.request.contextPath}/createMenu/kitchen/${us.uId}" class="link">
 											          				<img src="${pageContext.request.contextPath}/img/${us.headPic}" class="img-circle img-responsive" width="30">
 												        		</a>
 											          		</div>
 											          		<div class="col-md-4 col-xs-4" style="padding-left: 0px;">
-												          		<a href="" class="link uName" >${us.uName }</a>&nbsp;&nbsp;&nbsp;
+												          		<a href="${pageContext.request.contextPath}/createMenu/kitchen/${us.uId}" class="link uName" >${us.uName }</a>&nbsp;&nbsp;&nbsp;
 												          	</div>
 												          	<div class="col-md-7 col-xs-7">
 												          			<c:if test="${menus.isCollect eq '1'}">
@@ -55,7 +55,7 @@
 								          		</div>
 								          		<%
 							          				Menus menus = (Menus)request.getAttribute("menus");
-							          				Date date = new Date(menus.getCreate_time()); 
+							          				Date date = new Date(menus.getCreateTime()); 
 							          			%>
 				            					<div class="col-md-12 menusTime">创建时间：<%= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) %></div>
 				            				</div>
@@ -73,10 +73,12 @@
 				            			<div class="row" style="margin-bottom: 25px;">
 				            				<a href="">
 							            		<div class="col-md-4 col-xs-4 col-sm-4">
-							            			<img src="${pageContext.request.contextPath}/img/${um.menu.mPic}" class="img-responsive">
+							            			<a href="${pageContext.request.contextPath}/createMenu/selectOne/${um.menu.mId}" id="shicai_link">
+							            				<img src="${pageContext.request.contextPath}/upload/${um.menu.mPic}" class="img-responsive">
+							            			</a>
 							            		</div>
 							            		<div class="col-md-8 col-xs-8 col-sm-8">
-							            			<div style="margin-bottom: 40px;"><a href="" id="m_name">${um.menu.mName }</a></div>
+							            			<div style="margin-bottom: 40px;"><a href="${pageContext.request.contextPath}/createMenu/selectOne/${um.menu.mId}" id="m_name">${um.menu.mName }</a></div>
 												    <div class="all_style">${um.menu.menuCollectNum } 人收藏过</div>
 												    <div class="all_style">${um.u.uName }</div>
 							            		</div>

@@ -78,7 +78,40 @@ public interface UserDao {
 	 */
 	List<User> selectRandEightUsers(String uId);
 	
+	//以下为Admin使用
+	/**
+	 * 查出所有系统普通用户
+	 * @return
+	 */
+	List<User> selectAll();
 	
+	/**
+	 * 查出系统所有管理员
+	 * @return
+	 */
+	List<User> selectAdmin(String uId);
+	
+	/**
+	 * 新注册3名用户
+	 * @return
+	 */
+	List<User> selectNew();
+	
+	/**
+	 * 管理员用户名登录
+	 * @param uName
+	 * @param password
+	 * @return
+	 */
+	User adminByName(@Param("uName")String uName,@Param("password")String password);
+	
+	/**
+	 * 管理员邮箱登录
+	 * @param bind_email
+	 * @param password
+	 * @return
+	 */
+	User adminByEmail(@Param("bind_email")String bindEmail,@Param("password")String password);
 	
 }
 	

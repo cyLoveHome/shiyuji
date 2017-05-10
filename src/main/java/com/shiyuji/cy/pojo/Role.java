@@ -1,4 +1,7 @@
 package com.shiyuji.cy.pojo;
+
+import java.util.UUID;
+
 /**
  * 用户角色实体类
  * @author cy
@@ -12,8 +15,8 @@ public class Role {
 	public Role() {
 	}
 
-	public Role(String rId, String rName) {
-		this.rId = rId;
+	public Role(String rName) {
+		this.rId = UUID.randomUUID()+"";
 		this.rName = rName;
 	}
 

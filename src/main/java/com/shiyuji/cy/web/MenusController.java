@@ -22,9 +22,12 @@ import com.shiyuji.cy.pojo.Menu;
 import com.shiyuji.cy.pojo.Menu_collect;
 import com.shiyuji.cy.pojo.Menus;
 import com.shiyuji.cy.pojo.Menus_collect;
+import com.shiyuji.cy.pojo.Question;
 import com.shiyuji.cy.pojo.User;
 import com.shiyuji.cy.pojo.UserAndComment;
 import com.shiyuji.cy.pojo.UserAndMenu;
+import com.shiyuji.cy.pojo.UserAndMenus;
+import com.shiyuji.cy.pojo.UserAndQuestion;
 import com.shiyuji.cy.service.Impl.MenusServiceImpl;
 import com.shiyuji.cy.service.Impl.Menus_collectServiceImpl;
 import com.shiyuji.cy.service.Impl.Menus_menuServiceImpl;
@@ -81,6 +84,54 @@ public class MenusController {
 		}
 	}
 	
+	@RequestMapping(value="/all/{uId}")
+	@ResponseBody
+	public ModelAndView allMenust(HttpServletRequest request,HttpServletResponse response,@PathVariable("uId")String uId) throws IOException{
+		ModelAndView model = new ModelAndView();
+		List<Menus> list = menusService.selectAll(uId);
+		System.out.println("------------------------"+list.size()+"------------------------");
+		List<UserAndMenus> umsList = new ArrayList<>();
+		if(list.size()>0){
+			for(int i =0;i<list.size();i++){
+				UserAndMenus ums = new UserAndMenus();
+				Menus menus= list.get(i);
+				User user = userService.SelectByUid(menus.getuId());
+				List<Menu> collMenu = ms_meService.selectByMsid(menus.getMsId());
+				menus.setCollMenu(collMenu.size()+"");
+				ums.setU(user);
+				ums.setMenus(menus);
+				umsList.add(ums);
+			}
+			System.out.println("------------------------"+umsList.size()+"------------------------");
+			model.addObject("menusAll", umsList);
+		}else{
+			model.addObject("menusAll", null);
+		}
+		model.setViewName("forward:/allMenus.jsp");
+		return model;
+	}
+	
+	@RequestMapping(value="/selectSome")
+	@ResponseBody
+	public void  selectSome(HttpServletRequest request,HttpServletResponse response,String msName,String uId) throws IOException{
+		List<Menus> list = menusService.selectByInfo(msName,uId);
+		List<UserAndMenus> umsList = new ArrayList<>();
+		if(list.size()>0){
+			for(int i =0;i<list.size();i++){
+				UserAndMenus ums = new UserAndMenus();
+				Menus menus= list.get(i);
+				User user = userService.SelectByUid(menus.getuId());
+				List<Menu> collMenu = ms_meService.selectByMsid(menus.getMsId());
+				menus.setCollMenu(collMenu.size()+"");
+				ums.setU(user);
+				ums.setMenus(menus);
+				umsList.add(ums);
+			}
+			new ObjectMapper().writeValue(response.getOutputStream(), umsList);
+		}else{
+			response.getOutputStream().print("false");
+		}
+	}
 	
 	@RequestMapping(value="/selectOne/{msId}")
 	@ResponseBody

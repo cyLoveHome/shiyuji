@@ -12,7 +12,7 @@
 			#{msId},
 			#{uId},
 			#{msName},
-			#{create_time},
+			#{createTime},
 			#{msInfo},
 			#{state}
 		)
@@ -35,7 +35,16 @@
 			uId = #{uId}
 	</select>
 	
-	<select id="selectAll" resultType="Menus">
+	<select id="selectAll" resultType="Menus" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			menus
+		WHERE
+			uId != #{uId}
+	</select>
+	
+	<select id="selectAllMenus" resultType="Menus" parameterType="String">
 		SELECT 
 			* 
 		FROM
@@ -58,6 +67,30 @@
 			menus
 		ORDER BY RAND()
 		LIMIT 10
+	</select>
+	
+	<select id="selectNew" resultType="Menus">
+		SELECT 
+			* 
+		FROM
+			menus
+		ORDER BY 
+			createTime
+		DESC
+		LIMIT 0,3
+	</select>
+	
+	<select id="selectByInfo" resultType="Menus" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			menus
+		WHERE
+			msName
+		LIKE
+			CONCAT('%','${msName}','%' )
+		AND
+			uId != #{uId}
 	</select>
 
 </mapper>

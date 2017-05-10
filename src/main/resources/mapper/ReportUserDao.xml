@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyuji.cy.dao.ReportUserDao">
+	<insert id="addReport" parameterType="ReportUser">
+		INSERT 
+		INTO 
+			reportuser
+	    VALUES(
+			#{reId},
+			#{uId},
+			#{ruId},
+			#{cause},
+			#{reportTime}
+		)
+	</insert>
+	
+	<select id="selectAll" resultType="ReportUser" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			reportuser
+		WHERE
+			uId = #{uId}
+	</select>
+	
+	<select id="selectOne" resultType="ReportUser" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			reportuser
+		WHERE
+			uId = #{uId}
+		AND
+			ruId = #{ruId}
+	</select>
+	
+	<select id="selectNew" resultType="ReportUser">
+		SELECT 
+			* 
+		FROM
+			reportuser
+		ORDER BY 
+			reportTime
+		DESC
+		LIMIT 0,3
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		DELETE
+		FROM
+			reportuser
+		WHERE
+			uId = #{uId}
+		AND
+			ruId = #{ruId}
+	</delete>
+</mapper>

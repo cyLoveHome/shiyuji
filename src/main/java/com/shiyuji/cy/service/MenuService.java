@@ -14,7 +14,7 @@ public interface MenuService {
 	 * @param Steps
 	 * @return
 	 */
-	String uploadMenu(String mName,String mPic,String mInfo,String shicai,String steps);
+	String uploadMenu(String uId,String mName,String mPic,String mInfo,String shicai,String steps);
 	
 	/**
 	 * 删除菜谱
@@ -37,6 +37,8 @@ public interface MenuService {
 	 */
 	String selecNum(String uId);
 	
+	List<Menu> selectThree();
+	
 	/**
 	 * 根据菜谱id找到菜谱全部信息
 	 * @param mId
@@ -49,13 +51,19 @@ public interface MenuService {
 	 * @param mName
 	 * @return
 	 */
-	List<Menu> selectByMname(String mName);
+	List<Menu> selectByMname(String mName,String uId);
 	
 	/**
 	 * main查
 	 * @return
 	 */
 	List<Menu> select();
+	
+	/**
+	 * 系统所有菜谱
+	 * @return
+	 */
+	List<Menu> selectAll();
 	
 	
 }

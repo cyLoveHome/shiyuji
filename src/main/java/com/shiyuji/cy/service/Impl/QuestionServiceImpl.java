@@ -34,7 +34,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public List<Question> selectAll() {
-		return questionDao.selectAll();
+		return questionDao.selectAllQuestion();
 	}
 
 	@Override
@@ -50,6 +50,16 @@ public class QuestionServiceImpl implements QuestionService {
 	@Override
 	public List<Question> selectSome(String Info) {
 		return questionDao.selectSome(Info);
+	}
+
+	@Override
+	public List<Question> selectAll(String uId) {
+		return questionDao.selectAll(uId);
+	}
+
+	@Override
+	public List<Question> selectNew() {
+		return questionDao.selectNew();
 	}
 
 	

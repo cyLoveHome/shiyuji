@@ -36,5 +36,7 @@ public interface ReportDao {
 	 * @return
 	 */
 	Report selectOne(@Param("uId")String uId,@Param("mId")String mId);
+	
+	List<Report> selectNew();
 
 }

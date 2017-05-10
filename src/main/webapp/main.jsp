@@ -77,38 +77,24 @@
 			          		</div>
 			          		
 				          	<div class="row">
-				        <%--   	<c:if test="${not empty umList }">
-				          	<c:forEach items="${umList }" var="um">
-				          		<a href="${pageContext.request.contextPath}/createMenu/selectOne/${um.menu.mId}" id="shicai_link">
-					          		<div class="col-md-3 col-xs-3">
-				            			<div class="row">
-				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/upload/${um.menu.mPic}" class="img-responsive" width="162.5">
-									        </div>
-									    </div>
-									    <div class="row">
-									    	<div class="col-md-12 text-center">
-									    		<div class="font">${um.menu.mName }</div>
-									    	</div>
-									    </div>
-									</div>
-								</a>
-							</c:forEach>
-							</c:if> --%>
-								<a href="" id="shicai_link">
-									<div class="col-md-3 col-xs-3">
-				            			<div class="row">
-				              				<div class="col-md-12">
-				                				<img src="${pageContext.request.contextPath}/img/test.jpg" class="img-responsive" width="162.5">
-									        </div>
-									    </div>
-									    <div class="row">
-									    	<div class="col-md-12 text-center">
-									    		<div class="font">柠檬</div>
-									    	</div>
-									    </div>
-									</div>
-								</a>
+					        <c:if test="${not empty umList }">
+					          	<c:forEach items="${umList }" var="um">
+					          		<a href="${pageContext.request.contextPath}/createMenu/selectOne/${um.menu.mId}" id="shicai_link">
+						          		<div class="col-md-3 col-xs-3">
+					            			<div class="row">
+					              				<div class="col-md-12">
+					                				<img src="${pageContext.request.contextPath}/upload/${um.menu.mPic}" class="img-responsive" width="162.5">
+										        </div>
+										    </div>
+										    <div class="row">
+										    	<div class="col-md-12 text-center">
+										    		<div class="font">${um.menu.mName }</div>
+										    	</div>
+										    </div>
+										</div>
+									</a>
+								</c:forEach>
+							</c:if> 
 								<a href="" id="shicai_link">
 							        <div class="col-md-3 col-xs-3">
 				            			<div class="row">
@@ -404,12 +390,14 @@
 	            			<div id="log_reg">
 	            				<div class="row" style="padding-top: 25px;">
 		                			<div class="col-md-12">
-		                    			<img src="${pageContext.request.contextPath}/img/${user.headPic}" class="center-block img-circle img-responsive" style="width: 100px;">
+		                				<a href="${pageContext.request.contextPath}/createMenu/kitchen/${user.uId}" class="link">
+		                    				<img src="${pageContext.request.contextPath}/img/${user.headPic}" class="center-block img-circle img-responsive" style="width: 100px;">
+		                				</a>
 		                			</div>
 		            			</div>
 		            			<div class="row" style="margin-top: 20px;">
 			                		<div class="col-md-12 text-center" style="font-size: 12px;">
-			                    		<a href="${pageContext.request.contextPath}/kitchen.jsp" class="link">${user.uName }</a>&nbsp;
+			                    		<a href="${pageContext.request.contextPath}/createMenu/kitchen/${user.uId}" class="link">${user.uName }</a>&nbsp;
 			                		</div>
 			            		</div>
 			            		<div class="row" style="margin-top: 30px;">
@@ -494,14 +482,14 @@
 		          			<div class="row" style="margin-bottom: 20px;margin-top: 25px;">
 					          	<div class="col-md-12">
 					          		<span id="title">流行菜单</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					          		<a href="" class="link">全部</a>
+					          		<a href="${pageContext.request.contextPath}/menus/all/${user.uId }" class="link">全部</a>
 					          	</div>
 			          		</div>
 			          		<c:if test="${not empty ranList}">
 	            				<c:forEach  items="${ranList}" var="menus">
 					          		<div class="row menu">
 					          			<div class="col-md-12 col-xs-12">
-					          				<a href="" id="shicai_link" class="font">${menus.msName }</a>
+					          				<a href="${pageContext.request.contextPath}/menus/selectOne/${menus.msId}" id="shicai_link" class="font">${menus.msName }</a>
 					          			</div>
 					          		</div>
 					           	</c:forEach>
@@ -521,11 +509,15 @@
 			          		<c:forEach  items="${randUserList}" var="u">
 			          		<div class="row users">
 					          	<div class="col-md-3">
-					          		<img src="${pageContext.request.contextPath}/img/${u.headPic}" class="center-block img-circle img-responsive" >
+					          		<a href="${pageContext.request.contextPath}/createMenu/kitchen/${u.uId}" class="link">
+					          			<img src="${pageContext.request.contextPath}/img/${u.headPic}" class="center-block img-circle img-responsive" >
+					          		</a>
 					          	</div>
 					          	<div class="col-md-6">
 					          		<div class="row user">
-					          			<div class="col-md-12 user_name" id="shicai_link">${u.uName }</div>
+					          			<a href="${pageContext.request.contextPath}/createMenu/kitchen/${u.uId}" class="link">
+					          				<div class="col-md-12 user_name" id="shicai_link">${u.uName }</div>
+					          			</a>
 					          		</div>
 					          		<div class="row user">
 					          			<div class="col-md-12 user_info">${u.focusNum }关注</div>

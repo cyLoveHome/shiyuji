@@ -2,6 +2,8 @@ package com.shiyuji.cy.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shiyuji.cy.pojo.User;
 
 public interface UserService {
@@ -22,6 +24,8 @@ public interface UserService {
 	 * @return
 	 */
 	boolean activate(String bind_email,String code);
+	
+	List<User> selectNew();
 	
 
 	/**
@@ -68,4 +72,26 @@ public interface UserService {
 	boolean deleteByUid(String uId);
 	
 	String userFindPwd(String bind_email);
+	
+	
+	//以下为Admin使用
+		/**
+		 * 查出所有系统普通用户
+		 * @return
+		 */
+	List<User> selectAll();
+		
+		/**
+		 * 查出系统所有管理员
+		 * @return
+		 */
+	List<User> selectAdmin(String uId);
+	
+	/**
+	 * 管理员登录
+	 * @param loginName
+	 * @param password
+	 * @return
+	 */
+	User adminLogin(String loginType,String password);
 }

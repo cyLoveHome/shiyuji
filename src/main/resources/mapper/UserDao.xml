@@ -73,6 +73,8 @@
 			uName = #{uName}
 		AND
 			password = #{password}
+		AND
+			rId != '1'
 	</select>
 	
 	<select id="selectByEmail" resultType="User" parameterType="String">
@@ -84,6 +86,8 @@
 			bindEmail = #{bindEmail}
 		AND
 			password = #{password}
+		AND
+			rId != '1'
 	</select>
 	
 	<select id="selectByUname" resultType="User" parameterType="String">
@@ -95,6 +99,8 @@
 			uName 
 		LIKE
 			CONCAT('%','${uName}','%' )
+		AND
+			rId != '1'
 	</select>
 	
 	<select id="selectByEmailAddress" resultType="User" parameterType="String">
@@ -104,6 +110,8 @@
 			user
 		WHERE
 			bindEmail = #{bindEmail}
+		AND
+			rId != '1'
 	</select>
 	
 	<select id="selectUsers" resultType="User" parameterType="String">
@@ -113,6 +121,8 @@
 			user
 		WHERE
 			uId != #{uId}
+		AND
+			rId != '1'
 	</select>
 	
 	<select id="selectRandEightUsers" resultType="User" parameterType="String">
@@ -122,8 +132,68 @@
 			user
 		WHERE
 			uId != #{uId}
+		AND
+			rId != '1'
 		ORDER BY RAND()
 		LIMIT 8
+	</select>
+	
+	<select id="selectAll" resultType="User">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			rId != '1'
+	</select>
+	
+	<select id="selectAdmin" resultType="User" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			rId = '1'
+		AND
+			uId != #{uId}
+	</select>
+	
+	<select id="selectNew" resultType="User">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			rId != '1'
+		ORDER BY createTime
+		DESC
+		LIMIT 0,3
+	</select>
+	
+	<select id="adminByName" resultType="User" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			uName = #{uName}
+		AND
+			password = #{password}
+		AND
+			rId = '1'
+	</select>
+	
+	<select id="adminByEmail" resultType="User" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			user
+		WHERE
+			bindEmail = #{bindEmail}
+		AND
+			password = #{password}
+		AND
+			rId = '1'
 	</select>
 
 </mapper>

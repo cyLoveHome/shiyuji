@@ -187,6 +187,20 @@
 						}
 				);
 			}
+		};
 		
+		function collMenu(mId){
+			var msId = $("#selectId").val();
+			$.post(
+					"http://localhost:8080/shiyuji/createMenu/addmsMe",
+					{"mId":mId,"msId":msId},
+					function(data){
+						if(data=="true"){
+							$("#allMenus").html("加入成功");
+						}else{
+							$("#allMenus").html("加入失败");
+						}
+					}
+			);
 		};
 	 

@@ -12,7 +12,7 @@ public interface ReportService {
 	 * @param r
 	 * @return
 	 */
-	boolean addReport(Report r);
+	boolean addReport(String uId,String mId,String cause);
 	
 	/**
 	 * 删除举报
@@ -35,4 +35,6 @@ public interface ReportService {
 	 * @return
 	 */
 	Report selectOne(String uId,String mId);
+	
+	List<Report> selectNew();
 }

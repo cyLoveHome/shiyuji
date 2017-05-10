@@ -1,4 +1,5 @@
 <%@ page language="java" isELIgnored="false" contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +9,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/shiyuji_js/nav.js"></script>
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/all.css" rel="stylesheet" type="text/css">
-		<title>通用页面</title>
+		<title>食谱</title>
 	</head>
 	<body>
 		<%@ include file="nav.jsp" %> 
@@ -84,120 +85,43 @@
 		            		<div class="col-md-7 col-xs-7">
 		            			<div class="row" style="margin-bottom: 15px;">
 				            		<div class="col-md-12 col-xs-12 col-sm-12">
-				            			<div id="title_font">本周最受欢迎</div>
+				            			<div id="title_font">${info }</div>
 				            		</div>
 		            			</div>
-		            			<div class="row" style="margin-bottom: 25px;">
-		            				<a href="">
-					            		<div class="col-md-5 col-xs-5 col-sm-5">
-					            			<img src="img/all1.jpg" class="img-responsive">
-					            		</div>
-					            		<div class="col-md-7 col-xs-7 col-sm-7">
-					            			<div style="margin-bottom: 40px;"><a href="" id="m_name">最好吃的扬州狮子头</a></div>
-										    <div class="all_style">122人做过</div>
-										    <div class="all_style">小小的身体我</div>
-					            		</div>
-				            		</a>
-		            			</div>
-		            			<div class="row" style="margin-bottom: 25px;">
-		            				<a href="">
-					            		<div class="col-md-5 col-xs-5 col-sm-5">
-					            			<img src="img/all2.jpg" class="img-responsive">
-					            		</div>
-					            		<div class="col-md-7 col-xs-7 col-sm-7">
-					            			<div style="margin-bottom: 40px;"><a href="" id="m_name">最好吃的扬州狮子头</a></div>
-										    <div class="all_style">122人做过</div>
-										    <div class="all_style">小小的身体我</div>
-					            		</div>
-				            		</a>
-		            			</div>
-		            			<div class="row" style="margin-bottom: 25px;">
-		            				<a href="">
-					            		<div class="col-md-5 col-xs-5 col-sm-5">
-					            			<img src="img/all3.jpg" class="img-responsive">
-					            		</div>
-					            		<div class="col-md-7 col-xs-7 col-sm-7">
-					            			<div style="margin-bottom: 40px;"><a href="" id="m_name">最好吃的扬州狮子头</a></div>
-										    <div class="all_style">122人做过</div>
-										    <div class="all_style">小小的身体我</div>
-					            		</div>
-				            		</a>
-		            			</div>
-		            			<div class="row" style="margin-bottom:25px;">
-		            				<a href="">
-					            		<div class="col-md-5 col-xs-5 col-sm-5">
-					            			<img src="img/all1.jpg" class="img-responsive">
-					            		</div>
-					            		<div class="col-md-7 col-xs-7 col-sm-7">
-					            			<div style="margin-bottom: 40px;"><a href="" id="m_name">最好吃的扬州狮子头</a></div>
-										    <div class="all_style">122人做过</div>
-										    <div class="all_style">小小的身体我</div>
-					            		</div>
-				            		</a>
-		            			</div>
-		            			<div class="row" style="margin-bottom: 25px;">
-		            				<a href="">
-					            		<div class="col-md-5 col-xs-5 col-sm-5">
-					            			<img src="img/all2.jpg" class="img-responsive">
-					            		</div>
-					            		<div class="col-md-7 col-xs-7 col-sm-7">
-					            			<div style="margin-bottom: 40px;"><a href="" id="m_name">最好吃的扬州狮子头</a></div>
-										    <div class="all_style">122人做过</div>
-										    <div class="all_style">小小的身体我</div>
-					            		</div>
-				            		</a>
-		            			</div>
-		            			<div class="row" style="margin-bottom: 25px;">
-		            				<a href="">
-					            		<div class="col-md-5 col-xs-5 col-sm-5">
-					            			<img src="img/all3.jpg" class="img-responsive">
-					            		</div>
-					            		<div class="col-md-7 col-xs-7 col-sm-7">
-					            			<div style="margin-bottom: 40px;"><a href="" id="m_name">最好吃的扬州狮子头</a></div>
-										    <div class="all_style">122人做过</div>
-										    <div class="all_style">小小的身体我</div>
-					            		</div>
-				            		</a>
-		            			</div>
+		            			<c:if test="${not empty result}">
+							       <c:forEach  items="${result}" var="UserAndMenu">
+				            			<div class="row" style="margin-bottom: 25px;">
+				            				<a href="${pageContext.request.contextPath}/createMenu/selectOne/${UserAndMenu.menu.mId}">
+							            		<div class="col-md-5 col-xs-5 col-sm-5">
+							            			<img src="${pageContext.request.contextPath}/img/all1.jpg" class="img-responsive"/>
+							            		</div>
+							            		<div class="col-md-7 col-xs-7 col-sm-7">
+							            			<div style="margin-bottom: 40px;"><a href="" id="m_name">${UserAndMenu.menu.mName }</a></div>
+												    <div class="all_style">${UserAndMenu.menu.menuCollectNum } 人收藏</div>
+												    <div class="all_style">${UserAndMenu.u.uName }</div>
+							            		</div>
+						            		</a>
+				            			</div>
+				            		</c:forEach>
+				            	</c:if>
 		            		</div>
 		            		<div class="col-md-3 col-xs-3">
-		            		<div class="row" style="margin-bottom: 20px;">
-					          	<div class="col-md-12">
-					          		<span id="title">流行菜单</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					          		<a href="" class="link">全部</a>
-					          	</div>
-			          		</div>
-			          		
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="all_font">买了个电饭盒</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="all_font">减脂增肌碳水篇（超快手&高颜值）</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="all_font">包子饼子饺子馒头发糕年糕开会</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="all_font">为爸妈量身打造</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="all_font">软糯朴实还是轻盈酥脆？当然是主食</a>
-			          			</div>
-			          		</div>
-			          		<div class="row menu">
-			          			<div class="col-md-12 col-xs-12">
-			          				<a href="" id="all_font">❤生日蛋糕造型❤</a>
-			          			</div>
-			          		</div>
+			            		<div class="row" style="margin-bottom: 20px;">
+						          	<div class="col-md-12">
+						          		<span id="title">流行菜单</span>&nbsp;&nbsp;&nbsp;&nbsp;
+						          		<a href="${pageContext.request.contextPath}/menus/all/${user.uId }" class="link">全部</a>
+						          	</div>
+				          		</div>
+				          		
+				          		<c:if test="${not empty ranList}">
+		            				<c:forEach  items="${ranList}" var="menus">
+						          		<div class="row menu">
+						          			<div class="col-md-12 col-xs-12">
+						          				<a href="${pageContext.request.contextPath}/menus/selectOne/${menus.msId}" id="shicai_link" class="font">${menus.msName }</a>
+						          			</div>
+						          		</div>
+						           	</c:forEach>
+					          	</c:if>
 		            		</div>
 		            	</div>
 		            <div class="col-md-1 col-xs-1"></div>

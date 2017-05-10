@@ -7,6 +7,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <%@ include file="css_js.jsp" %>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/nav.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/shiyuji_js/question.js"></script>
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/nav.css" rel="stylesheet" type="text/css">
 		<link href="${pageContext.request.contextPath}/css/shiyuji_css/allQuestion.css" rel="stylesheet" type="text/css">
 		<title>厨房问答</title>
@@ -39,7 +40,7 @@
 		            		</div>
 		            	</div>
 		            	<div class="row" style="margin-bottom: 20px;">
-		            		<div class="col-md-12" style="margin-top: 35px;">
+		            		<div class="col-md-12" style="margin-top: 35px;" id="queBody">
 						       <c:if test="${not empty allQue}">
 							       <c:forEach  items="${allQue}" var="UserAndQuestion">
 								       <div class="row question_style" style="margin-top: 20px;">
@@ -74,7 +75,7 @@
 			            	</div>
 			            	<div class="row">
 			            		<div class="col-md-12 col-xs-12">
-			            			<a class="btn" style="width: 100px;margin-left: 1px;" onclick="findQuestion();">搜问题</a>
+			            			<a class="btn" style="width: 100px;margin-left: 1px;" onclick="findQuestion();">搜索</a>
 			            		</div>
 			            	</div>
 		            </div>

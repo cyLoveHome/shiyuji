@@ -14,10 +14,6 @@ public class ReportServiceImpl implements ReportService {
 	@Autowired
 	private ReportDao reportDao;
 
-	@Override
-	public boolean addReport(Report r) {
-		return reportDao.addReport(r) > 0;
-	}
 
 	@Override
 	public boolean delete(String uId, String mId) {
@@ -32,6 +28,17 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public Report selectOne(String uId, String mId) {
 		return  reportDao.selectOne(uId, mId);
+	}
+
+	@Override
+	public boolean addReport(String uId, String mId, String cause) {
+		Report r = new Report(uId, mId, cause);
+		return reportDao.addReport(r)>0;
+	}
+
+	@Override
+	public List<Report> selectNew() {
+		return reportDao.selectNew();
 	}
 
 

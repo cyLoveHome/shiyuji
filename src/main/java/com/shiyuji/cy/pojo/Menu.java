@@ -18,7 +18,7 @@ public class Menu {
 	
 	private String mInfo = "美好的食物总是让人愉悦！";
 	
-	private long create_time = System.currentTimeMillis();
+	private long createTime ;
 	
 	private String shicai;
 	
@@ -41,24 +41,26 @@ public class Menu {
 	}
 
 
-	public Menu(String mId, String uId, String mName, String mPic, String mInfo, long create_time, String shicai,String steps,
+	public Menu(String mId, String uId, String mName, String mPic, String mInfo, String shicai,String steps,
 			int state) {
 		this.mId = UUID.randomUUID()+"";
 		this.uId = uId;
 		this.mName = mName;
 		this.mPic = mPic;
 		this.mInfo = mInfo;
-		this.create_time = create_time;
+		this.createTime = System.currentTimeMillis();
 		this.steps = steps;
 		this.state = state;
 	}
 
-	public Menu(String mName, String mPic, String mInfo, String shicai, String steps) {
+	public Menu(String uId,  String mName,String mPic, String mInfo, String shicai, String steps) {
 		this.mId = UUID.randomUUID()+"";
+		this.uId = uId;
 		this.mName = mName;
 		this.mPic = mPic;
 		this.mInfo = mInfo;
 		this.shicai = shicai;
+		this.createTime = System.currentTimeMillis();
 		this.steps = steps;
 	}
 
@@ -143,13 +145,17 @@ public class Menu {
 		this.mInfo = mInfo;
 	}
 
-	public long getCreate_time() {
-		return create_time;
+	
+
+	public long getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreate_time(long create_time) {
-		this.create_time = create_time;
+
+	public void setCreateTime(long createTime) {
+		this.createTime = createTime;
 	}
+
 
 	public int getState() {
 		return state;

@@ -99,9 +99,10 @@ public class UserController {
 			User user = userService.login(loginType, pwd);
 			if(user != null){
 				session.setAttribute("user", user);
-				
+				System.out.println("--------------------你是普通人诶-----------");
 				model.setViewName("redirect:main");
 			}else{
+				System.out.println("--------------------你是管理员诶-----------");
 				model.setViewName("forward:/login_name.jsp");
 			}
 		}

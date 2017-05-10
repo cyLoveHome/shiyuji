@@ -33,11 +33,20 @@
 			uId = #{uId}
 	</select>
 	
-	<select id="selectAll" resultType="Question">
+	<select id="selectAllQuestion" resultType="Question">
 		SELECT 
 			* 
 		FROM
 			question
+	</select>
+	
+	<select id="selectAll" resultType="Question" parameterType="String">
+		SELECT 
+			* 
+		FROM
+			question
+		WHERE
+			uId != #{uId}
 	</select>
 	
 	<select id="selectRand" resultType="Question">
@@ -47,6 +56,17 @@
 			question
 		ORDER BY RAND()
 		LIMIT 5
+	</select>
+	
+	<select id="selectNew" resultType="Question">
+		SELECT 
+			* 
+		FROM
+			question
+		ORDER BY 
+			createTime
+		DESC
+		LIMIT 0,3
 	</select>
 	
 	<select id="selectOne" resultType="Question" parameterType="String">

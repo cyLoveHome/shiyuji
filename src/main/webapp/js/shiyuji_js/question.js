@@ -4,6 +4,7 @@ $(function(){
 
 function findQuestion(){
 	var info = $("#findQuestion").val();
+	$("#findQuestion").empty();
 	console.debug(info);
 	$.post(
 			"http://localhost:8080/shiyuji/question/selectSome",
@@ -11,37 +12,26 @@ function findQuestion(){
 			function(data){
 				console.debug(data);
 				var arr = eval(data);
-				$("#kitchenFriends").empty();
+				$("#queBody").empty();
 				for(var i = 0;i<arr.length;i++){
-					var user = arr[i];
-					console.debug(user.uName);
-					var str = "<div class='col-md-6 col-xs-6'>";
-					str += "<div class='row users'>";
-					str += "<div class='col-md-3'>";
-					str += "<img src='http://localhost:8080/shiyuji/img/"+user.headPic+"' class='center-block img-circle img-responsive'>";
+					var userAndQue = arr[i];
+					var user = eval(userAndQue.us);
+					var que = eval(userAndQue.que);
+					var str = "<div class='row question_style' style='margin-top: 20px;'>";
+					str += "<div class='col-md-8'>";
+					str += "<a href='http://localhost:8080/shiyuji/question/one/"+que.qId+"' class='qLink qTitle'>"+que.qTitle+"</a>";
 					str += "</div>";
-					str += "<div class='col-md-6'>";
-					str += "<div class='row user' style='margin-top: 4px;'>";
-					str += "<div class='col-md-12 user_name' id='shicai_link'>"+user.uName+"</div>";
+					str += "<div class='col-md-4 text-right'>";
+					str += "<a href='http://localhost:8080/shiyuji/question/one/"+que.qId+"' class='answer qLink'>"+que.answerNum+" 回答</a>";
 					str += "</div>";
-					str += "<div class'row user'>";
-					str += "<div class='col-md-12 user_info'>"+user.focusNum+"关注</div>";
 					str += "</div>";
 					str += "<div class='row'>";
-					str += "<div class='col-md-12 user_info'>"+user.menuNum+"个菜谱&nbsp;&nbsp;&nbsp;273个作品</div>";
+					str += "<div class='col-md-12'>";
+					str += "<a href='http://localhost:8080/shiyuji/kitchen/myself/"+user.uId+"' class='qLink qName'>"+user.uName+"</a>";
 					str += "</div>";
 					str += "</div>";
-				    str += "<div class='col-md-3'>";
-					if(user.isFriend == "1"){
-						str += "<div class='btn' id='focus' onclick='focusUser('"+uId+"','"+user.uId+"')'>已关注</div>";
-					}else if(user.isFriend == "0"){
-						str += "<div class='btn' id='focus' onclick='focusUser('"+uId+"','"+user.uId+"')'>关注</div>";
-					}
-					str += "</div>";
-					str += "</div>";
-					str += "</div>";
-					console.debug(str);
-					$("#kitchenFriends").append(str);
+				    str += "<hr/>";
+					$("#queBody").append(str);
 				}
 			}
 	);
