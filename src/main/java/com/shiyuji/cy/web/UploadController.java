@@ -100,6 +100,58 @@ public class UploadController {
 	    	  }
 		  }
 	}
+	
+	@RequestMapping(value = "/upload/headpic")
+	private void upload(HttpServletRequest request,
+			HttpServletResponse response
+			) throws ServletException, IOException{
+    	
+		 CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver(
+	                request.getSession().getServletContext());
+		 if(multipartResolver.isMultipart(request)){
+			 MultipartHttpServletRequest multiRequest=(MultipartHttpServletRequest)request;
+			  Map<String, MultipartFile> fileMap = multiRequest.getFileMap();
+			  if(!fileMap.isEmpty()){
+				  for (Map.Entry<String, MultipartFile> entry : fileMap.entrySet()) {
+					  	System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue().getSize());
+					  	MultipartFile file = entry.getValue();
+					  	if(file!=null){
+			                   String[] allowedType = { "image/bmp", "image/gif", "image/jpeg", "image/png" };
+			                   boolean allowed = Arrays.asList(allowedType).contains(file.getContentType());
+					  		 if (!allowed) {
+			                       response.getWriter().write("error|不支持的类型");
+			                       logger.warn("upload error|不支持的类型");
+			                       return;
+			                   }
+					  		 String fi = file.getOriginalFilename();
+			                   // 提取文件拓展名
+			                   String fileNameExtension = fi.substring(fi.indexOf("."), fi.length());
+			                   // 生成实际存储的真实文件名
+			                   String realName = UUID.randomUUID().toString() + fileNameExtension;
+			                   // 图片存放的真实路径
+			                   String realPath = request.getServletContext().getRealPath("/img") +"/"+realName;
+			                   // 将文件写入指定路径下
+			                   File realFile = new File(realPath);
+			                   if(realFile == null){
+			                	   response.getWriter().write("error|file path not exsist");
+			                   }else{
+			                	   file.transferTo(new File(realPath));
+				                   String res ="";
+				                   res = realName;
+				                   response.getWriter().write(res);
+			                   }
+			                 
+					  	}
+				  }
+	    	  }else{
+	 			 response.getWriter().write("error|no file");
+	    	  }
+			  
+		 }
+	}
+	
+	
+	
 
 
 }

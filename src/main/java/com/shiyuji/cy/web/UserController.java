@@ -2,6 +2,7 @@ package com.shiyuji.cy.web;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -294,4 +295,37 @@ public class UserController {
 		}
 		
     }
+	
+	
+	 
+    @RequestMapping(value="/info/update",method={RequestMethod.GET,RequestMethod.POST})  
+    public void  userUpdate(HttpServletRequest request,HttpServletResponse response,
+    		String headPic,
+    		String sex,
+    		String birth,
+    		String hometown,
+    		String uInfo
+    		) throws ParseException, IOException{
+    	HttpSession session = request.getSession(true);
+    	ServletOutputStream outputStream = response.getOutputStream();
+    	User user = (User)session.getAttribute("user");
+    	logger.warn("user before====>"+user.toString());
+    	user.setHeadPic(headPic);
+    	user.setSex(Integer.parseInt(sex));
+    	if(!"-1".equals(birth)){
+    		long birthTime = new SimpleDateFormat("yyyy-MM-dd").parse(birth).getTime();
+        	user.setBirth(birthTime);
+    	}
+    	user.setHometown(hometown);
+    	user.setuInfo(uInfo);
+    	boolean userUpdate = userDao.updateUser(user)>0;
+    	if(userUpdate){
+    		session.removeAttribute("user");
+    		session.setAttribute("user", user);
+    		new ObjectMapper().writeValue(outputStream, user);
+    	}else{
+    		new ObjectMapper().writeValue(outputStream, "fail");
+    	}
+    	
+    } 
 }

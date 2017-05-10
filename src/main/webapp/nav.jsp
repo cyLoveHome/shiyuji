@@ -9,7 +9,7 @@
 		        <div class="collapse navbar-collapse" id="navbar-ex-collapse" style="margin-top: 8px;margin-right: 30px;">
 		        <p class="navbar-text navbar-right">
 					<a href="javascript:void(0)" class="head_pic">
-						<img height="30" alt="logo" src="${pageContext.request.contextPath}/img/${user.headPic}" class="img-rounded img-circle">
+						<img height="30" alt="logo" src="${pageContext.request.contextPath}/img/${user.headPic}" class="img-rounded img-circle" id="nav_headpic">
 					</a>&nbsp;&nbsp;
 					<a href="" class="navbar-link link">${user.uName }</a>
 				</p>
