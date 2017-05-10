@@ -339,7 +339,7 @@
 							          			%>
 				                                  <td><%= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) %></td>
 				                                  <td><a class="label label-success btn" href="${pageContext.request.contextPath}/createMenu/kitchen/${ru.rus.uId}?admin=1" target="_blank">查看详情</a>
-	                                  				 <a class="label label-danger btn" style="margin-left: 10px;" id="handle${ reportUser.ruId }" onclick="handle('${ reportUser.ruId }','${ reportUser.uName }','${ reportUser.reportTime }')">处理</a>
+	                                  				 <a class="label label-danger btn" style="margin-left: 10px;" id="handle${ ru.rus.uId }" onclick="handle('${ ru.rus.uId }','${ ru.rus.uName }','${ ru.rus.reportTime }')">处理</a>
 	                                  				 <%@ include file="adminModel.jsp" %>
 	                                  			  </td>
 				                            </tr>
