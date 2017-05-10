@@ -91,14 +91,14 @@
 			            		<div class="row" style="margin-bottom: 20px;">
 						          	<div class="col-md-12">
 						          		<span id="title">流行菜单</span>&nbsp;&nbsp;&nbsp;&nbsp;
-						          		<a href="" class="link">全部</a>
+						          		<a href="${pageContext.request.contextPath}/menus/all/${user.uId }" class="link">全部</a>
 						          	</div>
 				          		</div>
 				          		<c:if test="${not empty ranList}">
 	            					<c:forEach  items="${ranList}" var="menus">
 						          		<div class="row menu">
 						          			<div class="col-md-12 col-xs-12">
-						          				<a href="" id="all_font">${menus.msName }</a>
+						          				<a href="${pageContext.request.contextPath}/menus/selectOne/${menus.msId}" id="all_font">${menus.msName }</a>
 						          			</div>
 						          		</div>
 						          	</c:forEach>

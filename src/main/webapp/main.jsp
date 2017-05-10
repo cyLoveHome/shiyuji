@@ -65,14 +65,9 @@
 		          	<div class="row">
 			          	<div class="col-md-12 col-xs-12" style="margin-top: 35px;">
 			          		<div class="row" style="margin-bottom: 20px;">
-				          		<div class="col-md-8">
+				          		<div class="col-md-12">
 				          			<span id="title">新秀菜谱</span>&nbsp;&nbsp;&nbsp;&nbsp;
 				          			<a href=" "class="link">全部</a>
-				          		</div>
-				          		<div class="col-md-4 text-right">
-				          			<a href="" class="btn" id="click_btn"><i class="fa fa-angle-left click_btn"></i></a>
-				          			&nbsp;&nbsp;
-				          			<a href="" class="btn" id="click_btn"><i class="fa fa-angle-right click_btn"></i></a>
 				          		</div>
 			          		</div>
 			          		
@@ -408,75 +403,6 @@
 	            			</div>
 	            		</div>
 	            	</div>
-		          	<div class="row">
-		          		<div class="col-md-12">
-		          			<div class="row" style="margin-bottom: 20px;margin-top: 35px;">
-					          	<div class="col-md-12">
-					          		<span id="title">流行搜索</span>
-					          	</div>
-			          		</div>
-				          	<div class="row search">
-				          		<div class="col-md-6">
-				          			<div id="number">1&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">家常菜</a>
-				          			</div>
-				          		</div>
-				          		<div class="col-md-6">
-				          			<div id="number">6&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">披萨</a>
-				          			</div>
-				          		</div>
-				          	</div>
-				          	<div class="row search">
-				          		<div class="col-md-6">
-				          			<div id="number">2&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">家常菜</a>
-				          			</div>
-				          		</div>
-				          		<div class="col-md-6">
-				          			<div id="number">7&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">披萨</a>
-				          			</div>
-				          		</div>
-				          	</div>
-				          	<div class="row search">
-				          		<div class="col-md-6">
-				          			<div id="number">3&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">家常菜</a>
-				          			</div>
-				          		</div>
-				          		<div class="col-md-6">
-				          			<div id="number">8&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">披萨</a>
-				          			</div>
-				          		</div>
-				          	</div>
-				          	<div class="row search">
-				          		<div class="col-md-6">
-				          			<div id="number">4&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">家常菜</a>
-				          			</div>
-				          		</div>
-				          		<div class="col-md-6">
-				          			<div id="number">9&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">披萨</a>
-				          			</div>
-				          		</div>
-				          	</div>
-				          	<div class="row">
-				          		<div class="col-md-6">
-				          			<div id="number">5&nbsp;&nbsp;&nbsp;
-				          				<a href="" id="shicai_link" class="font">家常菜</a>
-				          			</div>
-				          		</div>
-				          		<div class="col-md-6">
-				          			<div id="number">10&nbsp;
-				          				<a href="" id="shicai_link" class="font">鱼虾水产</a>
-				          			</div>
-				          		</div>
-				          	</div>
-		          		</div>
-			        </div>
 		        	<div class="row">
 		          		<div class="col-md-12">
 		          			<div class="row" style="margin-bottom: 20px;margin-top: 25px;">

@@ -41,8 +41,8 @@
                         <span class="arrow open"></span>
                       </a>
                       <ul class="sub">
-                          <li  class="active"><a class="" href="">举报用户</a></li>
-                          <li  class=""><a class="" href="">举报菜谱</a></li>
+                          <li  class=""><a class="" href="">举报用户</a></li>
+                          <li  class="active"><a class="" href="">举报菜谱</a></li>
                           <li><a class="" href="">意见反馈</a></li>
                       </ul>
                   </li>
