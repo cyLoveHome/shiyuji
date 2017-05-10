@@ -17,22 +17,22 @@
                	 	<div id="showdays">
                	 		<div class="radio">
 						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked> 一天
+							<input type="radio" name="days" id="optionsRadios1" value="1" checked> 一天
 						</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios2" value="7">一周
+								<input type="radio" name="days" id="optionsRadios2" value="7">一周
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios3" value="30">一月
+								<input type="radio" name="days" id="optionsRadios3" value="30">一月
 							</label>
 						</div>
 						<div class="radio">
 							<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios4" value="365">一年
+								<input type="radio" name="days" id="optionsRadios4" value="365">一年
 							</label>
 						</div>
                	 	</div>

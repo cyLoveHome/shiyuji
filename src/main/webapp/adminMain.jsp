@@ -21,12 +21,8 @@
     <link href="${pageContext.request.contextPath}/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
     <link href="${pageContext.request.contextPath}/css/adminCss/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/adminCss/style-responsive.css" rel="stylesheet" />
-	
-	<!-- easyui -->
-		<script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.easyui.min.js" ></script>
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/easyui/themes/bootstrap/easyui.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/easyui/themes/icon.css" />
-	
+    
+    
 	<style>
 		.moreClick{
 			margin-left: 1100px;
@@ -48,7 +44,7 @@
           <div id="sidebar"  class="nav-collapse ">
               <ul class="sidebar-menu">
                   <li class="active">
-                      <a class="" href="javascript:;">
+                      <a class="" href="${pageContext.request.contextPath}/admin/load">
                           <i class="icon-home"></i>
                           <span>主页</span>
                       </a>
@@ -60,8 +56,8 @@
                           <span class="arrow"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="${pageContext.request.contextPath}/user/all">权限分配</a></li>
-                          <li><a class="" href="${pageContext.request.contextPath}/admin/all">管理员管理</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/admin/user/all">权限分配</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/admin/admin/all">管理员管理</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -71,9 +67,9 @@
                         <span class="arrow"></span>
                       </a>
                       <ul class="sub">
-                          <li  class=""><a class="" href="${pageContext.request.contextPath}/report/user/all">举报用户</a></li>
-                          <li  class=""><a class="" href="${pageContext.request.contextPath}/report/menu/all">举报菜谱</a></li>
-                          <li><a class="" href="${pageContext.request.contextPath}/suggestion/all">意见反馈</a></li>
+                          <li  class=""><a class="" href="${pageContext.request.contextPath}/admin/report/user/all">举报用户</a></li>
+                          <li  class=""><a class="" href="${pageContext.request.contextPath}/admin/report/menu/all">举报菜谱</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/admin/suggestion/all">意见反馈</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -83,9 +79,9 @@
                           <span class="arrow open"></span>
                       </a>
                       <ul class="sub">
-                          <li class=""><a class="" href="${pageContext.request.contextPath}/menu/all">菜谱管理</a></li>
-                          <li><a class="" href="${pageContext.request.contextPath}/menus/all">菜单管理</a></li>
-                          <li><a class="" href="${pageContext.request.contextPath}/question/all">问题管理</a></li>
+                          <li class=""><a class="" href="${pageContext.request.contextPath}/admin/menu/all">菜谱管理</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/admin/menus/all">菜单管理</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/admin/question/all">问题管理</a></li>
                       </ul>
                   </li>
               </ul>
@@ -182,11 +178,11 @@
 				                                  <td><%= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) %></td>
 				                                  <td><a class="label label-success btn"  href="${pageContext.request.contextPath}/createMenu/kitchen/${u.uId}?admin=1" target="_blank">查看详情</a></td>
 				                              </tr>
+				                              <tr>
+				                              	<td colspan="6" ><a href="" class="moreClick">更多</a></td>
+				                              </tr>
 	                              		</c:forEach>
 	                              </c:if>
-	                              <tr>
-	                              	<td colspan="6" ><a href="" class="moreClick">更多</a></td>
-	                              </tr>
 	                             </tbody>
                           </table>
                       
@@ -224,7 +220,6 @@
 	                              	<td colspan="6" ><a href="" class="moreClick">更多</a></td>
 	                              </tr>
 	                              </c:if>
-	                             
 	                             </tbody>
                           </table>
                      
@@ -326,12 +321,15 @@
 				                                  <td>${rul.index + 1 }</td>
 				                                  <td>${ru.rus.uName }</td>
 				                                  <td>${ru.ru.cause }</td>
-				                                  <c:if test="${ru.rus.state eq 0}">
-				                                  	<td>正常</td>
-				                                  </c:if>
-				                                  <c:if test="${ru.rus.state ne 0}">
-				                                  	<td>封号</td>
-				                                  </c:if>
+				                                  <td>
+					                                  <c:if test="${ru.rus.state eq 0}">
+					                                  	正常
+					                                  </c:if>
+					                                  <c:if test="${ru.rus.state ne 0}">
+					                                  	封号
+					                                  </c:if>
+				                                  </td>
+				                                  
 				                                  <td>${ru.u.uName }</td>
 				                                  <%
 				                                  UserAndReport ur = (UserAndReport)pageContext.getAttribute("ru");
@@ -339,7 +337,11 @@
 							          			%>
 				                                  <td><%= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) %></td>
 				                                  <td><a class="label label-success btn" href="${pageContext.request.contextPath}/createMenu/kitchen/${ru.rus.uId}?admin=1" target="_blank">查看详情</a>
-	                                  				 <a class="label label-danger btn" style="margin-left: 10px;" id="handle${ ru.rus.uId }" onclick="handle('${ ru.rus.uId }','${ ru.rus.uName }','${ ru.rus.reportTime }')">处理</a>
+	                                  				 <!-- <a class="label label-danger btn" style="margin-left: 10px;" onclick="click('');">处理</a> -->
+	                                  				 <a class="label label-danger btn" style="margin-left: 10px;"  id="handle${ answeruser.uid }"  
+	                                  				 	onclick="handle('${ru.rus.uId}','${ru.rus.uName }','${ru.rus.banTime }')">
+	                                  				 	处理</a>
+	                                  				
 	                                  				 <%@ include file="adminModel.jsp" %>
 	                                  			  </td>
 				                            </tr>
@@ -379,10 +381,10 @@
 	                                 			 <td><a class="label label-success btn">已看</a></td>
 	                              			</tr>
 	                              		</c:forEach>
-	                              </c:if>
-	                              <tr>
+	                              		 <tr>
 	                              	<td colspan="6" ><a href="" class="moreClick">更多</a></td>
 	                              </tr>
+	                              </c:if>
 	                             </tbody>
                             
                           </table>
@@ -405,7 +407,13 @@
     <script src="${pageContext.request.contextPath}/js/adminJs/sparkline-chart.js"  type="text/javascript" ></script>
     <script src="${pageContext.request.contextPath}/js/adminJs/easy-pie-chart.js"  type="text/javascript" ></script> 
     
-     <script src="${pageContext.request.contextPath}/js/admin-report.js"  type="text/javascript" ></script> 
+    <!-- easyui -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/easyui/jquery.easyui.min.js" ></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/easyui/themes/bootstrap/easyui.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/easyui/themes/icon.css" />
+    
+    <!-- js report -->
+    <script src="${pageContext.request.contextPath}/js/shiyuji_js/admin-report.js"  type="text/javascript" ></script> 
   <script>
       $(document).ready(function() {
           $("#owl-demo").owlCarousel({
@@ -421,7 +429,5 @@
           $('select.styled').customSelect();
       });
   	</script> 
-  	
-  	<jsp:include page="adminModel.jsp"></jsp:include>
   </body>
 </html>

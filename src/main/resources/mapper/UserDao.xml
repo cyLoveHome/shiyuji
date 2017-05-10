@@ -205,7 +205,7 @@
 			user
 		WHERE
 			rId != '1'
-		ORDER BY regTime
+		ORDER BY createTime
 		LIMIT
 		#{start},
 		#{pageSize}
@@ -220,7 +220,7 @@
 			rId = '1'
 		AND
 			uId != #{uId}
-		ORDER BY regTime
+		ORDER BY createTime
 		LIMIT
 		#{start},
 		#{pageSize}

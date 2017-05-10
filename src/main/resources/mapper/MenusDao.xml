@@ -93,7 +93,7 @@
 			uId != #{uId}
 	</select>
 	
-	<select id="selectMenusByPage" resultType="Menus" parameterType="String">
+	<select id="selectMenusByPage" resultType="Menus">
 		SELECT 
 			* 
 		FROM

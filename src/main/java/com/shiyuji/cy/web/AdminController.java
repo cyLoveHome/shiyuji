@@ -261,16 +261,16 @@ public class AdminController {
 			) throws ParseException{
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("forward:/allAdmin.jsp");
-		String adminUid = (String) request.getSession(true).getAttribute("admin");
+		User adminUid = (User) request.getSession(true).getAttribute("admin");
 		String currentPage = (String)request.getParameter("currentpage");
 		Page page = null;
-		Integer totalCount = userService.selectAdmin(adminUid).size();
+		Integer totalCount = userService.selectAdmin(adminUid.getuId()).size();
 		Integer pageNow = 1;
 		if(currentPage != null && !currentPage.isEmpty()){
 			pageNow = Integer.parseInt(currentPage);
 		}
 		page = new Page(totalCount, pageNow);
-		List<User> users = userDao.selectAdminByPage(page.getStartPos(), page.getPageSize(),adminUid);
+		List<User> users = userDao.selectAdminByPage(page.getStartPos(), page.getPageSize(),adminUid.getuId());
 		mav.addObject("alladmins", users);
 		mav.addObject("page", page);
 		return mav;
@@ -449,7 +449,6 @@ public class AdminController {
 		}
 		page = new Page(totalCount, pageNow);
 		List<Menus> allMenus = menusDao.selectMenusByPage(page.getStartPos(), page.getPageSize());
-		List<Menus> list1 = menusService.selectNew();
 		List<UserAndMenus> mslist = new ArrayList<>();
 		for(Menus menus : allMenus){
 			UserAndMenus ums = new UserAndMenus();

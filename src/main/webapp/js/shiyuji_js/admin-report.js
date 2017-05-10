@@ -106,9 +106,9 @@
 					}else{
 						var user = eval("("+rs+")");
 						var uid = user.uid;
-						var nickName = user.nickName;
+						var nickName = user.uName;
 						var banTime = user.banTime;
-						console.debug("success uid==>"+user.uid+"nickName==>"+user.nickName+"banTime:"+banTime);
+						console.debug("success uid==>"+uid+"nickName==>"+nickName+"banTime:"+banTime);
 						var alertInfo = nickName+" 解禁成功";
 						$("#handle"+uid).unbind("click");
 						$("#handle"+uid).click(
