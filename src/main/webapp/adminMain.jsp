@@ -54,8 +54,8 @@
                           <span class="arrow"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="">权限分配</a></li>
-                          <li><a class="" href="">管理员管理</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/user/all">权限分配</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/admin/all">管理员管理</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -65,8 +65,9 @@
                         <span class="arrow"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="reportInfo.html">举报处理</a></li>
-                          <li><a class="" href="">意见反馈</a></li>
+                          <li  class=""><a class="" href="${pageContext.request.contextPath}/report/user/all">举报用户</a></li>
+                          <li  class=""><a class="" href="${pageContext.request.contextPath}/report/menu/all">举报菜谱</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/suggestion/all">意见反馈</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -76,9 +77,9 @@
                           <span class="arrow open"></span>
                       </a>
                       <ul class="sub">
-                          <li class=""><a class="" href="">菜谱管理</a></li>
-                          <li><a class="" href="">菜单管理</a></li>
-                          <li><a class="" href="">问题管理</a></li>
+                          <li class=""><a class="" href="${pageContext.request.contextPath}/menu/all">菜谱管理</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/menus/all">菜单管理</a></li>
+                          <li><a class="" href="${pageContext.request.contextPath}/question/all">问题管理</a></li>
                       </ul>
                   </li>
               </ul>
