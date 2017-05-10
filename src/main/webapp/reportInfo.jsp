@@ -30,15 +30,9 @@
                           <span class="arrow"></span>
                       </a>
                       <ul class="sub">
-                          <li class=""><a class="" href="${pageContext.request.contextPath}/allUser.jsp">权限分配</a></li>
-                          <li class=""><a class="" href="${pageContext.request.contextPath}/allAdmin.jsp">管理员管理</a></li>
+                          <li class=""><a class="" href="${pageContext.request.contextPath}/">权限分配</a></li>
+                          <li class=""><a class="" href="${pageContext.request.contextPath}/">管理员管理</a></li>
                       </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="" class="">
-                          <i class="icon-th"></i>
-                          <span>菜谱分类</span>
-                      </a>
                   </li>
                   <li class="sub-menu active">
                       <a href="javascript:;" class="">
@@ -95,14 +89,14 @@
 	                              <td class="hidden-phone">10</td>
 	                              <td class="center hidden-phone">02.03.2013</td>
 	                              <td class="hidden-phone">
-	                              	<button class="label label-info">查看详情</button>
-	                              	<button class="label label-warning">处理</button>
+	                              	<a class="label label-info"  href="${pageContext.request.contextPath}/createMenu/selectOne/${um.menu.mId}?admin=1" target="_blank">查看详情</a>
+	                              	<a class="label label-warning">屏蔽</a>
 	                              </td>
 	                          </tr>
                           </tbody>
                            <tfoot>
                           		<tr>
-                          				<td colspan="5" style="text-align: center;">
+                          				<td colspan="7" style="text-align: center;">
                           					<ul class="pagination">
                           					<li><a href="#">总页数 5</a></li>
 													<li><a href="#">&laquo;</a></li>
@@ -129,6 +123,7 @@
                               <th style="width:8px;"><i class=" icon-star-empty"></i></th>
                               <th>被举报人</th>
                               <th class="hidden-phone">举报原因</th>
+                              <th class="hidden-phone">账户状态</th>
                               <th class="hidden-phone">举报人</th>
                               <th class="hidden-phone">举报时间</th>
                               <th class="hidden-phone"></th>
@@ -139,29 +134,26 @@
 	                              <th style="width:8px;"><i class=" icon-star-empty"></i></th>
 	                              <td>Jhone doe</td>
 	                              <td class="hidden-phone"><a href="mailto:jhone-doe@gmail.com">jhone-doe@gmail.com</a></td>
+	                              <td class="hidden-phone">封号</td>
 	                              <td class="hidden-phone">10</td>
 	                              <td class="center hidden-phone">02.03.2013</td>
 	                              <td class="hidden-phone">
-	                              	<button class="label label-info">查看详情</button>
-	                              	<button class="label label-warning">处理</button>
+	                              	 <a class="label label-info"  href="${pageContext.request.contextPath}/createMenu/kitchen/${u.uId}?admin=1" target="_blank">查看详情</a>
+	                              	 <a class="label label-danger btn" style="margin-left: 10px;" onclick="click('');">处理</a>
+	                              	 <%@ include file="adminModel.jsp" %>
 	                              </td>
 	                          </tr>
                           </tbody>
                           <tfoot>
                           		<tr>
-                          			<th>
-                          				<td colspan="5" style="text-align: center;">
+                          				<td colspan="7" style="text-align: center;">
                           					<ul class="pagination">
-												<li><a href="#">&laquo;</a></li>
-												<li><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#">5</a></li>
-												<li><a href="#">&raquo;</a></li>
+                          					<li><a href="#">总页数 5</a></li>
+													<li><a href="#">&laquo;</a></li>
+													<li><a href="#">1</a></li>
+													<li><a href="#">&raquo;</a></li>
 											</ul>
                           				</td>
-                          			</th>
                           		</tr>
                           </tfoot>
                           </table>

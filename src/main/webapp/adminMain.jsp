@@ -59,12 +59,6 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a href="" class="">
-                          <i class="icon-th"></i>
-                          <span>菜谱分类</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
                       <a href="javascript:;" class="">
                       	<i class="icon-book"></i>
                         <span>用户反馈</span>
@@ -314,6 +308,7 @@
 	                              	<td>序号</td>
 	                              	<td>被举报人</td>
 	                              	<td>举报原因</td>
+	                              	<td>账号状态</td>
 	                              	<td>举报人</td>
 	                              	<td>举报时间</td>
 	                              	<td style="width: 232px;">操作</td>
@@ -324,6 +319,12 @@
 				                                  <td>${rul.index + 1 }</td>
 				                                  <td>${ru.rus.uName }</td>
 				                                  <td>${ru.ru.cause }</td>
+				                                  <c:if test="${ru.rus.state eq 0}">
+				                                  	<td>正常</td>
+				                                  </c:if>
+				                                  <c:if test="${ru.rus.state ne 0}">
+				                                  	<td>封号</td>
+				                                  </c:if>
 				                                  <td>${ru.u.uName }</td>
 				                                  <%
 				                                  UserAndReport ur = (UserAndReport)pageContext.getAttribute("ru");
@@ -331,13 +332,14 @@
 							          			%>
 				                                  <td><%= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) %></td>
 				                                  <td><a class="label label-success btn" href="${pageContext.request.contextPath}/createMenu/kitchen/${ru.rus.uId}?admin=1" target="_blank">查看详情</a>
-	                                  				  <a class="label label-danger btn" style="margin-left: 10px;">处理</a>
+	                                  				 <a class="label label-danger btn" style="margin-left: 10px;" onclick="click('');">处理</a>
+	                                  				 <%@ include file="adminModel.jsp" %>
 	                                  			  </td>
 				                            </tr>
 				                        </c:forEach>
 	                              </c:if>
 	                              <tr>
-	                              	<td colspan="6" ><a href="" class="moreClick">更多</a></td>
+	                              	<td colspan="7" ><a href="" class="moreClick">更多</a></td>
 	                              </tr>
 	                             </tbody>
                           </table>
@@ -382,26 +384,6 @@
               </div>
   </section>
   
-  <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h3 class="modal-title" id="myModalLabel">
-					详情如下
-				</h3>
-			</div>
-			<div class="modal-body" id="allInfo">
-			
-			</div>
-			<div class="modal-footer">
-			</div>
-		</div>
-	</div>
-</div>
-
 
   	<script src="${pageContext.request.contextPath}/js/adminJs/jquery.js"  type="text/javascript" ></script>
     <script src="${pageContext.request.contextPath}/js/adminJs/jquery-1.8.3.min.js"  type="text/javascript" ></script>

@@ -35,12 +35,6 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a href="" class="">
-                          <i class="icon-th"></i>
-                          <span>菜谱分类</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
                       <a href="javascript:;" class="">
                       	<i class="icon-book"></i>
                         <span>用户反馈</span>
